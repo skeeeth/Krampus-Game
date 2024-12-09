@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdv7yypqfldh4"]
+
+[ext_resource type="Texture2D" uid="uid://b2er03v834ydj" path="res://icon.svg" id="1_byjwe"]
+[ext_resource type="Script" path="res://shopping_cart.gd" id="1_cvcn8"]
+[ext_resource type="Script" path="res://interactable_area.gd" id="3_44ka7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkjp8"]
+size = Vector2(20, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4m36"]
+
+[node name="ShoppingCart" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_cvcn8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_tkjp8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.936639, 0.939623, 0.935177, 1)
+position = Vector2(0, -8)
+scale = Vector2(0.15625, 0.210937)
+texture = ExtResource("1_byjwe")
+
+[node name="InteractableArea" type="Area2D" parent="." node_paths=PackedStringArray("handler")]
+position = Vector2(0, -8)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_44ka7")
+handler = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_f4m36")
+
+[node name="RiderOffsetPosition" type="Node2D" parent="."]
+position = Vector2(0, 15)
+
+[connection signal="area_entered" from="InteractableArea" to="InteractableArea" method="_on_area_entered"]
+[connection signal="body_entered" from="InteractableArea" to="InteractableArea" method="_on_body_entered"]
+[connection signal="interacted" from="InteractableArea" to="." method="_on_interactable_area_interacted"]
