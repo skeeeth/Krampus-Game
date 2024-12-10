@@ -1,7 +1,13 @@
 class_name NPC
 extends Area2D
 
+@export var npc_type:NPCType
 @export var cart_knockdown_speed:float = 30
+
+enum NPCType {
+	Kid,
+	Guard
+}
 
 enum NPCState {
 	Idle,

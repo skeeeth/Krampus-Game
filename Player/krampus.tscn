@@ -6,9 +6,8 @@
 [ext_resource type="Script" path="res://Player/attack.gd" id="4_is3dp"]
 [ext_resource type="Texture2D" uid="uid://bg4hx3t8gnwp5" path="res://Player/hit04.png" id="4_qhbyu"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmxt3"]
-radius = 7.0
-height = 22.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xqo2"]
+size = Vector2(69, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fp37h"]
 radius = 163.012
@@ -79,12 +78,14 @@ _data = {
 }
 
 [node name="Krampus" type="CharacterBody2D"]
+z_index = 2
 motion_mode = 1
 script = ExtResource("1_5w85o")
 move_speed = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_bmxt3")
+position = Vector2(0.5, 45)
+shape = SubResource("RectangleShape2D_7xqo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -99,12 +100,16 @@ script = ExtResource("3_4yoct")
 krampus = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
 shape = SubResource("CircleShape2D_fp37h")
 
 [node name="Attack" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
 script = ExtResource("4_is3dp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+visible = false
 position = Vector2(95.5, 0.5)
 shape = SubResource("RectangleShape2D_gcl4g")
 disabled = true
@@ -129,5 +134,6 @@ one_shot = true
 [connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
+[connection signal="area_entered" from="Attack" to="Attack" method="_on_area_entered"]
 [connection signal="animation_finished" from="Attack/AnimationPlayer" to="Attack" method="_on_animation_finished"]
 [connection signal="timeout" from="Attack/CooldownTimer" to="Attack" method="_on_cooldown_timer_timeout"]

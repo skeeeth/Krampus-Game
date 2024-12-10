@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://wg71xd4yobi7"]
+
+[ext_resource type="Script" path="res://npc/npc.gd" id="1_lqjb8"]
+[ext_resource type="Texture2D" uid="uid://b3dlkteedq77d" path="res://npc/adult_stick_figure.png" id="2_56afv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qpj"]
+size = Vector2(54, 104)
+
+[node name="Guard" type="Area2D"]
+modulate = Color(0.0744, 0.0744, 0.93, 1)
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_lqjb8")
+npc_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_b1qpj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(0.215, 0.2)
+texture = ExtResource("2_56afv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmnpf5yogmora"
-path="res://.godot/imported/kid_stick_figure.png-c98273dbe51dee1b9a7492e15d8045c8.ctex"
+uid="uid://b3dlkteedq77d"
+path="res://.godot/imported/adult_stick_figure.png-dc25ee99272ab09c8dd70adcb3015c42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kid_stick_figure.png"
-dest_files=["res://.godot/imported/kid_stick_figure.png-c98273dbe51dee1b9a7492e15d8045c8.ctex"]
+source_file="res://npc/adult_stick_figure.png"
+dest_files=["res://.godot/imported/adult_stick_figure.png-dc25ee99272ab09c8dd70adcb3015c42.ctex"]
 
 [params]
 
