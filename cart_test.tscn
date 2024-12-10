@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://shopping_cart.tscn" id="1_qvt7r"]
-[ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://krampus.tscn" id="2_regcu"]
+[ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
 
 [node name="CartTest" type="Node2D"]
 
@@ -10,3 +10,6 @@ position = Vector2(300, 300)
 
 [node name="Krampus" parent="." instance=ExtResource("2_regcu")]
 position = Vector2(133, 221)
+
+[node name="ShoppingCart2" parent="." instance=ExtResource("1_qvt7r")]
+position = Vector2(618, 266)

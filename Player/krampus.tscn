@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=3 uid="uid://prm2p3mxsryu"]
+
+[ext_resource type="Script" path="res://Player/krampus.gd" id="1_5w85o"]
+[ext_resource type="Texture2D" uid="uid://b2er03v834ydj" path="res://icon.svg" id="1_g3yj8"]
+[ext_resource type="Script" path="res://Player/krampus_interaction_area.gd" id="3_4yoct"]
+[ext_resource type="Script" path="res://Player/attack.gd" id="4_is3dp"]
+[ext_resource type="Texture2D" uid="uid://bg4hx3t8gnwp5" path="res://Player/hit04.png" id="4_qhbyu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmxt3"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fp37h"]
+radius = 56.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcl4g"]
+size = Vector2(40, 20)
+
+[sub_resource type="Animation" id="Animation_5cc6n"]
+resource_name = "melee_attack"
+length = 0.24
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.11, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_f6kja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gkvq"]
+_data = {
+"RESET": SubResource("Animation_f6kja"),
+"melee_attack": SubResource("Animation_5cc6n")
+}
+
+[node name="Krampus" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_5w85o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bmxt3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(7.15256e-07, 0)
+scale = Vector2(0.109375, 0.15625)
+texture = ExtResource("1_g3yj8")
+
+[node name="InteractionArea" type="Area2D" parent="." node_paths=PackedStringArray("krampus")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_4yoct")
+krampus = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_fp37h")
+
+[node name="Attack" type="Area2D" parent="."]
+script = ExtResource("4_is3dp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_gcl4g")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Attack"]
+visible = false
+position = Vector2(20, -9.53674e-07)
+scale = Vector2(0.625, 0.3125)
+texture = ExtResource("4_qhbyu")
+hframes = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Attack"]
+libraries = {
+"": SubResource("AnimationLibrary_0gkvq")
+}
+
+[node name="CooldownTimer" type="Timer" parent="Attack"]
+one_shot = true
+
+[connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
+[connection signal="animation_finished" from="Attack/AnimationPlayer" to="Attack" method="_on_animation_finished"]
+[connection signal="timeout" from="Attack/CooldownTimer" to="Attack" method="_on_cooldown_timer_timeout"]

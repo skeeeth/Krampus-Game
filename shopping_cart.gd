@@ -27,19 +27,11 @@ func on_player_interaction(player:Krampus):
 
 func start_riding(new_rider):
 	rider = new_rider
-	collision_mask = disable_bit(collision_mask, 0) #Disable collisions with player. Argument is 0 for layer 1
+	set_collision_mask_value(1, 0)
 
 func stop_riding():
 	rider = null
-	collision_mask = enable_bit(collision_mask, 0) #Enable collisions with player. Argument is 0 for layer 1
-
-
-func enable_bit(mask: int, index: int) -> int:
-	return mask | (1 << index)
-
-func disable_bit(mask: int, index: int) -> int:
-	return mask & ~(1 << index)
-	
+	set_collision_mask_value(1, 1)
 	
 
 func _physics_process(delta: float) -> void:
