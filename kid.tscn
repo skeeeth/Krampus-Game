@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b73boev43352m"]
+
+[ext_resource type="Texture2D" uid="uid://dmnpf5yogmora" path="res://kid_stick_figure.png" id="1_3gw8w"]
+[ext_resource type="Script" path="res://npc.gd" id="1_dqynl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qpj"]
+size = Vector2(87, 104)
+
+[node name="Kid" type="Area2D"]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_dqynl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_b1qpj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.145, 0.135)
+texture = ExtResource("1_3gw8w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

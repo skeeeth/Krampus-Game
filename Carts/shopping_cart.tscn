@@ -1,29 +1,33 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdv7yypqfldh4"]
 
-[ext_resource type="Texture2D" uid="uid://b2er03v834ydj" path="res://icon.svg" id="1_byjwe"]
-[ext_resource type="Script" path="res://shopping_cart.gd" id="1_cvcn8"]
-[ext_resource type="Script" path="res://interactable_area.gd" id="3_44ka7"]
+[ext_resource type="Script" path="res://Carts/shopping_cart.gd" id="1_cvcn8"]
+[ext_resource type="Texture2D" uid="uid://tqioid56cvfl" path="res://Carts/shopping_cart.png" id="2_xwrrd"]
+[ext_resource type="Script" path="res://Carts/interactable_area.gd" id="3_44ka7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkjp8"]
-size = Vector2(20, 27)
+size = Vector2(85, 130)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4m36"]
+radius = 47.5105
 
 [node name="ShoppingCart" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 2
-collision_mask = 3
+collision_mask = 11
 motion_mode = 1
 script = ExtResource("1_cvcn8")
+linear_acceleration = 100.0
+maximum_linear_speed = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(-0.5, -23)
 shape = SubResource("RectangleShape2D_tkjp8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.936639, 0.939623, 0.935177, 1)
 position = Vector2(0, -8)
 scale = Vector2(0.15625, 0.210937)
-texture = ExtResource("1_byjwe")
+texture = ExtResource("2_xwrrd")
 
 [node name="InteractableArea" type="Area2D" parent="." node_paths=PackedStringArray("handler")]
 position = Vector2(0, -8)
@@ -37,7 +41,7 @@ scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_f4m36")
 
 [node name="RiderOffsetPosition" type="Node2D" parent="."]
-position = Vector2(0, 15)
+position = Vector2(0, 86)
 
 [connection signal="area_entered" from="InteractableArea" to="InteractableArea" method="_on_area_entered"]
 [connection signal="body_entered" from="InteractableArea" to="InteractableArea" method="_on_body_entered"]
