@@ -7,8 +7,6 @@ var cart:ShoppingCart = null
 
 var facing_direction:Vector2 = Vector2.RIGHT
 
-
-
 func on_attempt_interaction(interaction_target:InteractableArea):
 	if (cart != null):
 		cart.stop_riding()

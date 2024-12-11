@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://dw6bvieqxld81"]
+
+[ext_resource type="Texture2D" uid="uid://c5m1jj2orvklq" path="res://Combat/KombatKrampus/splash03.png" id="1_0om5o"]
+[ext_resource type="Script" path="res://Combat/dash_startup.gd" id="2_bw57m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k05m3"]
+atlas = ExtResource("1_0om5o")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_376q7"]
+atlas = ExtResource("1_0om5o")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p7c5"]
+atlas = ExtResource("1_0om5o")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffe1s"]
+atlas = ExtResource("1_0om5o")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvftd"]
+atlas = ExtResource("1_0om5o")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q04j0"]
+atlas = ExtResource("1_0om5o")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s7fb"]
+atlas = ExtResource("1_0om5o")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3paa"]
+atlas = ExtResource("1_0om5o")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2oyp6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k05m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_376q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p7c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffe1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvftd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q04j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s7fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3paa")
+}],
+"loop": false,
+"name": &"default",
+"speed": 60.0
+}]
+
+[node name="DashStartup" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2oyp6")
+script = ExtResource("2_bw57m")
