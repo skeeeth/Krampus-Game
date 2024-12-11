@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://qgltf060t87h"]
+
+[ext_resource type="Texture2D" uid="uid://bxwa5hkwc0dm" path="res://Environment/store_shelf_skewed.png" id="1_7wnyy"]
+[ext_resource type="Script" path="res://Environment/shelf.gd" id="1_r3fwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oadqk"]
+resource_local_to_scene = true
+size = Vector2(998, 198)
+
+[node name="Shelf" type="StaticBody2D"]
+collision_layer = 11
+collision_mask = 43
+script = ExtResource("1_r3fwe")
+metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 1000, 0)
+width = 200.0
+texture = ExtResource("1_7wnyy")
+texture_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_oadqk")
