@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjkdw2t1rp0q5"]
+[gd_scene load_steps=12 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="1_qvt7r"]
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
 [ext_resource type="PackedScene" uid="uid://b73boev43352m" path="res://npc/kid.tscn" id="3_fb7kf"]
+[ext_resource type="PackedScene" uid="uid://cuiyko1ty38wq" path="res://Combat/UI/healthbar.tscn" id="3_h6s5m"]
 [ext_resource type="PackedScene" uid="uid://wg71xd4yobi7" path="res://npc/guard.tscn" id="4_oi8dt"]
+[ext_resource type="Script" path="res://SpiritBar.gd" id="4_owime"]
 [ext_resource type="PackedScene" uid="uid://qgltf060t87h" path="res://Environment/shelf.tscn" id="5_pccs1"]
 [ext_resource type="Texture2D" uid="uid://st7m3f6mvyde" path="res://white_square.png" id="6_7ar8m"]
 [ext_resource type="Texture2D" uid="uid://cofnknj7tvoa3" path="res://Environment/white_checkered_tile.png" id="7_v53y3"]
@@ -25,6 +27,19 @@ position = Vector2(300, 300)
 
 [node name="Camera2D" type="Camera2D" parent="Krampus"]
 zoom = Vector2(0.8, 0.8)
+
+[node name="ProgressBar" parent="Krampus/Camera2D" instance=ExtResource("3_h6s5m")]
+
+[node name="CheerBar" type="ProgressBar" parent="Krampus/Camera2D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -645.0
+offset_top = 311.0
+offset_right = 646.0
+offset_bottom = 388.0
+grow_horizontal = 2
+script = ExtResource("4_owime")
 
 [node name="ShoppingCart2" parent="." instance=ExtResource("1_qvt7r")]
 position = Vector2(618, 266)

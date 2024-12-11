@@ -12,6 +12,7 @@ var thrown:bool = false
 func enter():
 	thrown = false
 	snowball = snowball_scene.instantiate()
+	var start_snowball = snowball
 	snowball.damage = damage
 	
 	var grow = create_tween()
@@ -24,8 +25,8 @@ func enter():
 	parent.add_sibling(snowball)
 	
 	await get_tree().create_timer(cast_time).timeout
-	
-	if snowball != null:
+	#throw snowball if it still exists and is from the same attack
+	if snowball != null and snowball == start_snowball:
 		snowball.monitoring = true
 		snowball.speed = throw_strength
 		thrown = true
@@ -37,7 +38,6 @@ func exit():
 	if !thrown:
 		var shrink = create_tween()
 		shrink.tween_property(snowball,"size",0,0.1)
-		shrink.tween_callback(snowball.queue_free)
 		snowball = null
 	pass
 	

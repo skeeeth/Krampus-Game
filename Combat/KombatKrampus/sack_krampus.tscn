@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://o0lhjoabixi6"]
+[gd_scene load_steps=41 format=3 uid="uid://o0lhjoabixi6"]
 
 [ext_resource type="Script" path="res://Combat/KombatKrampus/sack_krampus.gd" id="1_1eygv"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/States/walk.gd" id="1_i6jng"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Combat/KombatKrampus/AttackHitbox.gd" id="9_lhobn"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/Visual.gd" id="9_yecmo"]
 [ext_resource type="Texture2D" uid="uid://bg4hx3t8gnwp5" path="res://Player/hit04.png" id="11_nbwxv"]
+[ext_resource type="PackedScene" uid="uid://b4w75pwooriub" path="res://Combat/UI/CombatUI.tscn" id="13_08agu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6pwbh"]
 
@@ -293,5 +294,7 @@ spread = 180.0
 gravity = Vector2(0, 0)
 radial_accel_min = -70.27
 radial_accel_max = -48.65
+
+[node name="Camera2D" parent="." instance=ExtResource("13_08agu")]
 
 [connection signal="animation_looped" from="SpinAttack" to="StateMachine/Spin" method="_on_spin_attack_animation_looped"]

@@ -9,6 +9,7 @@ var diff:Vector2
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	diff = player.global_position - global_position
 

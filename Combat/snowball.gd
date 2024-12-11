@@ -19,6 +19,8 @@ func _draw() -> void:
 func _process(delta: float) -> void:
 	queue_redraw()
 	position += speed * direction
+	if size == 0:
+		queue_free()
 	pass
 
 
