@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bg4hx3t8gnwp5" path="res://Player/hit04.png" id="4_qhbyu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xqo2"]
-size = Vector2(69, 24)
+size = Vector2(69, 113)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fp37h"]
 radius = 163.012
@@ -84,7 +84,7 @@ script = ExtResource("1_5w85o")
 move_speed = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 45)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_7xqo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -100,7 +100,6 @@ script = ExtResource("3_4yoct")
 krampus = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-visible = false
 shape = SubResource("CircleShape2D_fp37h")
 
 [node name="Attack" type="Area2D" parent="."]

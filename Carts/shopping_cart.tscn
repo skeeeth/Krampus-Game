@@ -16,8 +16,8 @@ collision_layer = 2
 collision_mask = 11
 motion_mode = 1
 script = ExtResource("1_cvcn8")
-linear_acceleration = 100.0
-maximum_linear_speed = 500
+linear_acceleration = 140.0
+maximum_linear_speed = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -23)

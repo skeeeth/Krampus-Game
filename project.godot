@@ -75,6 +75,8 @@ dev1={
 2d_physics/layer_2="ShoppingCart"
 2d_physics/layer_3="Interaction"
 2d_physics/layer_4="NPC"
+2d_physics/layer_5="Attacks"
+2d_physics/layer_6="Environment"
 
 [rendering]
 
