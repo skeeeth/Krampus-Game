@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b2er03v834ydj" path="res://icon.svg" id="4_gwvq3"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/States/Windup.gd" id="5_rek3j"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/States/spin.gd" id="6_wew2u"]
-[ext_resource type="Script" path="res://Combat/KombatKrampus/quick.gd" id="7_sppbl"]
+[ext_resource type="Script" path="res://Combat/KombatKrampus/States/quick.gd" id="7_sppbl"]
 [ext_resource type="Texture2D" uid="uid://d1d8opnuwq3lu" path="res://Combat/KombatKrampus/impact02.png" id="8_ebfsx"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/AttackHitbox.gd" id="9_lhobn"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/Visual.gd" id="9_yecmo"]
@@ -196,9 +196,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgus1"]
 size = Vector2(46, 50.5)
 
-[node name="SackKrampus" type="CharacterBody2D"]
+[node name="SackKrampus" type="CharacterBody2D" node_paths=PackedStringArray("sm") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_1eygv")
+sm = NodePath("StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6pwbh")

@@ -15,3 +15,9 @@ position = Vector2(-288, -168)
 position = Vector2(417, 103)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Kid2" parent="." instance=ExtResource("4_gr2bh")]
+position = Vector2(-141, -260)
+
+[node name="Kid3" parent="." instance=ExtResource("4_gr2bh")]
+position = Vector2(-304, 182)

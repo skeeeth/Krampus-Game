@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bouwefh35hd57"]
+[gd_scene load_steps=8 format=3 uid="uid://bouwefh35hd57"]
 
 [ext_resource type="Script" path="res://npc/combat_npc.gd" id="1_na5es"]
 [ext_resource type="Texture2D" uid="uid://b3dlkteedq77d" path="res://npc/adult_stick_figure.png" id="2_5syv8"]
+[ext_resource type="Script" path="res://Combat/State/StateMachine.gd" id="3_tsyk1"]
+[ext_resource type="Script" path="res://npc/npc_states/idle.gd" id="4_ywiy5"]
+[ext_resource type="Script" path="res://npc/npc_states/retreat.gd" id="5_lpde0"]
+[ext_resource type="Script" path="res://npc/wander.gd" id="6_lv56s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qpj"]
 size = Vector2(54, 104)
 
-[node name="Guard" type="Area2D"]
+[node name="Guard" type="Area2D" node_paths=PackedStringArray("state_machine")]
 modulate = Color(0, 1, 0, 1)
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_na5es")
+state_machine = NodePath("Node")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_b1qpj")
@@ -19,3 +24,22 @@ shape = SubResource("RectangleShape2D_b1qpj")
 position = Vector2(10, 0)
 scale = Vector2(0.215, 0.2)
 texture = ExtResource("2_5syv8")
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("startingState")]
+script = ExtResource("3_tsyk1")
+startingState = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Node" node_paths=PackedStringArray("parent", "beeline_state")]
+script = ExtResource("4_ywiy5")
+max_wait = 10000.0
+parent = NodePath("../..")
+beeline_state = NodePath("../Beeline")
+
+[node name="Beeline" type="Node" parent="Node" node_paths=PackedStringArray("parent", "idle_state")]
+script = ExtResource("5_lpde0")
+parent = NodePath("../..")
+idle_state = NodePath("../Idle")
+
+[node name="Wander" type="Node" parent="Node" node_paths=PackedStringArray("parent")]
+script = ExtResource("6_lv56s")
+parent = NodePath("../..")
