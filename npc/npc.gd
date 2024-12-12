@@ -98,15 +98,17 @@ func _start_wandering():
 	state = NPCState.Wandering
 	print("AAAngle: " + str(nav_ray.target_position.angle()))
 	_set_rotation(nav_ray.target_position.angle())
-	default_sprite.visible = true
-	knocked_down_sprite.visible = false
+	if (default_sprite != null and knocked_down_sprite != null):
+		default_sprite.visible = true
+		knocked_down_sprite.visible = false
 
 func _get_knocked_down(knockdown_direction):
 	wandering_collision_idle_timer.stop()
 	state = NPCState.KnockedDown
 	_set_rotation(knockdown_direction.angle() - PI)
-	knocked_down_sprite.visible = true
-	default_sprite.visible = false	
+	if (default_sprite != null and knocked_down_sprite != null):
+		knocked_down_sprite.visible = true
+		default_sprite.visible = false	
 	knockdown_timer.start(knockdown_duration)
 
 #I want the raycast logic to be independent of the parent rotation, so let's always use this function that performs a counter-rotation

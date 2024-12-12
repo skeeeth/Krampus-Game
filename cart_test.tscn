@@ -1,5 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjkdw2t1rp0q5"]
-
+[gd_scene load_steps=11 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="1_qvt7r"]
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
