@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbecfnac38ngy"]
+[gd_scene load_steps=5 format=3 uid="uid://vchflsopy7ik"]
 
 [ext_resource type="PackedScene" uid="uid://o0lhjoabixi6" path="res://Combat/KombatKrampus/sack_krampus.tscn" id="2_2r7au"]
+[ext_resource type="Script" path="res://npc/npc.gd" id="3_csgxo"]
 [ext_resource type="PackedScene" uid="uid://bouwefh35hd57" path="res://npc/combat_guard.tscn" id="3_k4daq"]
 [ext_resource type="PackedScene" uid="uid://dt4svjk536vnw" path="res://npc/combat_kid.tscn" id="4_gr2bh"]
 
@@ -10,9 +11,20 @@
 
 [node name="Guard" parent="." instance=ExtResource("3_k4daq")]
 position = Vector2(-288, -168)
+script = ExtResource("3_csgxo")
+npc_type = 0
+cart_knockdown_speed = 30.0
 
 [node name="Kid" parent="." instance=ExtResource("4_gr2bh")]
 position = Vector2(417, 103)
+script = ExtResource("3_csgxo")
+npc_type = 0
+cart_knockdown_speed = 30.0
+
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="Guard" to="Guard" method="_on_body_entered"]
 
 [node name="Kid2" parent="." instance=ExtResource("4_gr2bh")]
 position = Vector2(-141, -260)

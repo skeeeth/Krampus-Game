@@ -1,3 +1,4 @@
+class_name Shelf
 extends StaticBody2D
 
 
