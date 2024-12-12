@@ -7,8 +7,8 @@ var is_attack_on_cooldown:bool = false
 
 
 func attempt_attack(direction):
-	transform.x = direction
-	transform.y = direction.rotated(-PI/2)
+	#transform.x = direction
+	#transform.y = direction.rotated(-PI/2)
 	if (not is_attack_on_cooldown):
 		_attack()
 
