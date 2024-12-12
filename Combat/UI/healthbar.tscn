@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuiyko1ty38wq"]
+
+[ext_resource type="Script" path="res://Combat/UI/healthbar.gd" id="1_c2hhv"]
+
+[node name="ProgressBar" type="ProgressBar"]
+z_index = 1
+offset_right = 269.0
+offset_bottom = 39.0
+size_flags_horizontal = 0
+script = ExtResource("1_c2hhv")

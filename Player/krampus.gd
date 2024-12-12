@@ -7,6 +7,12 @@ var cart:ShoppingCart = null
 
 var facing_direction:Vector2 = Vector2.RIGHT
 
+func _ready() -> void:
+	global_position = PlayerVariables.previous_position
+	
+func _exit_tree() -> void:
+	PlayerVariables.previous_position = global_position
+
 func on_attempt_interaction(interaction_target:InteractableArea):
 	if (cart != null):
 		cart.stop_riding()

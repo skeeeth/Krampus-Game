@@ -21,6 +21,13 @@ script = ExtResource("3_csgxo")
 npc_type = 0
 cart_knockdown_speed = 30.0
 
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="body_entered" from="Guard" to="Guard" method="_on_body_entered"]
+
+[node name="Kid2" parent="." instance=ExtResource("4_gr2bh")]
+position = Vector2(-141, -260)
+
+[node name="Kid3" parent="." instance=ExtResource("4_gr2bh")]
+position = Vector2(-304, 182)
