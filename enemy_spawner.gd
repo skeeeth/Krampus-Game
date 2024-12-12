@@ -13,12 +13,7 @@ func _ready() -> void:
 		if (num_npcs_of_that_type_in_sack != null):
 			for i in range(num_npcs_of_that_type_in_sack):
 				_spawn_enemy(npc_type_to_enemy_scene[npc_type])
-	'''
-	var num_guards = PlayerVariables.sack_npc_type_counts[NPC.NPCType.Guard]
-	if (num_guards != null):
-		for i in range(num_guards):
-			_spawn_enemy(combat_guard_scene)
-	'''
+				
 
 func _spawn_enemy(enemy_scene):
 	var distance_from_origin = randf_range(30, 300)
