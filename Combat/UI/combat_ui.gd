@@ -2,7 +2,7 @@ extends Camera2D
 
 #@onready var progress_bar: ProgressBar = $ProgressBar
 @onready var timer: Label = $Timer_Container/Timer
-var time:float = 20.0
+var time:float = 5.0
 @export var transition_time:float = 2.0
 @onready var lens: ColorRect = 	$Lens
 var fading:bool = false

@@ -1,10 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuiyko1ty38wq"]
+[gd_scene load_steps=4 format=3 uid="uid://cuiyko1ty38wq"]
 
 [ext_resource type="Script" path="res://Combat/UI/healthbar.gd" id="1_c2hhv"]
+[ext_resource type="LabelSettings" uid="uid://cgf32jqj0evf0" path="res://Combat/UI/gift_label.tres" id="2_17opb"]
+[ext_resource type="Texture2D" uid="uid://cxxc350ssswa1" path="res://Combat/UI/label1.png" id="3_qcisc"]
 
-[node name="ProgressBar" type="ProgressBar"]
-z_index = 1
-offset_right = 269.0
-offset_bottom = 39.0
-size_flags_horizontal = 0
+[node name="Healthbar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_c2hhv")
+
+[node name="label" type="Label" parent="."]
+z_index = 1
+offset_left = 142.0
+offset_top = 36.0
+offset_right = 457.0
+offset_bottom = 126.0
+size_flags_horizontal = 0
+text = "Health:100/100"
+label_settings = ExtResource("2_17opb")
+
+[node name="Label1" type="Sprite2D" parent="label"]
+z_index = -1
+position = Vector2(99, 30)
+scale = Vector2(3, 3)
+texture = ExtResource("3_qcisc")

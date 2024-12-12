@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4w75pwooriub"]
+[gd_scene load_steps=12 format=3 uid="uid://b4w75pwooriub"]
 
 [ext_resource type="Script" path="res://Combat/UI/combat_ui.gd" id="1_22rx2"]
 [ext_resource type="Shader" path="res://Shaders/Squeeze.gdshader" id="2_ulonn"]
 [ext_resource type="PackedScene" uid="uid://cuiyko1ty38wq" path="res://Combat/UI/healthbar.tscn" id="3_jdtuh"]
+[ext_resource type="Texture2D" uid="uid://r511f1mvtahc" path="res://Combat/UI/labelplain.png" id="4_n5yce"]
+[ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="5_j4rp3"]
 
 [sub_resource type="Gradient" id="Gradient_0614g"]
 colors = PackedColorArray(0.3, 0.3, 0.3, 1, 1, 1, 1, 1)
@@ -19,9 +21,19 @@ shader = ExtResource("2_ulonn")
 shader_parameter/intensity = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_bs68w")
 
+[sub_resource type="FontVariation" id="FontVariation_t4jk5"]
+base_font = ExtResource("5_j4rp3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_84np6"]
+resource_local_to_scene = true
+font = SubResource("FontVariation_t4jk5")
+font_size = 60
+font_color = Color(0.63, 0.2205, 0.2205, 1)
+
 [node name="Camera2D" type="Camera2D"]
 z_index = 1024
 script = ExtResource("1_22rx2")
+metadata/_edit_horizontal_guides_ = [-126.0]
 
 [node name="Lens" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_viv7k")
@@ -43,10 +55,14 @@ offset_top = 119.0
 offset_right = 430.0
 offset_bottom = 158.0
 
-[node name="Timer_Container" type="PanelContainer" parent="."]
-z_index = 1
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Timer_Container" type="Sprite2D" parent="."]
+texture = ExtResource("4_n5yce")
+offset = Vector2(64, 24)
 
 [node name="Timer" type="Label" parent="Timer_Container"]
-layout_mode = 2
+offset_left = -6.0
+offset_top = -16.0
+offset_right = 79.0
+offset_bottom = 74.0
+text = "1:00"
+label_settings = SubResource("LabelSettings_84np6")
