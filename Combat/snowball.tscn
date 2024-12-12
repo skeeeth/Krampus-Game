@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://davxhgllxxs8a"]
+[gd_scene load_steps=4 format=3 uid="uid://davxhgllxxs8a"]
 
 [ext_resource type="Script" path="res://Combat/snowball.gd" id="1_7ptwj"]
+[ext_resource type="Script" path="res://Combat/Snowball_cleanup.gd" id="2_37mvl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1i0yw"]
 size = Vector2(10, 10)
@@ -15,5 +16,12 @@ shape = SubResource("RectangleShape2D_1i0yw")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 3.0
+autostart = true
+script = ExtResource("2_37mvl")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

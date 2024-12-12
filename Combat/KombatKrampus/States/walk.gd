@@ -4,6 +4,7 @@ extends State
 @export var movespeed:float = 220
 @export var vis:CharacterVisual
 var dash_buffered:bool
+
 func enter():
 	pass
 	

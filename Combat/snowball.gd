@@ -6,8 +6,8 @@ var kb_strength:float = 0
 var direction:Vector2
 var speed:float
 func _draw() -> void:
-	draw_circle(Vector2.ZERO,size/2.0,Color.SNOW)
-	draw_circle(Vector2.ZERO,(size/2.0)+1,Color.BLACK,false)
+	draw_circle(Vector2.ZERO,5,Color.SNOW)
+	draw_circle(Vector2.ZERO,6,Color.BLACK,false)
 	#could use a shader for a real perfect circle but this is fine
 	
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +18,7 @@ func _draw() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	queue_redraw()
+	scale = Vector2(size/10.0,size/10.0)
 	position += speed * direction
 	if size == 0:
 		queue_free()
@@ -33,5 +34,13 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
+	visible = false
+	process_mode = PROCESS_MODE_DISABLED
+	#queue_free()
+	pass # Replace with function body.
+
+
+
+
+func _on_timer_timeout() -> void:
 	pass # Replace with function body.

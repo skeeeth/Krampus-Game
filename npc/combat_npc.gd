@@ -18,11 +18,14 @@ func take_knockback(dir:Vector2,strength:float, stun_duration:float = -1.0):
 	kb.tween_property(self,"position",position+dir.normalized()*strength,0.15);
 	if stun_duration > 0:
 		if state_machine.currentState.name == "Stun":
+			print("Already Stunned")
 			return
 		var previous_state:State = state_machine.currentState
 		state_machine.currentState.transitioned.emit(
 				state_machine.currentState,"Stun")
 		var stun_state = state_machine.currentState
+		print("Stun Started")
 		await get_tree().create_timer(stun_duration).timeout
+		print("Stun Finished, returning to " + str(previous_state))
 		state_machine.currentState.transitioned.emit(stun_state,previous_state.name)
 	

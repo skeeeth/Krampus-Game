@@ -6,6 +6,8 @@ var direction:float = 1.0
 var target_distance:float = 0
 func enter():
 	target_distance = randf_range(idle_state.retreat_range,idle_state.attack_range)
+	#target_distance = (idle_state.retreat_range+
+			#idle_state.attack_range)/2.0
 	pass
 	
 func exit():

@@ -10,6 +10,7 @@ extends State
 var snowball:Node2D
 var thrown:bool = false
 func enter():
+	print("Snowball Start")
 	thrown = false
 	snowball = snowball_scene.instantiate()
 	var start_snowball = snowball
@@ -18,8 +19,8 @@ func enter():
 	var grow = create_tween()
 	grow.tween_property(snowball,"size",snowball_size,cast_time)
 	
-	var throw_angle = lerp_angle(parent.diff.angle(),-parent.diff.angle(),inaccuracy)
-	snowball.direction = Vector2.from_angle(throw_angle)
+	#var throw_angle = lerp_angle(parent.diff.angle(),-parent.diff.angle(),inaccuracy)
+	#snowball.direction = Vector2.from_angle(throw_angle)
 	
 	snowball.global_position = parent.global_position
 	parent.add_sibling(snowball)
@@ -27,11 +28,14 @@ func enter():
 	await get_tree().create_timer(cast_time).timeout
 	#throw snowball if it still exists and is from the same attack
 	if snowball != null and snowball == start_snowball:
+		var throw_angle = lerp_angle(parent.diff.angle(),-parent.diff.angle(),inaccuracy)
+		snowball.direction = Vector2.from_angle(throw_angle)
 		snowball.monitoring = true
 		snowball.speed = throw_strength
 		thrown = true
 	
 	transitioned.emit(self,"Wander")
+	print("Snowball finished")
 	
 func exit():
 	#do not throw snowball if stun cancels throwing

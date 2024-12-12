@@ -39,8 +39,9 @@ retreat_range = 200.0
 attack_range = 400.0
 wander_range = 800.0
 
-[node name="Stun" type="Node" parent="StateMachine"]
+[node name="Stun" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("5_y4b4c")
+parent = NodePath("../..")
 
 [node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("6_wgt6c")

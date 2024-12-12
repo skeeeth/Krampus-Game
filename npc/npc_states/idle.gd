@@ -11,8 +11,8 @@ class_name Idle
 @export var wander_range:float = 2000 #set to less than attack_range to always seek
 var next_wait:float = 1.0
 func enter():
+	print("Idle Started")
 	await get_tree().create_timer(next_wait).timeout
-	
 	next_wait = randf_range(0.05,max_wait)
 	
 	#Set next state based on distance
@@ -29,7 +29,9 @@ func enter():
 		#Seek
 		beeline_state.direction = 1.0
 		transitioned.emit(self,"Beeline")
-	
+
+	print("Idle Finished")
+
 func exit():
 	pass
 	

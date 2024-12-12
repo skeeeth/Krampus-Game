@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bouwefh35hd57"]
+[gd_scene load_steps=24 format=3 uid="uid://bouwefh35hd57"]
 
 [ext_resource type="Script" path="res://npc/combat_npc.gd" id="1_na5es"]
 [ext_resource type="Texture2D" uid="uid://b3dlkteedq77d" path="res://npc/adult_stick_figure.png" id="2_5syv8"]
@@ -6,9 +6,94 @@
 [ext_resource type="Script" path="res://npc/npc_states/idle.gd" id="4_ywiy5"]
 [ext_resource type="Script" path="res://npc/npc_states/retreat.gd" id="5_lpde0"]
 [ext_resource type="Script" path="res://npc/wander.gd" id="6_lv56s"]
+[ext_resource type="Script" path="res://npc/npc_states/melee_attack.gd" id="7_64amv"]
+[ext_resource type="Script" path="res://npc/enemy_hitbox.gd" id="8_4hsrh"]
+[ext_resource type="Script" path="res://npc/npc_states/stun.gd" id="8_r76xn"]
+[ext_resource type="Texture2D" uid="uid://lt7x7hkvgobh" path="res://npc/hit05.png" id="9_nbq2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qpj"]
 size = Vector2(54, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35h07"]
+size = Vector2(50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y18le"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p2j4"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tabu"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlcdi"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ien7u"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ub5u"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0488k"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmd3b"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1yxr"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btxa5"]
+atlas = ExtResource("9_nbq2m")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrthv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y18le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p2j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tabu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlcdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ien7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ub5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0488k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmd3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1yxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btxa5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
 
 [node name="Guard" type="Area2D" node_paths=PackedStringArray("state_machine")]
 modulate = Color(0, 1, 0, 1)
@@ -16,6 +101,7 @@ collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_na5es")
 state_machine = NodePath("Node")
+base_speed = 9.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_b1qpj")
@@ -31,9 +117,15 @@ startingState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="Node" node_paths=PackedStringArray("parent", "beeline_state")]
 script = ExtResource("4_ywiy5")
-max_wait = 10000.0
+max_wait = 0.5
 parent = NodePath("../..")
 beeline_state = NodePath("../Beeline")
+retreat_range = 10.0
+attack_range = 100.0
+wander_range = 0.0
+
+[node name="Stun" type="Node" parent="Node"]
+script = ExtResource("8_r76xn")
 
 [node name="Beeline" type="Node" parent="Node" node_paths=PackedStringArray("parent", "idle_state")]
 script = ExtResource("5_lpde0")
@@ -43,3 +135,45 @@ idle_state = NodePath("../Idle")
 [node name="Wander" type="Node" parent="Node" node_paths=PackedStringArray("parent")]
 script = ExtResource("6_lv56s")
 parent = NodePath("../..")
+
+[node name="Attack" type="Node" parent="Node" node_paths=PackedStringArray("parent", "hitbox", "pivot", "sprite", "indicator", "idle_state")]
+script = ExtResource("7_64amv")
+startup = 1.0
+follow_through = 1.0
+parent = NodePath("../..")
+hitbox = NodePath("../../AttackPivot/Area2D")
+pivot = NodePath("../../AttackPivot")
+sprite = NodePath("../../AttackPivot/Sprite2D")
+indicator = NodePath("../../AttackPivot/Indicator")
+idle_state = NodePath("../Idle")
+
+[node name="AttackPivot" type="Node2D" parent="."]
+visible = false
+scale = Vector2(2.075, 2.075)
+
+[node name="Area2D" type="Area2D" parent="AttackPivot"]
+position = Vector2(42.07, 0)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("8_4hsrh")
+damage = 30.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackPivot/Area2D"]
+shape = SubResource("RectangleShape2D_35h07")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="AttackPivot"]
+position = Vector2(42.07, 0)
+sprite_frames = SubResource("SpriteFrames_hrthv")
+frame = 9
+frame_progress = 1.0
+
+[node name="Indicator" type="ColorRect" parent="AttackPivot"]
+visible = false
+offset_left = 17.0
+offset_top = -26.0
+offset_right = 67.0
+offset_bottom = 25.0
+color = Color(1, 1, 1, 0)
+
+[connection signal="body_entered" from="AttackPivot/Area2D" to="AttackPivot/Area2D" method="_on_body_entered"]

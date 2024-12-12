@@ -19,3 +19,19 @@ position = Vector2(-141, -260)
 
 [node name="Kid3" parent="." instance=ExtResource("4_gr2bh")]
 position = Vector2(-304, 182)
+
+[node name="Guard3" parent="." instance=ExtResource("3_k4daq")]
+position = Vector2(505, -470)
+
+[node name="Kid4" parent="." instance=ExtResource("4_gr2bh")]
+position = Vector2(1210, -199)
+
+[node name="Kid5" parent="." instance=ExtResource("4_gr2bh")]
+position = Vector2(652, -562)
+
+[node name="Kid6" parent="." instance=ExtResource("4_gr2bh")]
+position = Vector2(489, -120)
+
+[node name="Guard2" parent="." instance=ExtResource("3_k4daq")]
+
+[node name="Kid7" parent="." instance=ExtResource("4_gr2bh")]
