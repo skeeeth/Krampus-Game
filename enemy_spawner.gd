@@ -9,11 +9,16 @@ var npc_type_to_enemy_scene = { NPC.NPCType.Guard : combat_guard_scene,
 
 func _ready() -> void:
 	for npc_type in npc_type_to_enemy_scene:
-		var num_npcs_of_that_type_in_sack = PlayerVariables.sack_npc_type_counts[npc_type]
-		if (num_npcs_of_that_type_in_sack != null):
-			for i in range(num_npcs_of_that_type_in_sack):
-				_spawn_enemy(npc_type_to_enemy_scene[npc_type])
-				
+		if PlayerVariables.sack_npc_type_counts.has(npc_type):
+			var num_npcs_of_that_type_in_sack = PlayerVariables.sack_npc_type_counts[npc_type]
+			if (num_npcs_of_that_type_in_sack != null):
+				for i in range(num_npcs_of_that_type_in_sack):
+					_spawn_enemy(npc_type_to_enemy_scene[npc_type])
+	#for npc_type in PlayerVariables.sack_npc_type_counts:
+		#var num_npcs_of_that_type_in_sack = npc_type
+		#if (num_npcs_of_that_type_in_sack != null):
+			#for i in range(num_npcs_of_that_type_in_sack):
+				#_spawn_enemy(npc_type_to_enemy_scene[npc_type])
 
 func _spawn_enemy(enemy_scene):
 	var distance_from_origin = randf_range(30, 300)

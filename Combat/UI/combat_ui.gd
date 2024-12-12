@@ -2,12 +2,13 @@ extends Camera2D
 
 #@onready var progress_bar: ProgressBar = $ProgressBar
 @onready var timer: Label = $Timer_Container/Timer
-var time:float = 40.0
+var time:float = 30.0
 @export var transition_time:float = 2.0
 @onready var lens: ColorRect = 	$Lens
 var fading:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	time = PlayerVariables.survival_time
 	$Timer_Container.position.y = -get_viewport_rect().size.y/2.0
 	lens.size = get_viewport_rect().size
 	lens.position = -get_viewport_rect().size/2.0
@@ -23,7 +24,8 @@ func _process(delta: float) -> void:
 		PlayerVariables.current_health += PlayerVariables.sack_heal
 		PlayerVariables.current_health = clamp(
 				PlayerVariables.current_health,0,PlayerVariables.max_hp)
-		get_tree().change_scene_to_file("res://cart_test.tscn")
+		
+		PlayerVariables.combat_ended.emit()
 	#if time < transition_time:
 		#if !fading:
 			#fade_out()
@@ -40,4 +42,4 @@ func fade_out():
 		
 	transition.tween_method(rssp.bind("intensity"),0.0,10.0,transition_time);
 	await transition.finished
-	get_tree().change_scene_to_file("res://cart_test.tscn")
+	PlayerVariables.combat_ended.emit()

@@ -13,6 +13,7 @@ script = ExtResource("1_c2hhv")
 
 [node name="label" type="Label" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = 142.0
 offset_top = 36.0
 offset_right = 457.0
