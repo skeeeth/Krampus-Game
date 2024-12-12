@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://wg71xd4yobi7" path="res://npc/guard.tscn" id="4_oi8dt"]
 [ext_resource type="Script" path="res://SpiritBar.gd" id="4_owime"]
 [ext_resource type="PackedScene" uid="uid://qgltf060t87h" path="res://Environment/shelf.tscn" id="5_pccs1"]
-[ext_resource type="Texture2D" uid="uid://st7m3f6mvyde" path="res://white_square.png" id="6_7ar8m"]
 [ext_resource type="Texture2D" uid="uid://cofnknj7tvoa3" path="res://Environment/white_checkered_tile.png" id="7_v53y3"]
 
 [sub_resource type="Gradient" id="Gradient_7kxnj"]
@@ -28,7 +27,13 @@ size = Vector2(998, 198)
 [node name="CartTest" type="Node2D"]
 
 [node name="ShoppingCart" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(300, 300)
+position = Vector2(224, 256)
+
+[node name="ShoppingCart4" parent="." instance=ExtResource("1_qvt7r")]
+position = Vector2(217, 751)
+
+[node name="ShoppingCart3" parent="." instance=ExtResource("1_qvt7r")]
+position = Vector2(6, 475)
 
 [node name="Krampus" parent="." instance=ExtResource("2_regcu")]
 
@@ -206,23 +211,13 @@ points = PackedVector2Array(0, 0, 612, 4)
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="Floor" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.741385, 0.741385, 0.741385, 1)
-z_index = -10
-scale = Vector2(100, 100)
-texture = ExtResource("6_7ar8m")
-
-[node name="TiledFloor" type="Sprite2D" parent="."]
-texture_repeat = 2
-texture = ExtResource("7_v53y3")
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Floor" type="TextureRect" parent="."]
 z_index = -10
 offset_left = -7461.0
 offset_top = -5830.0
 offset_right = 8336.0
 offset_bottom = 5890.0
+scale = Vector2(3, 3)
 texture = ExtResource("7_v53y3")
 stretch_mode = 1
 metadata/_edit_lock_ = true

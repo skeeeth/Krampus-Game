@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7au4ugbgwvf2"]
+
+[ext_resource type="Script" path="res://npc/rotation_raycast_test.gd" id="1_2ybut"]
+[ext_resource type="Texture2D" uid="uid://b2er03v834ydj" path="res://icon.svg" id="1_vfljk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrckk"]
+size = Vector2(20, 44)
+
+[node name="RotationRaycastTest" type="Area2D"]
+script = ExtResource("1_2ybut")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.15625, 0.34375)
+texture = ExtResource("1_vfljk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hrckk")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -73)
