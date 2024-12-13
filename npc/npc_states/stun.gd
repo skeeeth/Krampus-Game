@@ -4,9 +4,11 @@ extends State
 var previous_state:State
 
 func enter():
+	$"../../StunSprite".visible = true
 	pass
 	
 func exit():
+	$"../../StunSprite".visible = false
 	pass
 	
 func update(_delta):

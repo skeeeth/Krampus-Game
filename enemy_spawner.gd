@@ -23,6 +23,6 @@ func _ready() -> void:
 func _spawn_enemy(enemy_scene):
 	var distance_from_origin = randf_range(30, 300)
 	var enemy_instance = enemy_scene.instantiate()
-	enemy_instance.global_position = Vector2(350, 350) + Vector2.RIGHT.rotated(randf_range(0, TAU)) * distance_from_origin
+	enemy_instance.position = Vector2(350, 350) + Vector2.RIGHT.rotated(randf_range(0, TAU)) * distance_from_origin
 	print("Spawning an enemy at this location: " + str(enemy_instance.global_position))
 	add_child(enemy_instance)

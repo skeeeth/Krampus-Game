@@ -8,8 +8,8 @@ var cart:ShoppingCart = null
 
 var facing_direction:Vector2 = Vector2.RIGHT
 var gliding:bool = false
-#func _ready() -> void:
-	#global_position = PlayerVariables.previous_position
+func _ready() -> void:
+	PlayerVariables.outside_movespeed = move_speed
 	
 #func _exit_tree() -> void:
 	#PlayerVariables.previous_position = global_position
@@ -37,13 +37,14 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	move_speed = PlayerVariables.outside_movespeed
 	if (cart != null):
 		if gliding:
 			var diff = (cart.rider_offset_position.global_position - global_position)
 			#PID is probably the ideal solution here
 			# but thats way too much effort right now
 			# so its just proportional with a minimum
-			velocity = (diff/glide_time) + (diff.normalized()*5.0)
+			velocity = (diff/glide_time) + (diff.normalized()*5.0) + (cart.velocity/2.0)
 			
 			if diff.length() < 50:
 				cart.start_riding(self)

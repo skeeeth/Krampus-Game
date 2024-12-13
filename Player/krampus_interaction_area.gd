@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	var closest_interactable_distance = INF
 	
 	for interactable in interactables_in_range:
-		var distance = (interactable.position - position).length()
+		var distance = (interactable.global_position - krampus.global_position).length()
 		if (distance < closest_interactable_distance):
 			closest_interactable_distance = distance
 			closest_interactable = interactable

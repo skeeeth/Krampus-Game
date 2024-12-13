@@ -1,12 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://vchflsopy7ik"]
 
 [ext_resource type="Script" path="res://sack_world.gd" id="1_4dw0a"]
-[ext_resource type="Shader" path="res://Combat/UI/Shaders/anti_cane.gdshader" id="1_ku4ty"]
+[ext_resource type="Shader" path="res://Shaders/anti_cane.gdshader" id="1_ku4ty"]
 [ext_resource type="PackedScene" uid="uid://o0lhjoabixi6" path="res://Combat/KombatKrampus/sack_krampus.tscn" id="2_2r7au"]
 [ext_resource type="Script" path="res://enemy_spawner.gd" id="2_yx42x"]
 [ext_resource type="PackedScene" uid="uid://b4w75pwooriub" path="res://Combat/UI/CombatUI.tscn" id="4_3hr63"]
-[ext_resource type="Shader" path="res://Combat/UI/Shaders/Squeeze.gdshader" id="5_nxpc3"]
+[ext_resource type="Shader" path="res://Shaders/Squeeze.gdshader" id="5_nxpc3"]
 [ext_resource type="Texture2D" uid="uid://cm62sxt3wdf65" path="res://Combat/UI/anti_cane.png" id="7_qmoir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c07t7"]
+shader = ExtResource("1_ku4ty")
 
 [sub_resource type="Gradient" id="Gradient_a0w62"]
 
@@ -22,21 +25,34 @@ shader = ExtResource("5_nxpc3")
 shader_parameter/intensity = 15.0
 shader_parameter/noise = SubResource("NoiseTexture2D_bs68w")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cec4f"]
-shader = ExtResource("1_ku4ty")
-
-[node name="SackWorld" type="Node2D" node_paths=PackedStringArray("ui_layer")]
-modulate = Color(1, 1, 1, 0)
+[node name="SackWorld" type="Node2D" node_paths=PackedStringArray("lens")]
 z_index = 100
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_4dw0a")
-ui_layer = NodePath("Camera2D")
+lens = NodePath("Camera2D")
+
+[node name="bg" type="TextureRect" parent="."]
+z_index = -11
+material = SubResource("ShaderMaterial_c07t7")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5000.0
+offset_top = -5000.0
+offset_right = 5000.0
+offset_bottom = 5000.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_qmoir")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="SackKrampus" parent="." instance=ExtResource("2_2r7au")]
 use_parent_material = true
 
 [node name="Lens" type="ColorRect" parent="SackKrampus"]
-visible = false
 material = SubResource("ShaderMaterial_qaqpo")
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,15 +70,8 @@ grow_vertical = 2
 script = ExtResource("2_yx42x")
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("lens", "world") instance=ExtResource("4_3hr63")]
-layer = 2
+layer = -1
 lens = NodePath("../SackKrampus/Lens")
 world = NodePath("..")
-
-[node name="bg" type="Sprite2D" parent="."]
-z_index = -50
-texture_repeat = 2
-material = SubResource("ShaderMaterial_cec4f")
-texture = ExtResource("7_qmoir")
-region_enabled = true
 
 [editable path="SackKrampus"]
