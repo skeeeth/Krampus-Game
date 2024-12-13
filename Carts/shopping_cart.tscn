@@ -41,7 +41,7 @@ scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_f4m36")
 
 [node name="RiderOffsetPosition" type="Node2D" parent="."]
-position = Vector2(0, 86)
+position = Vector2(0, 107)
 
 [connection signal="area_entered" from="InteractableArea" to="InteractableArea" method="_on_area_entered"]
 [connection signal="body_entered" from="InteractableArea" to="InteractableArea" method="_on_body_entered"]

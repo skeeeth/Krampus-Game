@@ -5,8 +5,8 @@ extends TextureProgressBar
 @export var outside_scene:Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position.x = get_viewport_rect().size.x/2.0/get_parent().zoom.x
-	position.x -= margin
+	#position.x = get_viewport_rect().size.x/2.0/get_parent().zoom.x
+	#position.x -= margin
 	value = max_value
 	pass # Replace with function body.
 

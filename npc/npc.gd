@@ -7,7 +7,7 @@ extends Area2D
 @export var default_sprite:Sprite2D
 @export var knocked_down_sprite:Sprite2D
 
-@export var cart_knockdown_speed:float = 30
+@export var cart_knockdown_speed:float = 130
 var knockdown_timer:Timer
 var knockdown_duration:float = 3
 

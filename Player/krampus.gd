@@ -35,12 +35,14 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if (cart != null):
+		rotation = cart.rotation - PI/2
 		return
 		
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	
 	if (input_direction.length() > 0):
 		facing_direction = input_direction
+		rotation = input_direction.angle()
 	
 	velocity = move_speed * input_direction.normalized()
 	
