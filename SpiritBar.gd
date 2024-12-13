@@ -20,7 +20,9 @@ func _process(delta: float) -> void:
 		outside_scene.visible = false
 		var combat_instance = combat_scene.instantiate() 
 		get_tree().root.add_child(combat_instance)
+		visible = false
 		await PlayerVariables.combat_ended
+		visible = true
 		value = max_value
 		outside_scene.visible = true
 		outside_scene.process_mode = Node.PROCESS_MODE_INHERIT

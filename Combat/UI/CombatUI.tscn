@@ -30,8 +30,7 @@ font = SubResource("FontVariation_t4jk5")
 font_size = 60
 font_color = Color(0.63, 0.2205, 0.2205, 1)
 
-[node name="Camera2D" type="Camera2D"]
-z_index = 1024
+[node name="Camera2D" type="CanvasLayer"]
 script = ExtResource("1_22rx2")
 metadata/_edit_horizontal_guides_ = [-126.0]
 
@@ -50,14 +49,18 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ProgressBar" parent="." instance=ExtResource("3_jdtuh")]
-offset_left = 161.0
-offset_top = 119.0
-offset_right = 430.0
-offset_bottom = 158.0
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="Timer_Container" type="Sprite2D" parent="."]
+[node name="Timer_Container" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -61.5
+offset_right = 61.5
+offset_bottom = 48.0
+grow_horizontal = 2
 texture = ExtResource("4_n5yce")
-offset = Vector2(64, 24)
 
 [node name="Timer" type="Label" parent="Timer_Container"]
 offset_left = -6.0

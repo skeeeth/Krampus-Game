@@ -1,7 +1,7 @@
 extends Node
 
 signal health_changed(new)
-
+signal new_item(title,desc,flavor,image)
 #shouldn't really be in this script but this is the only autoload for now
 signal combat_ended 
 

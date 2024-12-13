@@ -8,8 +8,8 @@ func _ready() -> void:
 	label.text = "Health:%3.0f/%3.0f" %  [PlayerVariables.current_health,PlayerVariables.max_hp]
 	#scale.x = 1.0/get_parent().zoom.x
 	#scale.y = 1.0/get_parent().zoom.y
-	#position.x = -(get_viewport_rect().size.x/2.0)/get_parent().zoom.x
-	#position.y = -(get_viewport_rect().size.y/2.0)/get_parent().zoom.y
+	#position.x = -(get_viewport_rect().size.x/2.0)
+	#position.y = -(get_viewport_rect().size.y/2.0)
 	
 	#max_value = PlayerVariables.max_hp
 	PlayerVariables.health_changed.connect(_on_health_changed)

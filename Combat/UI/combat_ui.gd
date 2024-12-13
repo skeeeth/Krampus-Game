@@ -1,4 +1,4 @@
-extends Camera2D
+extends CanvasLayer
 
 #@onready var progress_bar: ProgressBar = $ProgressBar
 @onready var timer: Label = $Timer_Container/Timer
@@ -9,10 +9,10 @@ var fading:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	time = PlayerVariables.survival_time
-	$Timer_Container.position.y = -get_viewport_rect().size.y/2.0
-	lens.size = get_viewport_rect().size
-	lens.position = -get_viewport_rect().size/2.0
-	make_current()
+	#$Timer_Container.position.y = -get_viewport_rect().size.y/2.0
+	#lens.size = get_viewport_rect().size
+	#lens.position = -get_viewport_rect().size/2.0
+	#make_current()
 	pass # Replace with function body.
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://vchflsopy7ik"]
+[gd_scene load_steps=5 format=3 uid="uid://vchflsopy7ik"]
 
 [ext_resource type="Script" path="res://sack_world.gd" id="1_4dw0a"]
 [ext_resource type="PackedScene" uid="uid://o0lhjoabixi6" path="res://Combat/KombatKrampus/sack_krampus.tscn" id="2_2r7au"]
 [ext_resource type="Script" path="res://enemy_spawner.gd" id="2_yx42x"]
+[ext_resource type="PackedScene" uid="uid://b4w75pwooriub" path="res://Combat/UI/CombatUI.tscn" id="4_3hr63"]
 
 [node name="SackWorld" type="Node2D"]
 script = ExtResource("1_4dw0a")
@@ -11,3 +12,5 @@ script = ExtResource("1_4dw0a")
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("2_yx42x")
+
+[node name="Camera2D" parent="." instance=ExtResource("4_3hr63")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://biu0vrh6mioda"]
+[gd_scene load_steps=7 format=3 uid="uid://djfchrromtecl"]
 
 [ext_resource type="PackedScene" uid="uid://cuiyko1ty38wq" path="res://Combat/UI/healthbar.tscn" id="1_rpmqc"]
 [ext_resource type="Texture2D" uid="uid://dwquums5t7q8i" path="res://Combat/UI/candycane.png" id="2_tglna"]
 [ext_resource type="Script" path="res://SpiritBar.gd" id="3_3kabb"]
+[ext_resource type="Script" path="res://Player/item_card_spawn.gd" id="5_6bccp"]
 
 [sub_resource type="Gradient" id="Gradient_7kxnj"]
 colors = PackedColorArray(0.86, 0.5676, 0.5676, 0.352941, 0.858824, 0.568627, 0.568627, 0.352941)
@@ -13,11 +14,8 @@ gradient = SubResource("Gradient_7kxnj")
 [node name="StoreUI" type="CanvasLayer"]
 
 [node name="HPDisplay" parent="." instance=ExtResource("1_rpmqc")]
-anchors_preset = -1
-anchor_right = 0.198
-anchor_bottom = 0.133
-offset_right = -228.096
-offset_bottom = -86.184
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="CheerBar" type="TextureProgressBar" parent="."]
 anchors_preset = -1
@@ -34,3 +32,19 @@ texture_under = SubResource("GradientTexture1D_3xk57")
 texture_progress = ExtResource("2_tglna")
 script = ExtResource("3_3kabb")
 margin = 50.0
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1967.0
+offset_top = 795.0
+offset_right = 2007.0
+offset_bottom = 835.0
+script = ExtResource("5_6bccp")
+
+[node name="Marker2D" type="Marker2D" parent="Control"]
+position = Vector2(0, -100)
+
+[node name="Marker2D2" type="Marker2D" parent="Control"]
+position = Vector2(-332, -100)

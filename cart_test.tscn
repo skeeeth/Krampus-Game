@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjkdw2t1rp0q5"]
+[gd_scene load_steps=12 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="1_qvt7r"]
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
 [ext_resource type="PackedScene" uid="uid://b73boev43352m" path="res://npc/kid.tscn" id="3_fb7kf"]
 [ext_resource type="PackedScene" uid="uid://wg71xd4yobi7" path="res://npc/guard.tscn" id="4_oi8dt"]
 [ext_resource type="PackedScene" uid="uid://qgltf060t87h" path="res://Environment/shelf.tscn" id="5_pccs1"]
-[ext_resource type="PackedScene" uid="uid://biu0vrh6mioda" path="res://Player/store_ui.tscn" id="7_srwat"]
+[ext_resource type="PackedScene" uid="uid://djfchrromtecl" path="res://Player/store_ui.tscn" id="7_srwat"]
 [ext_resource type="Texture2D" uid="uid://cofnknj7tvoa3" path="res://Environment/white_checkered_tile.png" id="7_v53y3"]
 [ext_resource type="PackedScene" uid="uid://bvpjyx7rpaqck" path="res://Items/Instances/pills.tscn" id="10_2bsme"]
 [ext_resource type="PackedScene" uid="uid://cmgdalcoc6r2h" path="res://Items/Instances/headphones.tscn" id="11_71mkg"]
@@ -199,7 +199,11 @@ position = Vector2(-319, -171)
 
 [node name="Item2" parent="." instance=ExtResource("11_71mkg")]
 position = Vector2(-319, 95)
+
 [node name="StoreUI" parent="." instance=ExtResource("7_srwat")]
+
+[node name="CheerBar" parent="StoreUI" index="1" node_paths=PackedStringArray("outside_scene")]
+outside_scene = NodePath("../..")
 
 [editable path="LevelBoundaries/WestWall"]
 [editable path="LevelBoundaries/EastWall"]
@@ -213,3 +217,4 @@ position = Vector2(-319, 95)
 [editable path="Middle wall cluster/SouthWall3"]
 [editable path="Middle wall cluster/WestWall4"]
 [editable path="Middle wall cluster/WestWall5"]
+[editable path="StoreUI"]

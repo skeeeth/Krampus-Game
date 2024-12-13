@@ -3,6 +3,9 @@ class_name Player
 
 var dash_buffered:bool = false
 @export var sm:StateMachine
+
+func _ready() -> void:
+	$Camera2D.make_current()
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
