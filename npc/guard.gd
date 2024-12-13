@@ -2,7 +2,7 @@ class_name Guard
 extends NPC
 
 var krampus_ray:RayCast2D
-var krampus_detection_radius:float
+const krampus_detection_radius:float = 800 #$KrampusInitialDetector/DetectionCircle.shape.radius
 
 var krampus:Krampus = null
 var last_known_krampus_location:Vector2 = Vector2(0, 0)
@@ -10,13 +10,13 @@ var last_known_krampus_movement_direction:Vector2 = Vector2(0, 0)
 var already_visited_last_known_location = false
 
 var time_since_last_krampus_sighting:float = 0
-var max_time_since_last_krampus_sighting:float = 500 #If krampus is out of sight for this long, give up on chasing
+var max_time_since_last_krampus_sighting:float = 5 #If krampus is out of sight for this long, give up on chasing
 var chasing_velocity:Vector2 = Vector2(0, 0)
 @export var chasing_speed:float = 300
 
 
 func _ready() -> void:
-	krampus_detection_radius = $KrampusInitialDetector/DetectionCircle.shape.radius
+	$KrampusInitialDetector/DetectionCircle.shape.radius = krampus_detection_radius
 	
 	krampus_ray = RayCast2D.new()
 	krampus_ray.collision_mask = 33 #This represents line of sight, so it should only collide with the player and environment (not shopping carts)
