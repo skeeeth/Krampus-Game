@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 			#PID is probably the ideal solution here
 			# but thats way too much effort right now
 			# so its just proportional with a minimum
-			velocity = (diff/glide_time) + (diff.normalized()*5.0)
+			velocity = (diff/glide_time) + (diff.normalized()*5.0) + (cart.velocity/2.0)
 			
 			if diff.length() < 50:
 				cart.start_riding(self)

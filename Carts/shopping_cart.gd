@@ -7,10 +7,10 @@ var rider = null
 @export var linear_acceleration:float = 45
 @export var linear_friction:float = 0.2
 @export var maximum_linear_speed = 180
-
 @export var angular_acceleration:float = 9
 @export var angular_friction:float = 3
 @export var maximum_angular_speed = 1.4
+@export var kickoff_speed = 1.5
 var angular_speed:float = 0
 @onready var rider_offset_position = $RiderOffsetPosition
 
@@ -27,6 +27,8 @@ func on_player_interaction(player:Krampus):
 
 func start_riding(new_rider):
 	rider = new_rider
+	velocity = velocity + (-transform.y.normalized() * kickoff_speed);
+	_physics_process(1.0/60.0)
 	set_collision_mask_value(1, 0)
 
 func stop_riding():

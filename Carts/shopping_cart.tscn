@@ -18,6 +18,7 @@ motion_mode = 1
 script = ExtResource("1_cvcn8")
 linear_acceleration = 140.0
 maximum_linear_speed = 1000
+kickoff_speed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -23)
