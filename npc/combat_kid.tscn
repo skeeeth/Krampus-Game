@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dt4svjk536vnw"]
 
 [ext_resource type="Script" path="res://npc/combat_npc.gd" id="1_n51f3"]
-[ext_resource type="Texture2D" uid="uid://dmnpf5yogmora" path="res://npc/kid_stick_figure.png" id="2_esr8g"]
+[ext_resource type="Texture2D" uid="uid://b8mywplv1pmad" path="res://npc/top_down_person.png" id="2_v4p8q"]
 [ext_resource type="Script" path="res://Combat/State/StateMachine.gd" id="3_64rjq"]
 [ext_resource type="Script" path="res://npc/npc_states/idle.gd" id="4_v63q6"]
 [ext_resource type="Script" path="res://npc/npc_states/stun.gd" id="5_y4b4c"]
@@ -24,8 +24,8 @@ position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_b1qpj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.145, 0.135)
-texture = ExtResource("2_esr8g")
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_v4p8q")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("startingState")]
 script = ExtResource("3_64rjq")

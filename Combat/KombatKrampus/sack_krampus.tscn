@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Combat/KombatKrampus/States/walk.gd" id="1_i6jng"]
 [ext_resource type="Script" path="res://Combat/State/StateMachine.gd" id="1_ly6bd"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/States/dash.gd" id="4_8574a"]
-[ext_resource type="Texture2D" uid="uid://b2er03v834ydj" path="res://icon.svg" id="4_gwvq3"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/States/Windup.gd" id="5_rek3j"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/States/spin.gd" id="6_wew2u"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/States/quick.gd" id="7_sppbl"]
+[ext_resource type="Texture2D" uid="uid://cjv7suvcqxkvg" path="res://Player/top_down_krampus.png" id="8_854xw"]
 [ext_resource type="Texture2D" uid="uid://d1d8opnuwq3lu" path="res://Combat/KombatKrampus/impact02.png" id="8_ebfsx"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/AttackHitbox.gd" id="9_lhobn"]
 [ext_resource type="Script" path="res://Combat/KombatKrampus/Visual.gd" id="9_yecmo"]
@@ -238,7 +238,9 @@ character = NodePath("../../Character")
 body = NodePath("../..")
 
 [node name="Character" type="Sprite2D" parent="."]
-texture = ExtResource("4_gwvq3")
+self_modulate = Color(0.137255, 0.12549, 0.12549, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_854xw")
 script = ExtResource("9_yecmo")
 
 [node name="SpinAttack" type="AnimatedSprite2D" parent="."]

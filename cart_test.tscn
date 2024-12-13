@@ -19,6 +19,7 @@ resource_local_to_scene = true
 size = Vector2(998, 198)
 
 [node name="CartTest" type="Node2D"]
+z_index = -3
 
 [node name="ShoppingCart" parent="." instance=ExtResource("1_qvt7r")]
 position = Vector2(224, 256)
@@ -202,8 +203,10 @@ position = Vector2(-319, 95)
 
 [node name="StoreUI" parent="." instance=ExtResource("7_srwat")]
 
-[node name="CheerBar" parent="StoreUI" index="1" node_paths=PackedStringArray("outside_scene")]
+[node name="CheerBar" parent="StoreUI" index="1" node_paths=PackedStringArray("krampus", "outside_scene", "out_cam")]
+krampus = NodePath("../../Krampus")
 outside_scene = NodePath("../..")
+out_cam = NodePath("../../Krampus/Camera2D")
 
 [editable path="LevelBoundaries/WestWall"]
 [editable path="LevelBoundaries/EastWall"]
