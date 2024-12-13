@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dt4svjk536vnw"]
+[gd_scene load_steps=11 format=3 uid="uid://dt4svjk536vnw"]
 
 [ext_resource type="Script" path="res://npc/combat_npc.gd" id="1_n51f3"]
 [ext_resource type="Texture2D" uid="uid://b8mywplv1pmad" path="res://npc/top_down_person.png" id="2_v4p8q"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://npc/wander.gd" id="6_wgt6c"]
 [ext_resource type="Script" path="res://npc/npc_states/retreat.gd" id="7_wp8xx"]
 [ext_resource type="Script" path="res://npc/npc_states/Snowball_Throw.gd" id="8_l17lj"]
+[ext_resource type="Texture2D" uid="uid://b0phgcp5qtc61" path="res://npc/PngItem_6012967.png" id="9_ahunx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qpj"]
 size = Vector2(87, 104)
@@ -36,8 +37,7 @@ script = ExtResource("4_v63q6")
 parent = NodePath("../..")
 beeline_state = NodePath("../Beeline")
 retreat_range = 200.0
-attack_range = 400.0
-wander_range = 800.0
+wander_range = 0.0
 
 [node name="Stun" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("5_y4b4c")
@@ -61,5 +61,11 @@ damage = 10.0
 cast_time = 2.0
 inaccuracy = 0.05
 snowball_size = 50.0
+
+[node name="StunSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.026624, 0.05)
+texture = ExtResource("9_ahunx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

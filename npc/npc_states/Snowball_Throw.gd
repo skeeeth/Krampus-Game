@@ -22,7 +22,7 @@ func enter():
 	#var throw_angle = lerp_angle(parent.diff.angle(),-parent.diff.angle(),inaccuracy)
 	#snowball.direction = Vector2.from_angle(throw_angle)
 	
-	snowball.global_position = parent.global_position
+	snowball.position = parent.position
 	parent.add_sibling(snowball)
 	
 	await get_tree().create_timer(cast_time).timeout

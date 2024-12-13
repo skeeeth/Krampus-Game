@@ -208,6 +208,9 @@ krampus = NodePath("../../Krampus")
 outside_scene = NodePath("../..")
 out_cam = NodePath("../../Krampus/Camera2D")
 
+[node name="Kid4" parent="." instance=ExtResource("3_fb7kf")]
+position = Vector2(-54, 135)
+
 [editable path="LevelBoundaries/WestWall"]
 [editable path="LevelBoundaries/EastWall"]
 [editable path="LevelBoundaries/NorthWall"]

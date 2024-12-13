@@ -59,7 +59,7 @@ lens = NodePath("../SackKrampus/Lens")
 world = NodePath("..")
 
 [node name="bg" type="Sprite2D" parent="."]
-z_index = -128
+z_index = -50
 texture_repeat = 2
 material = SubResource("ShaderMaterial_cec4f")
 texture = ExtResource("7_qmoir")
