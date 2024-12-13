@@ -12,7 +12,7 @@ var rider = null
 @export var angular_friction:float = 3
 @export var maximum_angular_speed = 1.4
 var angular_speed:float = 0
-
+@onready var rider_offset_position = $RiderOffsetPosition
 
 '''
 func on_player_interaction(player:Krampus):

@@ -10,6 +10,9 @@ region = Rect2(257.18, 1330.52, 107.69, 116.16)
 
 [node name="Item" instance=ExtResource("1_eyda6")]
 script = ExtResource("2_rxon3")
+item_name = "Headphones"
+description = "Increase tolerance to Christmas Cheer"
+flavor = "Quiet, you!"
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.5, 0.5)

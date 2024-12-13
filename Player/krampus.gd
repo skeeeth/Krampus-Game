@@ -2,11 +2,12 @@ class_name Krampus
 extends CharacterBody2D
 
 @export var move_speed:float = 120
+@export var glide_time:float = 0.4 #not actually reflective of any unit of time
 
 var cart:ShoppingCart = null
 
 var facing_direction:Vector2 = Vector2.RIGHT
-
+var gliding:bool = false
 #func _ready() -> void:
 	#global_position = PlayerVariables.previous_position
 	
@@ -14,14 +15,16 @@ var facing_direction:Vector2 = Vector2.RIGHT
 	#PlayerVariables.previous_position = global_position
 
 func on_attempt_interaction(interaction_target:InteractableArea):
-	if (cart != null):
+	if (cart != null and !gliding):
 		cart.stop_riding()
 		cart = null
 	
 	elif (interaction_target != null):
 		if (interaction_target.handler is ShoppingCart):
+			gliding = true
 			cart = interaction_target.handler
-			cart.start_riding(self)
+			cart.collision_mask = 10 #layer 2 + 4
+			#hardcoded value, if default cart mask changes will not be reflected
 
 
 func _input(event: InputEvent) -> void:
@@ -35,8 +38,22 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if (cart != null):
-		rotation = cart.rotation - PI/2
-		return
+		if gliding:
+			var diff = (cart.rider_offset_position.global_position - global_position)
+			#PID is probably the ideal solution here
+			# but thats way too much effort right now
+			# so its just proportional with a minimum
+			velocity = (diff/glide_time) + (diff.normalized()*5.0)
+			
+			if diff.length() < 50:
+				cart.start_riding(self)
+				gliding = false
+				cart.collision_mask = 11 #layer 1 + 2 + 4 hardcoded
+			move_and_slide()
+			return
+		else:
+			rotation = cart.rotation - PI/2
+			return
 		
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	
@@ -44,6 +61,6 @@ func _physics_process(delta: float) -> void:
 		facing_direction = input_direction
 		rotation = input_direction.angle()
 	
-	velocity = move_speed * input_direction.normalized()
-	
+		velocity = move_speed * input_direction.normalized()
+
 	move_and_slide()
