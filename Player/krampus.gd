@@ -61,6 +61,6 @@ func _physics_process(delta: float) -> void:
 		facing_direction = input_direction
 		rotation = input_direction.angle()
 	
-		velocity = move_speed * input_direction.normalized()
+	velocity = move_speed * input_direction.normalized()
 
 	move_and_slide()
