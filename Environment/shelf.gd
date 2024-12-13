@@ -8,11 +8,13 @@ func _ready() -> void:
 	#Note: I marked this rectangle shape as "Local to scene" in the editor
 	var shape_resource_duplicate:RectangleShape2D = $CollisionShape2D.shape.duplicate()
 
-	if ($Line2D.points.size() == 2):
-		$Line2D.points[0].y = 0
-		$Line2D.points[1].y = 0
-		var start_pos = $Line2D.points[0]
-		var end_pos = $Line2D.points[1]
+	if ($Line2DEdges.points.size() == 2):
+		$Line2DEdges.points[0].y = 0
+		$Line2DEdges.points[1].y = 0
+		var start_pos = $Line2DEdges.points[0]
+		var end_pos = $Line2DEdges.points[1]
+		
+		$Line2DMiddle.points = $Line2DEdges.points
 		
 		var displacement = end_pos - start_pos
 		var new_position = start_pos + displacement/2

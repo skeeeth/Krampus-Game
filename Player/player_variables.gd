@@ -17,7 +17,7 @@ var max_hp:float = 100:
 		max_hp = v
 		health_changed.emit(current_health)
 var sack_heal:float = 20
-var cheer_rate:float = 3
+var cheer_rate:float = 0.01#3
 var survival_time:float = 20
 var walkspeed:float = 200
 var dash_multiplier:float = 4
