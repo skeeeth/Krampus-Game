@@ -20,481 +20,433 @@ size = Vector2(998, 198)
 radius = 30.0
 
 [node name="CartTest" type="Node2D"]
-z_index = -3
-
-[node name="ShoppingCart" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(2540, -574)
-
-[node name="ShoppingCart15" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(2007, -29)
-
-[node name="ShoppingCart16" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(557, -514)
-
-[node name="ShoppingCart5" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(3609, 1599)
-
-[node name="ShoppingCart6" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(5059, -269)
-
-[node name="ShoppingCart7" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(4763, 1370)
-
-[node name="ShoppingCart4" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(-1682, 1801)
-rotation = 0.47822
-
-[node name="ShoppingCart3" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(-208, 375)
-
-[node name="ShoppingCart8" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(-940, 1870)
-
-[node name="ShoppingCart9" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(-2511, -590)
-
-[node name="ShoppingCart10" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(295, 2198)
-
-[node name="ShoppingCart11" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(1251, 2171)
-
-[node name="ShoppingCart12" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(3595, 2243)
-
-[node name="ShoppingCart13" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(-3099, 769)
-
-[node name="ShoppingCart14" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(3134, -645)
 
 [node name="Krampus" parent="." instance=ExtResource("2_regcu")]
 
 [node name="Camera2D" type="Camera2D" parent="Krampus"]
 zoom = Vector2(0.8, 0.8)
 
-[node name="ShoppingCart2" parent="." instance=ExtResource("1_qvt7r")]
-position = Vector2(1940, 1196)
+[node name="Environment" type="Node2D" parent="."]
 
-[node name="LevelBoundaries" type="Node2D" parent="."]
+[node name="LevelBoundaries" type="Node2D" parent="Environment"]
 
-[node name="WestWall" parent="LevelBoundaries" instance=ExtResource("5_pccs1")]
+[node name="WestWall" parent="Environment/LevelBoundaries" instance=ExtResource("5_pccs1")]
 position = Vector2(-3391, 5005)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="LevelBoundaries/WestWall" index="0"]
+[node name="Line2DEdges" parent="Environment/LevelBoundaries/WestWall" index="0"]
 points = PackedVector2Array(0, 0, 7656, 23.0276)
 
-[node name="CollisionShape2D" parent="LevelBoundaries/WestWall" index="2"]
+[node name="CollisionShape2D" parent="Environment/LevelBoundaries/WestWall" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="EastWall" parent="LevelBoundaries" instance=ExtResource("5_pccs1")]
+[node name="EastWall" parent="Environment/LevelBoundaries" instance=ExtResource("5_pccs1")]
 position = Vector2(5514, 4983)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="LevelBoundaries/EastWall" index="0"]
+[node name="Line2DEdges" parent="Environment/LevelBoundaries/EastWall" index="0"]
 points = PackedVector2Array(0, 0, 7903, 8.02881)
 
-[node name="CollisionShape2D" parent="LevelBoundaries/EastWall" index="2"]
+[node name="CollisionShape2D" parent="Environment/LevelBoundaries/EastWall" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="NorthWall" parent="LevelBoundaries" instance=ExtResource("5_pccs1")]
+[node name="NorthWall" parent="Environment/LevelBoundaries" instance=ExtResource("5_pccs1")]
 position = Vector2(-7945, -879)
 
-[node name="Line2DEdges" parent="LevelBoundaries/NorthWall" index="0"]
+[node name="Line2DEdges" parent="Environment/LevelBoundaries/NorthWall" index="0"]
 points = PackedVector2Array(0, 0, 17544, -11)
 
-[node name="CollisionShape2D" parent="LevelBoundaries/NorthWall" index="2"]
+[node name="CollisionShape2D" parent="Environment/LevelBoundaries/NorthWall" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall" parent="LevelBoundaries" instance=ExtResource("5_pccs1")]
+[node name="SouthWall" parent="Environment/LevelBoundaries" instance=ExtResource("5_pccs1")]
 position = Vector2(-4029, 2522)
 
-[node name="Line2DEdges" parent="LevelBoundaries/SouthWall" index="0"]
+[node name="Line2DEdges" parent="Environment/LevelBoundaries/SouthWall" index="0"]
 points = PackedVector2Array(0, 0, 12308, -9)
 
-[node name="CollisionShape2D" parent="LevelBoundaries/SouthWall" index="2"]
+[node name="CollisionShape2D" parent="Environment/LevelBoundaries/SouthWall" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="NorthGreyBlob" type="Sprite2D" parent="LevelBoundaries"]
+[node name="NorthGreyBlob" type="Sprite2D" parent="Environment/LevelBoundaries"]
 modulate = Color(0.223529, 0.223529, 0.223529, 1)
 z_index = 10
 position = Vector2(1883, -2992.5)
 scale = Vector2(43.4, 10.5525)
 texture = ExtResource("4_nblo3")
 
-[node name="WestGreyBlob" type="Sprite2D" parent="LevelBoundaries"]
+[node name="WestGreyBlob" type="Sprite2D" parent="Environment/LevelBoundaries"]
 modulate = Color(0.223529, 0.223529, 0.223529, 1)
 z_index = 10
 position = Vector2(-12057, 831)
 scale = Vector2(43.4, 10.5525)
 texture = ExtResource("4_nblo3")
 
-[node name="SouthGreyBlob" type="Sprite2D" parent="LevelBoundaries"]
+[node name="SouthGreyBlob" type="Sprite2D" parent="Environment/LevelBoundaries"]
 modulate = Color(0.223529, 0.223529, 0.223529, 1)
 z_index = 10
 position = Vector2(757, 4631)
 scale = Vector2(43.4, 10.5525)
 texture = ExtResource("4_nblo3")
 
-[node name="EastGreyBlob" type="Sprite2D" parent="LevelBoundaries"]
+[node name="EastGreyBlob" type="Sprite2D" parent="Environment/LevelBoundaries"]
 modulate = Color(0.223529, 0.223529, 0.223529, 1)
 z_index = 10
 position = Vector2(14206, 1047)
 scale = Vector2(43.4, 10.5525)
 texture = ExtResource("4_nblo3")
 
-[node name="West wall cluster" type="Node2D" parent="."]
+[node name="West wall cluster" type="Node2D" parent="Environment"]
 
-[node name="WestWall2" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall2" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-2904, 2170)
 rotation = -1.5708
 
-[node name="CollisionShape2D" parent="West wall cluster/WestWall2" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/WestWall2" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall6" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall6" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-2904, 599)
 rotation = -1.5708
 
-[node name="CollisionShape2D" parent="West wall cluster/WestWall6" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/WestWall6" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall3" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall3" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-1993, 1732)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="West wall cluster/WestWall3" index="0"]
+[node name="Line2DEdges" parent="Environment/West wall cluster/WestWall3" index="0"]
 points = PackedVector2Array(0, 0, 1295, 4.00464)
 
-[node name="CollisionShape2D" parent="West wall cluster/WestWall3" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/WestWall3" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall4" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall4" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-2481, 1740)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="West wall cluster/WestWall4" index="0"]
+[node name="Line2DEdges" parent="Environment/West wall cluster/WestWall4" index="0"]
 points = PackedVector2Array(0, 0, 1291, 6.00464)
 
-[node name="CollisionShape2D" parent="West wall cluster/WestWall4" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/WestWall4" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="SouthWall2" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall2" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-2585, 2075)
 
-[node name="CollisionShape2D" parent="West wall cluster/SouthWall2" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/SouthWall2" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall3" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall3" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-2585, 63)
 
-[node name="Line2DEdges" parent="West wall cluster/SouthWall3" index="0"]
+[node name="Line2DEdges" parent="Environment/West wall cluster/SouthWall3" index="0"]
 points = PackedVector2Array(0, 0, 1411, -5)
 
-[node name="CollisionShape2D" parent="West wall cluster/SouthWall3" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/SouthWall3" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall5" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall5" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-2147, -416)
 
-[node name="CollisionShape2D" parent="West wall cluster/SouthWall5" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/SouthWall5" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall4" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall4" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-1569, 505)
 
-[node name="CollisionShape2D" parent="West wall cluster/SouthWall4" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/SouthWall4" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="WestWall5" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall5" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-1489, 2179)
 rotation = -1.5708
 
-[node name="CollisionShape2D" parent="West wall cluster/WestWall5" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/WestWall5" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall8" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall8" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-947, 1646)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="West wall cluster/WestWall8" index="0"]
+[node name="Line2DEdges" parent="Environment/West wall cluster/WestWall8" index="0"]
 points = PackedVector2Array(0, 0, 473, -0.998291)
 
-[node name="CollisionShape2D" parent="West wall cluster/WestWall8" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/WestWall8" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall7" parent="West wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall7" parent="Environment/West wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-617, 600)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="West wall cluster/WestWall7" index="0"]
+[node name="Line2DEdges" parent="Environment/West wall cluster/WestWall7" index="0"]
 points = PackedVector2Array(0, 0, 1407, 3.00513)
 
-[node name="CollisionShape2D" parent="West wall cluster/WestWall7" index="2"]
+[node name="CollisionShape2D" parent="Environment/West wall cluster/WestWall7" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="Middle wall cluster" type="Node2D" parent="."]
+[node name="Middle wall cluster" type="Node2D" parent="Environment"]
 
-[node name="SouthWall3" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall3" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-494, 958)
 
-[node name="Line2DEdges" parent="Middle wall cluster/SouthWall3" index="0"]
+[node name="Line2DEdges" parent="Environment/Middle wall cluster/SouthWall3" index="0"]
 points = PackedVector2Array(0, 0, 3462, -2)
 
-[node name="CollisionShape2D" parent="Middle wall cluster/SouthWall3" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/SouthWall3" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall4" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall4" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(1625, 2068)
 
-[node name="Line2DEdges" parent="Middle wall cluster/SouthWall4" index="0"]
+[node name="Line2DEdges" parent="Environment/Middle wall cluster/SouthWall4" index="0"]
 points = PackedVector2Array(0, 0, 1389, 1)
 
-[node name="CollisionShape2D" parent="Middle wall cluster/SouthWall4" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/SouthWall4" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall6" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall6" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(2255, 1575)
 
-[node name="CollisionShape2D" parent="Middle wall cluster/SouthWall6" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/SouthWall6" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall5" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall5" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(3312, 2064)
 
-[node name="Line2DEdges" parent="Middle wall cluster/SouthWall5" index="0"]
+[node name="Line2DEdges" parent="Environment/Middle wall cluster/SouthWall5" index="0"]
 points = PackedVector2Array(0, 0, 1296, 0)
 
-[node name="CollisionShape2D" parent="Middle wall cluster/SouthWall5" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/SouthWall5" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="WestWall4" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall4" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(103, 2484)
 rotation = -1.5708
 
-[node name="CollisionShape2D" parent="Middle wall cluster/WestWall4" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/WestWall4" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall6" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall6" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(-492, 2766)
 rotation = -1.5708
 
-[node name="CollisionShape2D" parent="Middle wall cluster/WestWall6" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/WestWall6" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall8" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall8" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(1720, 1446)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="Middle wall cluster/WestWall8" index="0"]
+[node name="Line2DEdges" parent="Environment/Middle wall cluster/WestWall8" index="0"]
 points = PackedVector2Array(0, 0, 520, -2.99805)
 
-[node name="CollisionShape2D" parent="Middle wall cluster/WestWall8" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/WestWall8" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall5" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall5" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(662, 2044)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="Middle wall cluster/WestWall5" index="0"]
+[node name="Line2DEdges" parent="Environment/Middle wall cluster/WestWall5" index="0"]
 points = PackedVector2Array(0, 0, 747, -0.997314)
 
-[node name="Line2DMiddle" parent="Middle wall cluster/WestWall5" index="1"]
+[node name="Line2DMiddle" parent="Environment/Middle wall cluster/WestWall5" index="1"]
 points = PackedVector2Array(0, 0, 736, -0.997375)
 
-[node name="CollisionShape2D" parent="Middle wall cluster/WestWall5" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/WestWall5" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall7" parent="Middle wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall7" parent="Environment/Middle wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(1191, 1822)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="Middle wall cluster/WestWall7" index="0"]
+[node name="Line2DEdges" parent="Environment/Middle wall cluster/WestWall7" index="0"]
 points = PackedVector2Array(0, 0, 905, 2.0033)
 
-[node name="CollisionShape2D" parent="Middle wall cluster/WestWall7" index="2"]
+[node name="CollisionShape2D" parent="Environment/Middle wall cluster/WestWall7" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="East wall cluster" type="Node2D" parent="."]
+[node name="East wall cluster" type="Node2D" parent="Environment"]
 
-[node name="WestWall9" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall9" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(2901, 545)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="East wall cluster/WestWall9" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/WestWall9" index="0"]
 points = PackedVector2Array(0, 0, 1346, -1.99512)
 
-[node name="CollisionShape2D" parent="East wall cluster/WestWall9" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/WestWall9" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall10" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall10" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(3457, 1231)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="East wall cluster/WestWall10" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/WestWall10" index="0"]
 points = PackedVector2Array(0, 0, 1676, -8.9939)
 
-[node name="CollisionShape2D" parent="East wall cluster/WestWall10" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/WestWall10" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall13" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall13" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(4529, 2143)
 rotation = -1.5708
 
-[node name="CollisionShape2D" parent="East wall cluster/WestWall13" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/WestWall13" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall12" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall12" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(4019, 2138)
 rotation = -1.5708
 
-[node name="Line2DEdges" parent="East wall cluster/WestWall12" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/WestWall12" index="0"]
 points = PackedVector2Array(0, 0, 608, 1.0022)
 
-[node name="CollisionShape2D" parent="East wall cluster/WestWall12" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/WestWall12" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="WestWall11" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="WestWall11" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(5034, 797)
 rotation = -1.5708
 
-[node name="CollisionShape2D" parent="East wall cluster/WestWall11" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/WestWall11" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_fikin")
 
-[node name="SouthWall7" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall7" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(3738, -540)
 
-[node name="Line2DEdges" parent="East wall cluster/SouthWall7" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/SouthWall7" index="0"]
 points = PackedVector2Array(0, 0, 842, 1)
 
-[node name="CollisionShape2D" parent="East wall cluster/SouthWall7" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/SouthWall7" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall8" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall8" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(3758, -162)
 
-[node name="Line2DEdges" parent="East wall cluster/SouthWall8" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/SouthWall8" index="0"]
 points = PackedVector2Array(0, 0, 830, 1)
 
-[node name="CollisionShape2D" parent="East wall cluster/SouthWall8" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/SouthWall8" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall9" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall9" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(3753, 261)
 
-[node name="Line2DEdges" parent="East wall cluster/SouthWall9" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/SouthWall9" index="0"]
 points = PackedVector2Array(0, 0, 823, -3)
 
-[node name="CollisionShape2D" parent="East wall cluster/SouthWall9" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/SouthWall9" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall11" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall11" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(3354, 1135)
 
-[node name="Line2DEdges" parent="East wall cluster/SouthWall11" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/SouthWall11" index="0"]
 points = PackedVector2Array(0, 0, 814, 0)
 
-[node name="CollisionShape2D" parent="East wall cluster/SouthWall11" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/SouthWall11" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall12" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall12" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(4852, 1829)
 
-[node name="CollisionShape2D" parent="East wall cluster/SouthWall12" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/SouthWall12" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall13" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall13" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(4433, 1137)
 
-[node name="Line2DEdges" parent="East wall cluster/SouthWall13" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/SouthWall13" index="0"]
 points = PackedVector2Array(0, 0, 721, 0)
 
-[node name="CollisionShape2D" parent="East wall cluster/SouthWall13" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/SouthWall13" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="SouthWall10" parent="East wall cluster" instance=ExtResource("5_pccs1")]
+[node name="SouthWall10" parent="Environment/East wall cluster" instance=ExtResource("5_pccs1")]
 position = Vector2(3765, 687)
 
-[node name="Line2DEdges" parent="East wall cluster/SouthWall10" index="0"]
+[node name="Line2DEdges" parent="Environment/East wall cluster/SouthWall10" index="0"]
 points = PackedVector2Array(0, 0, 1296, -1)
 
-[node name="CollisionShape2D" parent="East wall cluster/SouthWall10" index="2"]
+[node name="CollisionShape2D" parent="Environment/East wall cluster/SouthWall10" index="2"]
 visible = false
 position = Vector2(1065, 0)
 shape = SubResource("RectangleShape2D_bl3mv")
 
-[node name="Floor" type="TextureRect" parent="."]
+[node name="Floor" type="TextureRect" parent="Environment"]
 z_index = -10
 offset_left = -7461.0
 offset_top = -5830.0
@@ -504,6 +456,74 @@ scale = Vector2(3, 3)
 texture = ExtResource("7_v53y3")
 stretch_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="Carts" type="Node2D" parent="."]
+
+[node name="ShoppingCart" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(2540, -574)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart15" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(2007, -29)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart16" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(557, -514)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart5" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(3609, 1599)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart6" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(5059, -269)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart7" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(4763, 1370)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart4" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(-1682, 1801)
+rotation = 0.47822
+scale = Vector2(1, 1)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart3" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(-208, 375)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart8" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(-940, 1870)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart9" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(-2511, -590)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart10" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(295, 2198)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart11" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(1251, 2171)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart12" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(3595, 2243)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart13" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(-3099, 769)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart14" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(3134, -645)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart2" parent="Carts" instance=ExtResource("1_qvt7r")]
+position = Vector2(1940, 1196)
+kickoff_speed = 1.5
 
 [node name="StoreUI" parent="." instance=ExtResource("7_srwat")]
 
@@ -525,40 +545,40 @@ position = Vector2(-3196, -718)
 [node name="LowerRightBoundPosition" type="Node2D" parent="NPCSpawner"]
 position = Vector2(5282, 2317)
 
-[editable path="LevelBoundaries/WestWall"]
-[editable path="LevelBoundaries/EastWall"]
-[editable path="LevelBoundaries/NorthWall"]
-[editable path="LevelBoundaries/SouthWall"]
-[editable path="West wall cluster/WestWall2"]
-[editable path="West wall cluster/WestWall6"]
-[editable path="West wall cluster/WestWall3"]
-[editable path="West wall cluster/WestWall4"]
-[editable path="West wall cluster/SouthWall2"]
-[editable path="West wall cluster/SouthWall3"]
-[editable path="West wall cluster/SouthWall5"]
-[editable path="West wall cluster/SouthWall4"]
-[editable path="West wall cluster/WestWall5"]
-[editable path="West wall cluster/WestWall8"]
-[editable path="West wall cluster/WestWall7"]
-[editable path="Middle wall cluster/SouthWall3"]
-[editable path="Middle wall cluster/SouthWall4"]
-[editable path="Middle wall cluster/SouthWall6"]
-[editable path="Middle wall cluster/SouthWall5"]
-[editable path="Middle wall cluster/WestWall4"]
-[editable path="Middle wall cluster/WestWall6"]
-[editable path="Middle wall cluster/WestWall8"]
-[editable path="Middle wall cluster/WestWall5"]
-[editable path="Middle wall cluster/WestWall7"]
-[editable path="East wall cluster/WestWall9"]
-[editable path="East wall cluster/WestWall10"]
-[editable path="East wall cluster/WestWall13"]
-[editable path="East wall cluster/WestWall12"]
-[editable path="East wall cluster/WestWall11"]
-[editable path="East wall cluster/SouthWall7"]
-[editable path="East wall cluster/SouthWall8"]
-[editable path="East wall cluster/SouthWall9"]
-[editable path="East wall cluster/SouthWall11"]
-[editable path="East wall cluster/SouthWall12"]
-[editable path="East wall cluster/SouthWall13"]
-[editable path="East wall cluster/SouthWall10"]
+[editable path="Environment/LevelBoundaries/WestWall"]
+[editable path="Environment/LevelBoundaries/EastWall"]
+[editable path="Environment/LevelBoundaries/NorthWall"]
+[editable path="Environment/LevelBoundaries/SouthWall"]
+[editable path="Environment/West wall cluster/WestWall2"]
+[editable path="Environment/West wall cluster/WestWall6"]
+[editable path="Environment/West wall cluster/WestWall3"]
+[editable path="Environment/West wall cluster/WestWall4"]
+[editable path="Environment/West wall cluster/SouthWall2"]
+[editable path="Environment/West wall cluster/SouthWall3"]
+[editable path="Environment/West wall cluster/SouthWall5"]
+[editable path="Environment/West wall cluster/SouthWall4"]
+[editable path="Environment/West wall cluster/WestWall5"]
+[editable path="Environment/West wall cluster/WestWall8"]
+[editable path="Environment/West wall cluster/WestWall7"]
+[editable path="Environment/Middle wall cluster/SouthWall3"]
+[editable path="Environment/Middle wall cluster/SouthWall4"]
+[editable path="Environment/Middle wall cluster/SouthWall6"]
+[editable path="Environment/Middle wall cluster/SouthWall5"]
+[editable path="Environment/Middle wall cluster/WestWall4"]
+[editable path="Environment/Middle wall cluster/WestWall6"]
+[editable path="Environment/Middle wall cluster/WestWall8"]
+[editable path="Environment/Middle wall cluster/WestWall5"]
+[editable path="Environment/Middle wall cluster/WestWall7"]
+[editable path="Environment/East wall cluster/WestWall9"]
+[editable path="Environment/East wall cluster/WestWall10"]
+[editable path="Environment/East wall cluster/WestWall13"]
+[editable path="Environment/East wall cluster/WestWall12"]
+[editable path="Environment/East wall cluster/WestWall11"]
+[editable path="Environment/East wall cluster/SouthWall7"]
+[editable path="Environment/East wall cluster/SouthWall8"]
+[editable path="Environment/East wall cluster/SouthWall9"]
+[editable path="Environment/East wall cluster/SouthWall11"]
+[editable path="Environment/East wall cluster/SouthWall12"]
+[editable path="Environment/East wall cluster/SouthWall13"]
+[editable path="Environment/East wall cluster/SouthWall10"]
 [editable path="StoreUI"]
