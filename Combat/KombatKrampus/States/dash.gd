@@ -1,11 +1,15 @@
 extends State
 
 @export var body : CharacterBody2D
-@export var dash_speed:float = 800
+var dash_speed:float = 000
 @export var dash_duration:float = 0.33
 @export var steer_strength:float = 0.01
 @onready var visual_scene = preload("res://Combat/dash_startup.tscn")
 var elapsed = 0
+
+func _ready() -> void:
+	dash_speed = PlayerVariables.walkspeed * PlayerVariables.dash_multiplier
+
 func enter():
 	elapsed = 0
 	body.dash_buffered = false

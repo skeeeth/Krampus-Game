@@ -9,6 +9,11 @@ extends State
 var last_direction_input:Vector2 = Vector2.ZERO
 var dash_input:bool = false
 
+func _ready() -> void:
+	hitbox.strength = PlayerVariables.quick_kb
+	hitbox.stun_duration = PlayerVariables.quick_stun
+	pivot.scale *= PlayerVariables.quick_scale
+
 func enter():
 	last_direction_input = Vector2.ZERO
 	pivot.rotation = character.rotation

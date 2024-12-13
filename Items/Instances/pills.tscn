@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvpjyx7rpaqck"]
+
+[ext_resource type="PackedScene" uid="uid://visgo75jxgyc" path="res://Items/item.tscn" id="1_5b43y"]
+[ext_resource type="Script" path="res://Items/Instances/pills.gd" id="2_2d4cn"]
+[ext_resource type="Texture2D" uid="uid://0j7a3pnb1j3p" path="res://Items/genericItems_spritesheet_colored.png" id="3_fcapa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5y5r"]
+atlas = ExtResource("3_fcapa")
+region = Rect2(626.168, 460.218, 38.5544, 37.4368)
+
+[node name="Item" instance=ExtResource("1_5b43y")]
+script = ExtResource("2_2d4cn")
+item_name = "Nausea Medicine"
+description = "walk faster while spinning"
+flavor = "weee"
+
+[node name="Sprite2D" parent="." index="1"]
+texture = SubResource("AtlasTexture_g5y5r")

@@ -5,6 +5,9 @@ extends State
 @export var vis:CharacterVisual
 var dash_buffered:bool
 
+func _ready() -> void:
+	movespeed = PlayerVariables.walkspeed
+
 func enter():
 	pass
 	

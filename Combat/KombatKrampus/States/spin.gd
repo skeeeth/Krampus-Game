@@ -1,10 +1,17 @@
 extends State
 
 @export var body : CharacterBody2D
-@export var movespeed:float = 10
-@export var base_duration:float = 2.0
+var movespeed:float = 0
+@export var base_duration:float = 1.2
 @onready var sprite: AnimatedSprite2D = $"../../SpinAttack"
-@onready var hitbox: Area2D = $"../../SpinHitbox"
+@onready var hitbox: AttackHitbox = $"../../SpinHitbox"
+
+func _ready() -> void:
+	movespeed = PlayerVariables.spin_movespeed
+	hitbox.strength = PlayerVariables.spin_kb
+	hitbox.stun_duration = PlayerVariables.spin_stun
+	sprite.scale *= PlayerVariables.spin_scale
+	hitbox.scale *= PlayerVariables.spin_scale
 
 func enter():
 	var exit = create_tween()

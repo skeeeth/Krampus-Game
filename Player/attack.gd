@@ -26,7 +26,6 @@ func _on_animation_finished(anim_name: StringName) -> void:
 func _on_cooldown_timer_timeout() -> void:
 	is_attack_on_cooldown = false
 
-
 #For now, I'm going to have this "Attack" scene handle both the sack and birch rod attack
 #If it gets too complicated, we'll split them up
 func _on_area_entered(area: Area2D) -> void:
@@ -35,3 +34,6 @@ func _on_area_entered(area: Area2D) -> void:
 		PlayerVariables.sack_npc_type_counts[area.npc_type] = num_npcs_of_this_type_in_sack + 1
 		#sacked_npc.emit()
 		area.queue_free()
+
+	if area is Item:
+		area.collect()

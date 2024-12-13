@@ -229,7 +229,6 @@ body = NodePath("../..")
 [node name="Spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
 script = ExtResource("6_wew2u")
 body = NodePath("../..")
-base_duration = 1.2
 
 [node name="Quick" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox", "pivot", "sprite", "character", "body")]
 script = ExtResource("7_sppbl")
@@ -277,7 +276,6 @@ collision_layer = 8
 collision_mask = 8
 monitoring = false
 script = ExtResource("9_lhobn")
-strength = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuickAttack/QuickHitbox"]
 position = Vector2(-12.25, 1.25)

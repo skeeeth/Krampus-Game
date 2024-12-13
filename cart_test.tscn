@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjkdw2t1rp0q5"]
+[gd_scene load_steps=16 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="1_qvt7r"]
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://SpiritBar.gd" id="4_owime"]
 [ext_resource type="PackedScene" uid="uid://qgltf060t87h" path="res://Environment/shelf.tscn" id="5_pccs1"]
 [ext_resource type="Texture2D" uid="uid://cofnknj7tvoa3" path="res://Environment/white_checkered_tile.png" id="7_v53y3"]
+[ext_resource type="PackedScene" uid="uid://bvpjyx7rpaqck" path="res://Items/Instances/pills.tscn" id="10_2bsme"]
+[ext_resource type="PackedScene" uid="uid://cmgdalcoc6r2h" path="res://Items/Instances/headphones.tscn" id="11_71mkg"]
 
 [sub_resource type="Gradient" id="Gradient_7kxnj"]
 colors = PackedColorArray(0.86, 0.5676, 0.5676, 0.352941, 0.858824, 0.568627, 0.568627, 0.352941)
@@ -222,6 +224,12 @@ scale = Vector2(3, 3)
 texture = ExtResource("7_v53y3")
 stretch_mode = 1
 metadata/_edit_lock_ = true
+
+[node name="Item" parent="." instance=ExtResource("10_2bsme")]
+position = Vector2(-319, -171)
+
+[node name="Item2" parent="." instance=ExtResource("11_71mkg")]
+position = Vector2(-319, 95)
 
 [editable path="LevelBoundaries/WestWall"]
 [editable path="LevelBoundaries/EastWall"]

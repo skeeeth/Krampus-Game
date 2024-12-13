@@ -1,8 +1,8 @@
 extends Area2D
 class_name AttackHitbox
 
-@export var strength:float = 100
-@export var stun_duration:float = 1.0
+var strength:float = 100
+var stun_duration:float = 1.0
 var override_direction:Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
