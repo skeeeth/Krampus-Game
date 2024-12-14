@@ -27,7 +27,8 @@ var wandering_collision_idle_timer:Timer
 var nav_ray_length = 150
 
 enum NPCType {
-	Kid,
+	NiceKid,
+	NaughtyKid,
 	Guard
 }
 

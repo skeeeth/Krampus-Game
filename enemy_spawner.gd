@@ -5,7 +5,8 @@ var combat_kid_scene = preload("res://npc/combat_kid.tscn")
 
 
 var npc_type_to_enemy_scene = { NPC.NPCType.Guard : combat_guard_scene,
-								NPC.NPCType.Kid : combat_kid_scene}
+								NPC.NPCType.NaughtyKid : combat_kid_scene,
+								NPC.NPCType.NiceKid : combat_kid_scene}
 
 func _ready() -> void:
 	for npc_type in npc_type_to_enemy_scene:

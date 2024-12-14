@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://14w287bhw1lh"]
+
+[ext_resource type="Script" path="res://npc/npc.gd" id="1_go0db"]
+[ext_resource type="Texture2D" uid="uid://b8mywplv1pmad" path="res://npc/top_down_person.png" id="2_3uy4m"]
+[ext_resource type="Texture2D" uid="uid://dmnpf5yogmora" path="res://npc/kid_stick_figure.png" id="3_tu0en"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qpj"]
+size = Vector2(87, 104)
+
+[node name="NiceKid" type="Area2D" node_paths=PackedStringArray("default_sprite", "knocked_down_sprite")]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_go0db")
+default_sprite = NodePath("StandingSprite")
+knocked_down_sprite = NodePath("KnockedDownSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_b1qpj")
+
+[node name="StandingSprite" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_3uy4m")
+
+[node name="KnockedDownSprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-40, 0)
+rotation = -1.5708
+scale = Vector2(0.145, 0.135)
+texture = ExtResource("3_tu0en")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

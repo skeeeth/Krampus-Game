@@ -34,8 +34,11 @@ func _on_area_entered(area: Area2D) -> void:
 		var num_npcs_of_this_type_in_sack = PlayerVariables.sack_npc_type_counts.get_or_add(area.npc_type, 0)
 		PlayerVariables.sack_npc_type_counts[area.npc_type] = num_npcs_of_this_type_in_sack + 1
 		#sacked_npc.emit()
-		if area.npc_type == area.NPCType.Kid:
-			PlayerVariables.kid_nabbed()
+		
+		#You can nab both naughty and nice kids, but only naughty kids count towards your final goal
+		var is_naughty_kid = (area.npc_type == area.NPCType.NaughtyKid)
+		if is_naughty_kid or (area.npc_type == area.NPCType.NiceKid):
+			PlayerVariables.kid_nabbed(is_naughty_kid)
 		area.queue_free()
 
 	if area is Item:

@@ -34,10 +34,11 @@ var quick_scale:float = 1.0
 var outside_movespeed:float = 300
 
 
-var kids_nabbed:int
+var naughty_kids_nabbed:int
 var pickup_sound:AudioStream = preload("res://Sounds/click_001.ogg")
-func kid_nabbed():
-	kids_nabbed += 1
+func kid_nabbed(is_naughty):
+	if (is_naughty):
+		naughty_kids_nabbed += 1
 	#sound
 	var sound = AudioStreamPlayer.new()
 	add_child(sound)

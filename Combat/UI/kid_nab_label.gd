@@ -5,4 +5,4 @@ func _process(delta: float) -> void:
 	
 
 
- %03d" % [PlayerVariables.kids_nabbed,100]
+ %03d" % [PlayerVariables.naughty_kids_nabbed,100]
