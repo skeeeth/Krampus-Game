@@ -11,6 +11,7 @@ func _ready() -> void:
 	dash_speed = PlayerVariables.walkspeed * PlayerVariables.dash_multiplier
 
 func enter():
+	$DashSound.play()
 	elapsed = 0
 	body.dash_buffered = false
 	#could maybe have some windup here

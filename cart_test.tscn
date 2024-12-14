@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjkdw2t1rp0q5"]
+[gd_scene load_steps=15 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="1_qvt7r"]
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
 [ext_resource type="Texture2D" uid="uid://st7m3f6mvyde" path="res://white_square.png" id="4_nblo3"]
 [ext_resource type="PackedScene" uid="uid://qgltf060t87h" path="res://Environment/shelf.tscn" id="5_pccs1"]
+[ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="7_ms70j"]
 [ext_resource type="PackedScene" uid="uid://biu0vrh6mioda" path="res://Player/store_ui.tscn" id="7_srwat"]
 [ext_resource type="Texture2D" uid="uid://cofnknj7tvoa3" path="res://Environment/white_checkered_tile.png" id="7_v53y3"]
 [ext_resource type="Script" path="res://npc/npc_spawner.gd" id="8_i46bc"]
@@ -15,6 +16,20 @@ size = Vector2(998, 198)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl3mv"]
 resource_local_to_scene = true
 size = Vector2(998, 198)
+
+[sub_resource type="FontVariation" id="FontVariation_t4jk5"]
+base_font = ExtResource("7_ms70j")
+
+[sub_resource type="LabelSettings" id="LabelSettings_70spn"]
+resource_local_to_scene = true
+font = SubResource("FontVariation_t4jk5")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_xf0r4"]
+resource_local_to_scene = true
+line_spacing = -40.0
+font = SubResource("FontVariation_t4jk5")
+font_size = 32
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqpns"]
 radius = 30.0
@@ -486,7 +501,6 @@ kickoff_speed = 1.5
 [node name="ShoppingCart4" parent="Carts" instance=ExtResource("1_qvt7r")]
 position = Vector2(-1682, 1801)
 rotation = 0.47822
-scale = Vector2(1, 1)
 kickoff_speed = 1.5
 
 [node name="ShoppingCart3" parent="Carts" instance=ExtResource("1_qvt7r")]
@@ -531,6 +545,12 @@ kickoff_speed = 1.5
 krampus = NodePath("../../Krampus")
 outside_scene = NodePath("../..")
 out_cam = NodePath("../../Krampus/Camera2D")
+
+[node name="Label" parent="StoreUI" index="2"]
+label_settings = SubResource("LabelSettings_70spn")
+
+[node name="Label" parent="StoreUI/Label" index="1"]
+label_settings = SubResource("LabelSettings_xf0r4")
 
 [node name="NPCSpawner" type="Node" parent="."]
 script = ExtResource("8_i46bc")

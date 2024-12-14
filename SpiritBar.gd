@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	if process_mode == Node.PROCESS_MODE_ALWAYS:
 		return
 	if value <= 0.0:
-		#could do some kind of transition
+		$Transition.play()
 		process_mode = Node.PROCESS_MODE_ALWAYS
 		outside_scene.process_mode = Node.PROCESS_MODE_DISABLED
 		#outside_scene.visible = false

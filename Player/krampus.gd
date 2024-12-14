@@ -23,6 +23,7 @@ func on_attempt_interaction(interaction_target:InteractableArea):
 		if (interaction_target.handler is ShoppingCart):
 			gliding = true
 			cart = interaction_target.handler
+			$Glide_sound.play()
 			cart.collision_mask = 10 #layer 2 + 4
 			#hardcoded value, if default cart mask changes will not be reflected
 

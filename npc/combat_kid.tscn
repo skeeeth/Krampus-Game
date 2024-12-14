@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dt4svjk536vnw"]
+[gd_scene load_steps=12 format=3 uid="uid://dt4svjk536vnw"]
 
 [ext_resource type="Script" path="res://npc/combat_npc.gd" id="1_n51f3"]
 [ext_resource type="Texture2D" uid="uid://b8mywplv1pmad" path="res://npc/top_down_person.png" id="2_v4p8q"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://npc/npc_states/retreat.gd" id="7_wp8xx"]
 [ext_resource type="Script" path="res://npc/npc_states/Snowball_Throw.gd" id="8_l17lj"]
 [ext_resource type="Texture2D" uid="uid://b0phgcp5qtc61" path="res://npc/PngItem_6012967.png" id="9_ahunx"]
+[ext_resource type="AudioStream" uid="uid://dnpvbr4yu4k1a" path="res://Sounds/Swishes/swish-12.wav" id="10_eolwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qpj"]
 size = Vector2(87, 104)
@@ -67,5 +68,9 @@ visible = false
 position = Vector2(9.53674e-07, 0)
 scale = Vector2(0.026624, 0.05)
 texture = ExtResource("9_ahunx")
+
+[node name="throw" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_eolwu")
+volume_db = -20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

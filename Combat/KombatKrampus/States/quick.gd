@@ -15,6 +15,7 @@ func _ready() -> void:
 	pivot.scale *= PlayerVariables.quick_scale
 
 func enter():
+	$"Attack Swishes".play()
 	last_direction_input = Vector2.ZERO
 	pivot.rotation = character.rotation
 	hitbox.override_direction = character.facing_direction

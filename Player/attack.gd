@@ -18,6 +18,7 @@ func _attack():
 	$CollisionShape2D.disabled = false
 	is_attack_on_cooldown = true
 	$CooldownTimer.start(attack_cooldown_duration)
+	$"../AudioStreamPlayer".play()
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "melee_attack"):
@@ -33,6 +34,8 @@ func _on_area_entered(area: Area2D) -> void:
 		var num_npcs_of_this_type_in_sack = PlayerVariables.sack_npc_type_counts.get_or_add(area.npc_type, 0)
 		PlayerVariables.sack_npc_type_counts[area.npc_type] = num_npcs_of_this_type_in_sack + 1
 		#sacked_npc.emit()
+		if area.npc_type == area.NPCType.Kid:
+			PlayerVariables.kid_nabbed()
 		area.queue_free()
 
 	if area is Item:

@@ -1,0 +1,35 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://bo8a1f37d55a0"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_qt1cx"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_25gdj"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_li0ah"]
+resource_name = "Distortion"
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_icaje"]
+resource_name = "Phaser"
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_d7pak"]
+resource_name = "Delay"
+feedback_active = true
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_qt1cx")
+bus/0/effect/0/enabled = false
+bus/1/name = &"weirdge"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_25gdj")
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource("AudioEffectDistortion_li0ah")
+bus/1/effect/1/enabled = true
+bus/1/effect/2/effect = SubResource("AudioEffectPhaser_icaje")
+bus/1/effect/2/enabled = false
+bus/1/effect/3/effect = SubResource("AudioEffectDelay_d7pak")
+bus/1/effect/3/enabled = true

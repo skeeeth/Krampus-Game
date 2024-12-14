@@ -33,6 +33,7 @@ func enter():
 		snowball.monitoring = true
 		snowball.speed = throw_strength
 		thrown = true
+		#$"../../throw".play() #too many of these actually probably
 	
 	transitioned.emit(self,"Wander")
 	print("Snowball finished")
