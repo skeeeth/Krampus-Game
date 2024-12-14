@@ -96,7 +96,6 @@ func _start_wandering_collision_idle_period():
 
 func _start_wandering():
 	state = NPCState.Wandering
-	print("AAAngle: " + str(nav_ray.target_position.angle()))
 	_set_rotation(nav_ray.target_position.angle())
 	if (default_sprite != null and knocked_down_sprite != null):
 		default_sprite.visible = true

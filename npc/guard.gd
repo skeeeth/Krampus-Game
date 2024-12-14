@@ -12,13 +12,17 @@ var already_visited_last_known_location = false
 var time_since_last_krampus_sighting:float = 0
 var max_time_since_last_krampus_sighting:float = 5 #If krampus is out of sight for this long, give up on chasing
 var chasing_velocity:Vector2 = Vector2(0, 0)
-@export var chasing_speed:float = 300
+@export var chasing_speed:float = 310
+
+var dps:float = 5
+var melee_attack_range:float = 80
 
 
 func _ready() -> void:
 	$KrampusInitialDetector/DetectionCircle.shape.radius = krampus_detection_radius
 	
 	krampus_ray = RayCast2D.new()
+	krampus_ray.hit_from_inside = true
 	krampus_ray.collision_mask = 33 #This represents line of sight, so it should only collide with the player and environment (not shopping carts)
 									#That's layer 1 and layer 6, so the mask is 2^0 + 2^5 = 33
 	add_child(krampus_ray)
@@ -51,10 +55,10 @@ func _physics_process(delta: float) -> void:
 	if (state == NPCState.Chasing):
 		var displacement_to_last_known_krampus_position = (last_known_krampus_location - global_position)
 		
-		if (is_krampus_in_sight and displacement_to_last_known_krampus_position.length() < 20): 
-			#He's in line of sight and in punching range! Get him!
-			pass #to-do: deal damage
-		
+		if (is_krampus_in_sight and displacement_to_last_known_krampus_position.length() < melee_attack_range): 
+			PlayerVariables.current_health -= (dps*delta)
+			if (displacement_to_last_known_krampus_position.length() < melee_attack_range * 0.75):
+				return #If I'm very close to krampus, don't try to come closer - I'll overlap with the krampus sprite, which looks confusing
 		
 		if ((not is_krampus_in_sight) and displacement_to_last_known_krampus_position.length() < 5):
 			already_visited_last_known_location = true
@@ -78,11 +82,10 @@ func _physics_process(delta: float) -> void:
 		
 		if (nav_ray.is_colliding()):
 			print("Trying to chase Krampus, but I don't see a way forward")
-			_give_up_chase()
+			#_give_up_chase()
 		else:
 			position += chasing_speed * delta * nav_ray.target_position.normalized()
 		
-		print("Using this angle: " + str(nav_ray.target_position.angle()))
 		_set_rotation(nav_ray.target_position.angle())
 	else:
 		super(delta)

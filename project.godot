@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 PlayerVariables="*res://Player/player_variables.gd"
 
-[display]
-
-window/size/mode=3
-
 [global_group]
 
 Player=""
