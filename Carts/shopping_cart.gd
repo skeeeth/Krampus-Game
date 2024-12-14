@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	
 	if (rider != null):
 		rider.global_position = $RiderOffsetPosition.global_position
-
+	
 
 func _update_speed(initial_speed, acceleration, friction, delta, maximum_speed) -> float:
 	#Apply acceleration

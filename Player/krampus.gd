@@ -48,6 +48,7 @@ func _physics_process(delta: float) -> void:
 			velocity = (diff/glide_time) + (diff.normalized()*5.0) + (cart.velocity/2.0)
 			
 			if diff.length() < 50:
+				$"Cart Pickup".play()
 				cart.start_riding(self)
 				gliding = false
 				cart.collision_mask = 11 #layer 1 + 2 + 4 hardcoded

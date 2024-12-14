@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdv7yypqfldh4"]
+[gd_scene load_steps=7 format=3 uid="uid://cdv7yypqfldh4"]
 
 [ext_resource type="Script" path="res://Carts/shopping_cart.gd" id="1_cvcn8"]
 [ext_resource type="Texture2D" uid="uid://tqioid56cvfl" path="res://Carts/shopping_cart.png" id="2_xwrrd"]
 [ext_resource type="Script" path="res://Carts/interactable_area.gd" id="3_44ka7"]
+[ext_resource type="AudioStream" uid="uid://c0e4oadeessoa" path="res://Sounds/spinning.ogg" id="4_rf6od"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkjp8"]
 size = Vector2(85, 130)
@@ -43,6 +44,11 @@ shape = SubResource("CircleShape2D_f4m36")
 
 [node name="RiderOffsetPosition" type="Node2D" parent="."]
 position = Vector2(0, 107)
+
+[node name="roll_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rf6od")
+volume_db = -15.0
+parameters/looping = true
 
 [connection signal="area_entered" from="InteractableArea" to="InteractableArea" method="_on_area_entered"]
 [connection signal="body_entered" from="InteractableArea" to="InteractableArea" method="_on_body_entered"]

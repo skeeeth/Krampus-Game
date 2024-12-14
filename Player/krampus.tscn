@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://prm2p3mxsryu"]
+[gd_scene load_steps=20 format=3 uid="uid://prm2p3mxsryu"]
 
 [ext_resource type="Script" path="res://Player/krampus.gd" id="1_5w85o"]
 [ext_resource type="Script" path="res://Player/krampus_interaction_area.gd" id="3_4yoct"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c3sggk8nun7to" path="res://Sounds/Swishes/swish-4.wav" id="9_mc5dc"]
 [ext_resource type="AudioStream" uid="uid://d4l5jjvt1pru8" path="res://Sounds/Swishes/swish-5.wav" id="10_nw75y"]
 [ext_resource type="AudioStream" uid="uid://bae6ffw1jvkf3" path="res://Sounds/animal melee sound.wav" id="11_rjcyn"]
+[ext_resource type="AudioStream" uid="uid://5iyegdg2kk4x" path="res://Sounds/beltHandle1.ogg" id="12_y5b4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xqo2"]
 size = Vector2(69, 113)
@@ -152,6 +153,11 @@ stream = SubResource("AudioStreamRandomizer_i28ih")
 [node name="Glide_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_rjcyn")
 volume_db = -5.0
+
+[node name="Cart Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_y5b4d")
+volume_db = -10.0
+pitch_scale = 1.5
 
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="InteractionArea" method="_on_area_exited"]
