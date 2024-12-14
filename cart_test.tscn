@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjkdw2t1rp0q5"]
+[gd_scene load_steps=16 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="1_qvt7r"]
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://biu0vrh6mioda" path="res://Player/store_ui.tscn" id="7_srwat"]
 [ext_resource type="Texture2D" uid="uid://cofnknj7tvoa3" path="res://Environment/white_checkered_tile.png" id="7_v53y3"]
 [ext_resource type="Script" path="res://npc/npc_spawner.gd" id="8_i46bc"]
+[ext_resource type="AudioStream" uid="uid://ccec2ayjk24pa" path="res://Music/jingle-bells-music-jazz-christmas-holiday-background-intro-theme-271538.mp3" id="9_6tiuk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fikin"]
 resource_local_to_scene = true
@@ -564,6 +565,12 @@ position = Vector2(-3196, -718)
 
 [node name="LowerRightBoundPosition" type="Node2D" parent="NPCSpawner"]
 position = Vector2(5282, 2317)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_6tiuk")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
 
 [editable path="Environment/LevelBoundaries/WestWall"]
 [editable path="Environment/LevelBoundaries/EastWall"]
