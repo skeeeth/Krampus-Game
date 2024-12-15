@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4w75pwooriub"]
+[gd_scene load_steps=6 format=3 uid="uid://b4w75pwooriub"]
 
 [ext_resource type="Script" path="res://Combat/UI/combat_ui.gd" id="1_22rx2"]
-[ext_resource type="PackedScene" uid="uid://cuiyko1ty38wq" path="res://Combat/UI/healthbar.tscn" id="3_jdtuh"]
 [ext_resource type="Texture2D" uid="uid://r511f1mvtahc" path="res://Combat/UI/labelplain.png" id="4_n5yce"]
 [ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="5_j4rp3"]
 
@@ -17,10 +16,6 @@ font_color = Color(0.63, 0.2205, 0.2205, 1)
 [node name="Camera2D" type="CanvasLayer"]
 script = ExtResource("1_22rx2")
 metadata/_edit_horizontal_guides_ = [-126.0]
-
-[node name="ProgressBar" parent="." instance=ExtResource("3_jdtuh")]
-offset_right = 0.0
-offset_bottom = 0.0
 
 [node name="Timer_Container" type="TextureRect" parent="."]
 anchors_preset = 5

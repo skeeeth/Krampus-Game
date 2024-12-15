@@ -93,7 +93,7 @@ stream_2/stream = ExtResource("8_ybgxe")
 stream_3/stream = ExtResource("9_mc5dc")
 stream_4/stream = ExtResource("10_nw75y")
 
-[node name="Krampus" type="CharacterBody2D"]
+[node name="Krampus" type="CharacterBody2D" groups=["StorePlayer"]]
 z_index = 2
 motion_mode = 1
 script = ExtResource("1_5w85o")

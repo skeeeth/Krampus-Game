@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjkdw2t1rp0q5"]
+[gd_scene load_steps=17 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="1_qvt7r"]
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
@@ -21,15 +21,18 @@ size = Vector2(998, 198)
 [sub_resource type="FontVariation" id="FontVariation_t4jk5"]
 base_font = ExtResource("7_ms70j")
 
-[sub_resource type="LabelSettings" id="LabelSettings_70spn"]
+[sub_resource type="LabelSettings" id="LabelSettings_wljog"]
 resource_local_to_scene = true
 font = SubResource("FontVariation_t4jk5")
 font_size = 32
 
-[sub_resource type="LabelSettings" id="LabelSettings_xf0r4"]
+[sub_resource type="FontVariation" id="FontVariation_st045"]
+base_font = ExtResource("7_ms70j")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ofifj"]
 resource_local_to_scene = true
 line_spacing = -40.0
-font = SubResource("FontVariation_t4jk5")
+font = SubResource("FontVariation_st045")
 font_size = 32
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqpns"]
@@ -542,16 +545,16 @@ kickoff_speed = 1.5
 
 [node name="StoreUI" parent="." instance=ExtResource("7_srwat")]
 
-[node name="CheerBar" parent="StoreUI" index="1" node_paths=PackedStringArray("krampus", "outside_scene", "out_cam")]
-krampus = NodePath("../../Krampus")
-outside_scene = NodePath("../..")
-out_cam = NodePath("../../Krampus/Camera2D")
+[node name="CheerBar" parent="StoreUI/StoreOnlyElements" index="1" node_paths=PackedStringArray("krampus", "outside_scene", "out_cam")]
+krampus = NodePath("../../../Krampus")
+outside_scene = NodePath("../../..")
+out_cam = NodePath("../../../Krampus/Camera2D")
 
-[node name="Label" parent="StoreUI" index="2"]
-label_settings = SubResource("LabelSettings_70spn")
+[node name="Label" parent="StoreUI/StoreOnlyElements" index="2"]
+label_settings = SubResource("LabelSettings_wljog")
 
-[node name="Label" parent="StoreUI/Label" index="1"]
-label_settings = SubResource("LabelSettings_xf0r4")
+[node name="Label" parent="StoreUI/StoreOnlyElements/Label" index="1"]
+label_settings = SubResource("LabelSettings_ofifj")
 
 [node name="NPCSpawner" type="Node" parent="."]
 script = ExtResource("8_i46bc")

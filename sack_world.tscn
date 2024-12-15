@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vchflsopy7ik"]
+[gd_scene load_steps=19 format=3 uid="uid://vchflsopy7ik"]
 
 [ext_resource type="Script" path="res://sack_world.gd" id="1_4dw0a"]
 [ext_resource type="Shader" path="res://Combat/UI/Shaders/anti_cane.gdshader" id="1_ku4ty"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://enemy_spawner.gd" id="2_yx42x"]
 [ext_resource type="PackedScene" uid="uid://b4w75pwooriub" path="res://Combat/UI/CombatUI.tscn" id="4_3hr63"]
 [ext_resource type="Shader" path="res://Combat/UI/Shaders/Squeeze.gdshader" id="5_nxpc3"]
+[ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="6_jx6mk"]
 [ext_resource type="Texture2D" uid="uid://cm62sxt3wdf65" path="res://Combat/UI/anti_cane.png" id="7_qmoir"]
 [ext_resource type="AudioStream" uid="uid://dimno5kuxix5" path="res://Music/Hallow Quest_2.wav" id="8_3xalx"]
 
@@ -22,6 +23,23 @@ noise = SubResource("FastNoiseLite_kurwc")
 shader = ExtResource("5_nxpc3")
 shader_parameter/intensity = 15.0
 shader_parameter/noise = SubResource("NoiseTexture2D_bs68w")
+
+[sub_resource type="FontVariation" id="FontVariation_t4jk5"]
+base_font = ExtResource("6_jx6mk")
+
+[sub_resource type="LabelSettings" id="LabelSettings_tkaga"]
+resource_local_to_scene = true
+font = SubResource("FontVariation_t4jk5")
+font_size = 32
+
+[sub_resource type="FontVariation" id="FontVariation_sfrf8"]
+base_font = ExtResource("6_jx6mk")
+
+[sub_resource type="LabelSettings" id="LabelSettings_enko8"]
+resource_local_to_scene = true
+font = SubResource("FontVariation_sfrf8")
+font_size = 60
+font_color = Color(0.63, 0.2205, 0.2205, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cec4f"]
 shader = ExtResource("1_ku4ty")
@@ -59,6 +77,13 @@ layer = 2
 lens = NodePath("../SackKrampus/Lens")
 world = NodePath("..")
 
+[node name="label" parent="Camera2D/ProgressBar" index="0"]
+visible = false
+label_settings = SubResource("LabelSettings_tkaga")
+
+[node name="Timer" parent="Camera2D/Timer_Container" index="0"]
+label_settings = SubResource("LabelSettings_enko8")
+
 [node name="bg" type="Sprite2D" parent="."]
 z_index = -50
 texture_repeat = 2
@@ -71,3 +96,5 @@ stream = ExtResource("8_3xalx")
 autoplay = true
 
 [editable path="SackKrampus"]
+[editable path="Camera2D"]
+[editable path="Camera2D/ProgressBar"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://biu0vrh6mioda"]
+[gd_scene load_steps=27 format=3 uid="uid://biu0vrh6mioda"]
 
-[ext_resource type="PackedScene" uid="uid://cuiyko1ty38wq" path="res://Combat/UI/healthbar.tscn" id="1_rpmqc"]
+[ext_resource type="Script" path="res://Player/store_ui.gd" id="1_fq35w"]
 [ext_resource type="Texture2D" uid="uid://dwquums5t7q8i" path="res://Combat/UI/candycane.png" id="2_tglna"]
 [ext_resource type="Script" path="res://SpiritBar.gd" id="3_3kabb"]
 [ext_resource type="LabelSettings" uid="uid://cgf32jqj0evf0" path="res://Combat/UI/gift_label.tres" id="4_0idbb"]
@@ -8,6 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://dracnthy0ejax" path="res://Combat/UI/label2.png" id="5_jcu0e"]
 [ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="6_t0ubv"]
 [ext_resource type="Script" path="res://Combat/UI/kid_nab_label.gd" id="7_4b2oj"]
+[ext_resource type="Texture2D" uid="uid://dug4h0pwfs6n4" path="res://Player/bag.png" id="9_octnr"]
+[ext_resource type="Texture2D" uid="uid://qnjdc4c2065s" path="res://npc/top_down_person2.png" id="10_dflw1"]
+[ext_resource type="Texture2D" uid="uid://cxxc350ssswa1" path="res://Combat/UI/label1.png" id="10_wl4f6"]
+[ext_resource type="Script" path="res://Combat/UI/healthbar.gd" id="12_3lbp1"]
+
+[sub_resource type="FontVariation" id="FontVariation_s6m3k"]
+base_font = ExtResource("6_t0ubv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_i203s"]
+font = SubResource("FontVariation_s6m3k")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_7kxnj"]
 colors = PackedColorArray(0.86, 0.5676, 0.5676, 0.352941, 0.858824, 0.568627, 0.568627, 0.352941)
@@ -15,30 +27,82 @@ colors = PackedColorArray(0.86, 0.5676, 0.5676, 0.352941, 0.858824, 0.568627, 0.
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3xk57"]
 gradient = SubResource("Gradient_7kxnj")
 
-[sub_resource type="FontVariation" id="FontVariation_t4jk5"]
+[sub_resource type="FontVariation" id="FontVariation_st045"]
 base_font = ExtResource("6_t0ubv")
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wqtp"]
 resource_local_to_scene = true
 line_spacing = -40.0
-font = SubResource("FontVariation_t4jk5")
+font = SubResource("FontVariation_st045")
 font_size = 32
 
-[node name="StoreUI" type="CanvasLayer"]
+[sub_resource type="FontVariation" id="FontVariation_pserf"]
+base_font = ExtResource("6_t0ubv")
 
-[node name="HPDisplay" parent="." instance=ExtResource("1_rpmqc")]
-anchors_preset = -1
-anchor_right = 0.198
-anchor_bottom = 0.133
-offset_right = -228.096
-offset_bottom = -86.184
+[sub_resource type="LabelSettings" id="LabelSettings_ugl0y"]
+font = SubResource("FontVariation_pserf")
+font_size = 80
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
 
-[node name="CheerBar" type="TextureProgressBar" parent="."]
+[sub_resource type="FontVariation" id="FontVariation_ul14b"]
+base_font = ExtResource("6_t0ubv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_siwfg"]
+font = SubResource("FontVariation_ul14b")
+font_size = 80
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_gdvgk"]
+base_font = ExtResource("6_t0ubv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4xm7s"]
+font = SubResource("FontVariation_gdvgk")
+font_size = 80
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_7ejv3"]
+base_font = ExtResource("6_t0ubv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_klhk5"]
+font = SubResource("FontVariation_7ejv3")
+font_size = 84
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("num_nice_kids_label", "num_naughty_kids_label", "num_guards_label")]
+script = ExtResource("1_fq35w")
+num_nice_kids_label = NodePath("StoreOnlyElements/NumNiceKids")
+num_naughty_kids_label = NodePath("StoreOnlyElements/NumNaughtyKids")
+num_guards_label = NodePath("StoreOnlyElements/NumGuards")
+
+[node name="StoreOnlyElements" type="CanvasLayer" parent="."]
+
+[node name="ChristmasCheer" type="Label" parent="StoreOnlyElements"]
 anchors_preset = -1
-anchor_left = 0.023
-anchor_top = 0.144
-anchor_right = 0.077
-anchor_bottom = 0.562
+anchor_top = 0.623
+anchor_right = 0.189
+anchor_bottom = 0.823
+offset_top = 0.29599
+offset_right = 0.271988
+offset_bottom = -0.304016
+text = "CHRISTMAS 
+CHEER"
+label_settings = SubResource("LabelSettings_i203s")
+horizontal_alignment = 1
+
+[node name="CheerBar" type="TextureProgressBar" parent="StoreOnlyElements" node_paths=PackedStringArray("store_only_elements")]
+anchors_preset = -1
+anchor_left = 0.054
+anchor_top = 0.258
+anchor_right = 0.123
+anchor_bottom = 0.614
+offset_left = -0.208
+offset_top = -0.184006
+offset_right = 0.304001
+offset_bottom = 0.127991
 grow_horizontal = 0
 grow_vertical = 2
 max_value = 10000.0
@@ -48,13 +112,15 @@ texture_under = SubResource("GradientTexture1D_3xk57")
 texture_progress = ExtResource("2_tglna")
 script = ExtResource("3_3kabb")
 margin = 50.0
+store_only_elements = NodePath("..")
 
-[node name="Transition" type="AudioStreamPlayer" parent="CheerBar"]
+[node name="Transition" type="AudioStreamPlayer" parent="StoreOnlyElements/CheerBar"]
 stream = ExtResource("4_83hre")
 pitch_scale = 0.75
 bus = &"weirdge"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="StoreOnlyElements"]
+visible = false
 offset_left = 106.0
 offset_top = 158.0
 offset_right = 335.0
@@ -63,14 +129,14 @@ text = "Naughty Kids
  Nabbed:"
 label_settings = ExtResource("4_0idbb")
 
-[node name="Sprite2D" type="Sprite2D" parent="Label"]
+[node name="Sprite2D" type="Sprite2D" parent="StoreOnlyElements/Label"]
 z_index = -1
 position = Vector2(54, 47)
 scale = Vector2(2, 2.3)
 texture = ExtResource("5_jcu0e")
 flip_h = true
 
-[node name="Label" type="Label" parent="Label"]
+[node name="Label" type="Label" parent="StoreOnlyElements/Label"]
 layout_mode = 0
 offset_left = 114.0
 offset_top = 28.0
@@ -84,7 +150,147 @@ text = "%i3
 label_settings = SubResource("LabelSettings_2wqtp")
 script = ExtResource("7_4b2oj")
 
-[node name="Line2D" type="Line2D" parent="Label"]
+[node name="Line2D" type="Line2D" parent="StoreOnlyElements/Label"]
 position = Vector2(5, 4)
 points = PackedVector2Array(116, 59, 155, 57)
 width = 2.0
+
+[node name="NiceKidIcon" type="TextureRect" parent="StoreOnlyElements"]
+modulate = Color(0, 1, 0, 1)
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.122
+anchor_right = 0.049
+anchor_bottom = 0.167
+offset_left = -0.168003
+offset_top = -0.0560074
+offset_right = 0.551998
+offset_bottom = -0.216003
+texture = ExtResource("10_dflw1")
+expand_mode = 1
+
+[node name="NaughtyKidIcon" type="TextureRect" parent="StoreOnlyElements"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.176
+anchor_right = 0.056
+anchor_bottom = 0.242
+offset_left = -0.32
+offset_top = -0.0480118
+offset_right = 0.487999
+offset_bottom = 0.18399
+texture = ExtResource("10_dflw1")
+expand_mode = 1
+
+[node name="GuardIcon" type="TextureRect" parent="StoreOnlyElements"]
+modulate = Color(0, 0, 1, 1)
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.093
+anchor_top = 0.1
+anchor_right = 0.111
+anchor_bottom = 0.168
+offset_left = -0.136002
+offset_top = 0.199997
+offset_right = 0.127991
+offset_bottom = 0.135994
+texture = ExtResource("10_dflw1")
+expand_mode = 1
+
+[node name="NumNiceKids" type="Label" parent="StoreOnlyElements"]
+modulate = Color(0, 1, 0, 1)
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.052
+anchor_top = 0.099
+anchor_right = 0.082
+anchor_bottom = 0.184
+offset_left = -18.904
+offset_top = -107.152
+offset_right = 34.536
+offset_bottom = 116.768
+theme_override_font_sizes/font_size = 60
+text = "134"
+label_settings = SubResource("LabelSettings_ugl0y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumGuards" type="Label" parent="StoreOnlyElements"]
+modulate = Color(0, 0, 1, 1)
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.085
+anchor_top = 0.069
+anchor_right = 0.18
+anchor_bottom = 0.198
+offset_left = 5.08
+offset_top = -2.71201
+offset_right = 4.63998
+offset_bottom = 25.696
+theme_override_font_sizes/font_size = 60
+text = "10"
+label_settings = SubResource("LabelSettings_siwfg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumNaughtyKids" type="Label" parent="StoreOnlyElements"]
+modulate = Color(1, 0, 0, 1)
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.142
+anchor_right = 0.207
+anchor_bottom = 0.27
+offset_left = -106.488
+offset_top = -5.01601
+offset_right = -105.464
+offset_bottom = 24.04
+theme_override_font_sizes/font_size = 60
+text = "20/20"
+label_settings = SubResource("LabelSettings_4xm7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sack" type="TextureRect" parent="StoreOnlyElements"]
+anchors_preset = -1
+anchor_left = -0.017
+anchor_top = -0.018
+anchor_right = 0.192
+anchor_bottom = 0.34
+offset_left = -0.415998
+offset_top = -0.335999
+offset_right = -0.184006
+offset_bottom = -0.320007
+texture = ExtResource("9_octnr")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="NewHPDisplay" type="TextureRect" parent="." node_paths=PackedStringArray("label")]
+anchors_preset = -1
+anchor_top = 0.823
+anchor_right = 0.314
+anchor_bottom = 1.0
+grow_vertical = 0
+texture = ExtResource("10_wl4f6")
+script = ExtResource("12_3lbp1")
+label = NodePath("HealthLabel")
+
+[node name="HealthLabel" type="Label" parent="NewHPDisplay"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_right = 1.227
+anchor_bottom = 0.958
+offset_left = 0.148159
+offset_top = -3.30402
+offset_right = 0.159668
+offset_bottom = 4.81722
+theme_override_font_sizes/font_size = 140
+text = "Health: 100/100"
+label_settings = SubResource("LabelSettings_klhk5")
+horizontal_alignment = 1
+vertical_alignment = 1

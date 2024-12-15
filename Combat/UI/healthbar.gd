@@ -2,7 +2,9 @@ extends Control
 
 var max_value:float
 var value:float
-@onready var label =$label
+#@onready var label =$label
+@export var label:Label
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	label.text = "Health:%3.0f/%3.0f" %  [PlayerVariables.current_health,PlayerVariables.max_hp]

@@ -31,9 +31,9 @@ func _on_cooldown_timer_timeout() -> void:
 #If it gets too complicated, we'll split them up
 func _on_area_entered(area: Area2D) -> void:
 	if (area is NPC):
-		var num_npcs_of_this_type_in_sack = PlayerVariables.sack_npc_type_counts.get_or_add(area.npc_type, 0)
-		PlayerVariables.sack_npc_type_counts[area.npc_type] = num_npcs_of_this_type_in_sack + 1
-		#sacked_npc.emit()
+		#var num_npcs_of_this_type_in_sack = PlayerVariables.sack_npc_type_counts.get_or_add(area.npc_type, 0)
+		#PlayerVariables.sack_npc_type_counts[area.npc_type] = num_npcs_of_this_type_in_sack + 1
+		PlayerVariables.modify_sack_npc_type_counts(area.npc_type, 1)
 		
 		#You can nab both naughty and nice kids, but only naughty kids count towards your final goal
 		var is_naughty_kid = (area.npc_type == area.NPCType.NaughtyKid)
