@@ -8,8 +8,15 @@ class_name Idle
 @export_category("Ranges")
 @export var retreat_range:float = 500
 @export var attack_range:float = 800
-@export var wander_range:float = 2000 #set to less than attack_range to always seek
+@export var wander_range:float = 0 #set to less than attack_range to always seek
 var next_wait:float = 1.0
+
+func _ready() -> void:
+	var fuzz = 0.25
+	retreat_range *= randf_range(1.0-fuzz,1.0 + fuzz)
+	attack_range *= randf_range(1.0-fuzz,1.0 + fuzz)
+	wander_range *= randf_range(1.0-fuzz,1.0 + fuzz)
+
 func enter():
 	print("Idle Started")
 	await get_tree().create_timer(next_wait).timeout

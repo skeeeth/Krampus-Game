@@ -22,8 +22,8 @@ func _ready() -> void:
 				#_spawn_enemy(npc_type_to_enemy_scene[npc_type])
 
 func _spawn_enemy(enemy_scene):
-	var distance_from_origin = randf_range(30, 300)
+	var distance_from_origin = randf_range(200, 2000)
 	var enemy_instance = enemy_scene.instantiate()
-	enemy_instance.position = Vector2(350, 350) + Vector2.RIGHT.rotated(randf_range(0, TAU)) * distance_from_origin
+	enemy_instance.position = Vector2.RIGHT.rotated(randf_range(0, TAU)) * distance_from_origin
 	print("Spawning an enemy at this location: " + str(enemy_instance.global_position))
 	add_child(enemy_instance)

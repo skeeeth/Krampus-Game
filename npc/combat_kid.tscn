@@ -20,6 +20,7 @@ collision_mask = 11
 script = ExtResource("1_n51f3")
 state_machine = NodePath("StateMachine")
 base_speed = 3.0
+max_distance = 1500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, 0)
@@ -38,7 +39,6 @@ script = ExtResource("4_v63q6")
 parent = NodePath("../..")
 beeline_state = NodePath("../Beeline")
 retreat_range = 200.0
-wander_range = 0.0
 
 [node name="Stun" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
 script = ExtResource("5_y4b4c")

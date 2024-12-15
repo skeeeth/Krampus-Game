@@ -3,15 +3,19 @@ class_name Enemy
 
 @export var state_machine:StateMachine
 @export var base_speed:float = 10.0
+@export var max_distance:float = 600;
 var player:Player
 var diff:Vector2
 
 func _ready() -> void:
+	base_speed *= randf_range(0.8,1.2)
 	player = get_tree().get_first_node_in_group("Player")
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	diff = player.global_position - global_position
+	if diff.length() > max_distance:
+		global_position = player.global_position + (diff * 0.8)
 
 func take_knockback(dir:Vector2,strength:float, stun_duration:float = -1.0):
 	var kb = create_tween()

@@ -10,7 +10,7 @@ func _ready() -> void:
 	#PlayerVariables.combat_ended.connect(queue_free)
 	var grow = create_tween()
 	#grow.tween_property(self,"scale",0.1,0.1)
-	var bg_size = Vector2(10000,10000)
+	var bg_size = Vector2(100000,100000)
 	bg.region_rect.size = get_viewport_rect().size * 2.0
 	grow.set_parallel(true)
 	grow.tween_property(self,"scale", Vector2.ONE,1.0)
