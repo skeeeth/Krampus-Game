@@ -8,6 +8,9 @@ var cart:ShoppingCart = null
 
 var facing_direction:Vector2 = Vector2.RIGHT
 var gliding:bool = false
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+
+
 func _ready() -> void:
 	PlayerVariables.outside_movespeed = move_speed
 	
@@ -21,6 +24,13 @@ func on_attempt_interaction(interaction_target:InteractableArea):
 	
 	elif (interaction_target != null):
 		if (interaction_target.handler is ShoppingCart):
+			
+			var diff = global_position - interaction_target.global_position
+			ray_cast_2d.target_position = -diff
+			ray_cast_2d.force_raycast_update()
+			if ray_cast_2d.is_colliding():
+				return
+			
 			gliding = true
 			cart = interaction_target.handler
 			$Glide_sound.play()
