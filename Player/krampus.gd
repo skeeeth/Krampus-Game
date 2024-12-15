@@ -32,9 +32,9 @@ func _input(event: InputEvent) -> void:
 	if (event.is_action_pressed("attack") and cart == null): #Can't attack while in the cart... for now. Could be fun though
 		$Attack.attempt_attack(facing_direction)
 
-	#Just for testing	
-	if (event.is_action_pressed("dev1")):
-		get_tree().change_scene_to_file("res://sack_world.tscn")
+	##Just for testing	
+	#if (event.is_action_pressed("dev1")):
+		#get_tree().change_scene_to_file("res://sack_world.tscn")
 
 
 func _physics_process(delta: float) -> void:
