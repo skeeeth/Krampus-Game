@@ -122,7 +122,6 @@ parent = NodePath("../..")
 beeline_state = NodePath("../Beeline")
 retreat_range = 10.0
 attack_range = 100.0
-wander_range = 0.0
 
 [node name="Stun" type="Node" parent="Node"]
 script = ExtResource("8_r76xn")

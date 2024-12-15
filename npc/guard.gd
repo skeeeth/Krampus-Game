@@ -29,6 +29,8 @@ func _ready() -> void:
 	
 	super()	
 
+func _process(_delta: float) -> void:
+	$Attention_Icons.rotation = -rotation
 
 func _physics_process(delta: float) -> void:
 	var is_krampus_in_sight = false
@@ -98,11 +100,17 @@ func _set_rotation(new_rotation:float):
 
 func _start_chasing():
 	wandering_collision_idle_timer.stop()
-	#to-do: display little red "!"
 	state = NPCState.Chasing
+	#to-do: display little red "!"
+	var grow = create_tween()
+	grow.tween_property($"Attention_Icons/!","scale:y",1.0,0.4)
+	await grow.finished
+	$"Attention_Icons/!".scale.y = 0
+
 
 func _give_up_chase():
-	#To-do: display little "?" icon instead of "!"
+	display_question()
+	
 	_pick_random_wandering_direction()
 	state = NPCState.Idle
 
@@ -110,3 +118,12 @@ func _give_up_chase():
 func _on_krampus_initial_detector_body_entered(body: Node2D) -> void:
 	if (body is Krampus):
 		krampus = body
+
+func display_question():
+	var size_and_rotate = create_tween()
+	var icon = $"Attention_Icons/?"
+	size_and_rotate.set_parallel()
+	size_and_rotate.tween_property(icon,"scale",1.0,0.3)
+	size_and_rotate.tween_property(icon,"rotation",0,0.5)
+	size_and_rotate.tween_property(icon,"rotation",0,0.2).set_delay(2.0)
+	size_and_rotate.tween_property(icon,"scale",0.0,0.5)

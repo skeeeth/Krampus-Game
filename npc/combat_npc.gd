@@ -3,7 +3,7 @@ class_name Enemy
 
 @export var state_machine:StateMachine
 @export var base_speed:float = 10.0
-@export var max_distance:float = 600;
+@export var max_distance:float = 1200;
 var player:Player
 var diff:Vector2
 

@@ -92,7 +92,7 @@ func figure_out_new_wandering_direction():
 	
 		num_attempts_to_find_new_direction += 1
 	
-	state == NPCState.Stuck
+	state = NPCState.Stuck
 	print("Help, I'm stuck!")
 
 

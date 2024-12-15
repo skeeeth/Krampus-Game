@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://wg71xd4yobi7"]
+[gd_scene load_steps=9 format=3 uid="uid://wg71xd4yobi7"]
 
 [ext_resource type="Script" path="res://npc/guard.gd" id="1_fhnnr"]
 [ext_resource type="Texture2D" uid="uid://b3dlkteedq77d" path="res://npc/adult_stick_figure.png" id="2_56afv"]
 [ext_resource type="Texture2D" uid="uid://b8mywplv1pmad" path="res://npc/top_down_person.png" id="2_de8xq"]
+[ext_resource type="Texture2D" uid="uid://dxuesbh4s12ui" path="res://npc/sheet_white1x.png" id="4_2n02l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n3hcv"]
 radius = 28.0
@@ -11,8 +12,15 @@ height = 132.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6jo3v"]
 radius = 994.266
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f3cg"]
+atlas = ExtResource("4_2n02l")
+region = Rect2(400, 150, 48, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1bwa"]
+atlas = ExtResource("4_2n02l")
+region = Rect2(200, 100, 48, 48)
+
 [node name="Guard" type="Area2D" node_paths=PackedStringArray("default_sprite", "knocked_down_sprite")]
-modulate = Color(0.0744, 0.0744, 0.93, 1)
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_fhnnr")
@@ -24,10 +32,12 @@ knocked_down_sprite = NodePath("KnockedDownSprite")
 shape = SubResource("CapsuleShape2D_n3hcv")
 
 [node name="StandingSprite" type="Sprite2D" parent="."]
+modulate = Color(0.0745098, 0.0745098, 0.929412, 1)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("2_de8xq")
 
 [node name="KnockedDownSprite" type="Sprite2D" parent="."]
+modulate = Color(0.0745098, 0.0745098, 0.929412, 1)
 position = Vector2(-5, -9.53674e-07)
 rotation = -1.5708
 scale = Vector2(0.324539, 0.258041)
@@ -42,6 +52,21 @@ position = Vector2(-3, 5)
 shape = SubResource("CircleShape2D_6jo3v")
 
 [node name="Squish" type="AudioStreamPlayer" parent="."]
+
+[node name="Attention_Icons" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="!" type="Sprite2D" parent="Attention_Icons"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2.5, -112)
+scale = Vector2(1, 1e-05)
+texture = SubResource("AtlasTexture_0f3cg")
+
+[node name="?" type="Sprite2D" parent="Attention_Icons"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2.5, -112)
+scale = Vector2(1e-05, 1e-05)
+texture = SubResource("AtlasTexture_g1bwa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="KrampusInitialDetector" to="." method="_on_krampus_initial_detector_body_entered"]
