@@ -39,7 +39,7 @@ var outside_movespeed:float = 300
 
 
 var naughty_kids_nabbed:int
-var pickup_sound:AudioStream = preload("res://Sounds/click_001.ogg")
+var pickup_sound:AudioStream = preload("res://Sounds/bell2.mp3")
 
 func modify_sack_npc_type_counts(npc_type:NPC.NPCType, delta:int):
 	if (npc_type == NPC.NPCType.Guard):
@@ -56,6 +56,7 @@ func kid_nabbed(is_naughty):
 	var sound = AudioStreamPlayer.new()
 	add_child(sound)
 	sound.stream = pickup_sound
+	sound.volume_db = 2.0
 	create_tween().tween_callback(sound.play).set_delay(randf_range(0,0.075));
 	await  sound.finished
 	sound.queue_free()

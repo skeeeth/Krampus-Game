@@ -157,7 +157,6 @@ volume_db = -5.0
 
 [node name="Cart Pickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_y5b4d")
-volume_db = -10.0
 pitch_scale = 1.5
 
 [connection signal="area_entered" from="InteractionArea" to="InteractionArea" method="_on_area_entered"]
