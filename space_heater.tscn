@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://00mvkk4ijukq"]
+
+[ext_resource type="PackedScene" uid="uid://visgo75jxgyc" path="res://Items/item.tscn" id="1_nhbkc"]
+[ext_resource type="Texture2D" uid="uid://0j7a3pnb1j3p" path="res://Items/genericItems_spritesheet_colored.png" id="2_0c6qy"]
+[ext_resource type="Script" path="res://space_heater.gd" id="2_1y5gv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na0ps"]
+atlas = ExtResource("2_0c6qy")
+region = Rect2(469.938, 1133.05, 80.5793, 66.6617)
+
+[node name="SpaceHeater" instance=ExtResource("1_nhbkc")]
+script = ExtResource("2_1y5gv")
+item_name = "Space Heater"
+description = "decrease the size of snowballs"
+flavor = "global warming!"
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = -0.287979
+texture = SubResource("AtlasTexture_na0ps")

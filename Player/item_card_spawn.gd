@@ -18,5 +18,5 @@ func spawn_card(title,description,flavor,image):
 	var back_forth = create_tween()
 
 	back_forth.tween_property(card,"position",p2,0.6)
-	back_forth.tween_property(card,"position",p1,0.3).set_delay(1.5)
+	back_forth.tween_property(card,"position",p1,0.3).set_delay(3.5)
 	back_forth.tween_callback(card.queue_free)

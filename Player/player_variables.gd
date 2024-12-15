@@ -37,6 +37,7 @@ var quick_scale:float = 1.0
 
 var outside_movespeed:float = 300
 
+var snowball_scale:float = 1.0
 
 var naughty_kids_nabbed:int
 var pickup_sound:AudioStream = preload("res://Sounds/bell2.mp3")

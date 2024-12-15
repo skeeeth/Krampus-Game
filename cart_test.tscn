@@ -1,12 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjkdw2t1rp0q5"]
+[gd_scene load_steps=22 format=3 uid="uid://cjkdw2t1rp0q5"]
 
 [ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="1_qvt7r"]
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
 [ext_resource type="Texture2D" uid="uid://st7m3f6mvyde" path="res://white_square.png" id="4_nblo3"]
 [ext_resource type="PackedScene" uid="uid://qgltf060t87h" path="res://Environment/shelf.tscn" id="5_pccs1"]
+[ext_resource type="PackedScene" uid="uid://ca2ycaik4p5du" path="res://shoes.tscn" id="6_0lfbs"]
+[ext_resource type="PackedScene" uid="uid://bvpjyx7rpaqck" path="res://Items/Instances/pills.tscn" id="7_blem0"]
 [ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="7_ms70j"]
 [ext_resource type="PackedScene" uid="uid://biu0vrh6mioda" path="res://Player/store_ui.tscn" id="7_srwat"]
 [ext_resource type="Texture2D" uid="uid://cofnknj7tvoa3" path="res://Environment/white_checkered_tile.png" id="7_v53y3"]
+[ext_resource type="PackedScene" uid="uid://00mvkk4ijukq" path="res://space_heater.tscn" id="8_h7eq1"]
 [ext_resource type="Script" path="res://npc/npc_spawner.gd" id="8_i46bc"]
 [ext_resource type="AudioStream" uid="uid://ccec2ayjk24pa" path="res://Music/jingle-bells-music-jazz-christmas-holiday-background-intro-theme-271538.mp3" id="9_6tiuk"]
 [ext_resource type="PackedScene" uid="uid://cmgdalcoc6r2h" path="res://Items/Instances/headphones.tscn" id="10_oqo4p"]
@@ -482,6 +485,16 @@ texture = ExtResource("7_v53y3")
 stretch_mode = 1
 metadata/_edit_lock_ = true
 
+[node name="Shoes" parent="Environment" instance=ExtResource("6_0lfbs")]
+position = Vector2(1489, 1126)
+
+[node name="Pills" parent="Environment" instance=ExtResource("7_blem0")]
+position = Vector2(-720, 1739)
+
+[node name="SpaceHeater" parent="Environment" instance=ExtResource("8_h7eq1")]
+position = Vector2(5320, 928)
+scale = Vector2(2, 2)
+
 [node name="Carts" type="Node2D" parent="."]
 
 [node name="ShoppingCart" parent="Carts" instance=ExtResource("1_qvt7r")]
@@ -579,12 +592,14 @@ position = Vector2(5282, 2317)
 stream = ExtResource("9_6tiuk")
 volume_db = -5.0
 autoplay = true
+playback_type = 1
 parameters/looping = true
 
 [node name="Crowd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_7w77t")
 volume_db = -20.0
 autoplay = true
+playback_type = 1
 
 [editable path="Environment/LevelBoundaries/WestWall"]
 [editable path="Environment/LevelBoundaries/EastWall"]

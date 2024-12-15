@@ -10,6 +10,7 @@ extends State
 var snowball:Node2D
 var thrown:bool = false
 func _ready() -> void:
+	snowball_size *= PlayerVariables.snowball_scale
 	var fuzz = 0.1
 	snowball_size *= randf_range(1.0-fuzz,1.0 + fuzz)
 	inaccuracy *= randf_range(1.0-fuzz,1.0 + fuzz)

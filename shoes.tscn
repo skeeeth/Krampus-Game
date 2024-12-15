@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca2ycaik4p5du"]
+
+[ext_resource type="PackedScene" uid="uid://visgo75jxgyc" path="res://Items/item.tscn" id="1_58e13"]
+[ext_resource type="Script" path="res://shoes.gd" id="2_e8i0u"]
+[ext_resource type="Texture2D" uid="uid://cc4572i0ekwr2" path="res://Items/shoe_icon.png" id="2_mxt5u"]
+
+[node name="Shoes" instance=ExtResource("1_58e13")]
+script = ExtResource("2_e8i0u")
+item_name = "Shoes"
+description = "Walk faster"
+flavor = "Sneaker? Aw man!"
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.5, 0.8)
+texture = ExtResource("2_mxt5u")
