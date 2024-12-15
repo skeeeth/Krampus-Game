@@ -16,7 +16,7 @@ modulate = Color(0.0744, 0.0744, 0.93, 1)
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_fhnnr")
-npc_type = 1
+npc_type = 2
 default_sprite = NodePath("StandingSprite")
 knocked_down_sprite = NodePath("KnockedDownSprite")
 
@@ -28,16 +28,17 @@ scale = Vector2(0.14, 0.14)
 texture = ExtResource("2_de8xq")
 
 [node name="KnockedDownSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-1.95221, 2.93666)
+position = Vector2(-5, -9.53674e-07)
 rotation = -1.5708
-scale = Vector2(0.363037, 0.317537)
+scale = Vector2(0.324539, 0.258041)
 texture = ExtResource("2_56afv")
 offset = Vector2(40, -340)
 
 [node name="KrampusInitialDetector" type="Area2D" parent="."]
 
 [node name="DetectionCircle" type="CollisionShape2D" parent="KrampusInitialDetector"]
+visible = false
+position = Vector2(-3, 5)
 shape = SubResource("CircleShape2D_6jo3v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

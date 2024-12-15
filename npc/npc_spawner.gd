@@ -44,13 +44,17 @@ func _spawn_npcs(npc_scene, num_to_spawn, minimum_distance_from_krampus:float=-1
 	var section_index = 0
 	var num_spawned = 0
 	
+	var krampus = null
+	if (minimum_distance_from_krampus > 0):
+		krampus = get_tree().get_first_node_in_group("StorePlayer")
+	
 	sections.shuffle()
 	while (num_spawned < num_to_spawn):
 		var spawn_position = sections[section_index].pick_random()
 		var too_close_to_krampus = false
 		
 		if (minimum_distance_from_krampus > 0):
-			var krampus_position = Vector2(0, 0) #TO-DO: get the actual krampus position upon coming back to the store from the sack
+			var krampus_position = krampus.global_position
 			var num_attempted_spawn_positions = 1
 			too_close_to_krampus =  (spawn_position-krampus_position).length() <= minimum_distance_from_krampus
 			
@@ -68,46 +72,6 @@ func _spawn_npcs(npc_scene, num_to_spawn, minimum_distance_from_krampus:float=-1
 		section_index = (section_index + 1) % sections.size() #Keep rotating through the sections, regardless of whether or not we spawned in an npc
 															  #If we failed to find a good location in this section 5 times, it's probably a lost cause
 
-'''
-func _spawn_npcs(num_nice_kids_to_spawn:int, num_naughty_kids_to_spawn:int, num_guards_to_spawn:int):
-	var num_nice_kids_spawned = 0
-	var num_naughty_kids_spawned = 0
-	var num_guards_spawned = 0
-	
-	var section_index = 0
-	
-	var krampus_position = Vector2(0, 0) #TO-DO: get the actual krampus position upon coming back to the store from the sack
-	var guard_detection_radius = Guard.krampus_detection_radius
-	
-	_spawn_kids()
-	sections.shuffle()
-	while (num_nice_kids_spawned < num_nice_kids_to_spawn):
-		var spawn_position = sections[section_index].pick_random()
-		var kid_inst = nice_kid_scene.instantiate()
-		kid_inst.global_position = spawn_position
-		add_child(kid_inst)
-		num_nice_kids_spawned += 1
-		section_index = (section_index + 1) % sections.size()
-	
-	sections.shuffle()
-	while (num_guards_spawned < num_guards_to_spawn):
-		var spawn_position:Vector2 = sections[section_index].pick_random()
-		var too_close_to_krampus = (spawn_position-krampus_position).length() <= (guard_detection_radius + 200)
-		var num_attempted_spawn_positions = 1
-		
-		while (num_attempted_spawn_positions < 5 and too_close_to_krampus):
-			num_attempted_spawn_positions += 1
-			spawn_position = sections[section_index].pick_random()
-			too_close_to_krampus = (spawn_position-krampus_position).length() <= (guard_detection_radius + 200)
-		
-		if (not too_close_to_krampus):
-			var guard_inst = guard_scene.instantiate()
-			guard_inst.global_position = spawn_position
-			add_child(guard_inst)
-			num_guards_spawned += 1
-			
-		section_index = (section_index + 1) % sections.size()
-'''
 
 func _find_spawn_positions():
 	var current_position = upper_left_bound
