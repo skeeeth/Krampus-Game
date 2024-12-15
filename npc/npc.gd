@@ -44,8 +44,13 @@ var nav_ray:RayCast2D
 
 var state:NPCState = NPCState.Idle
 
+var squish_sound:AudioStream = preload("res://Sounds/Socapex - new_hits.wav")
+@onready var squish: AudioStreamPlayer = $Squish
 
 func _ready():
+	squish.stream = squish_sound
+	squish.volume_db = -5
+	
 	wandering_collision_idle_timer = Timer.new()
 	add_child(wandering_collision_idle_timer)
 	wandering_collision_idle_timer.one_shot = true
@@ -103,6 +108,8 @@ func _start_wandering():
 		knocked_down_sprite.visible = false
 
 func _get_knocked_down(knockdown_direction):
+	squish.play()
+	
 	wandering_collision_idle_timer.stop()
 	state = NPCState.KnockedDown
 	_set_rotation(knockdown_direction.angle() - PI)

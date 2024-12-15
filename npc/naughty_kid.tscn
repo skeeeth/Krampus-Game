@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b73boev43352m"]
+[gd_scene load_steps=5 format=3 uid="uid://vhan8aj62aro"]
 
 [ext_resource type="Script" path="res://npc/npc.gd" id="1_qqx4v"]
 [ext_resource type="Texture2D" uid="uid://b8mywplv1pmad" path="res://npc/top_down_person.png" id="2_k4081"]
@@ -31,5 +31,7 @@ position = Vector2(-40, 0)
 rotation = -1.5708
 scale = Vector2(0.145, 0.135)
 texture = ExtResource("3_m4fmo")
+
+[node name="Squish" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

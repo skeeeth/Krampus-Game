@@ -41,5 +41,7 @@ visible = false
 position = Vector2(-3, 5)
 shape = SubResource("CircleShape2D_6jo3v")
 
+[node name="Squish" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="KrampusInitialDetector" to="." method="_on_krampus_initial_detector_body_entered"]
