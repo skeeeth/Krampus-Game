@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://biu0vrh6mioda"]
+[gd_scene load_steps=14 format=3 uid="uid://biu0vrh6mioda"]
 
 [ext_resource type="PackedScene" uid="uid://cuiyko1ty38wq" path="res://Combat/UI/healthbar.tscn" id="1_rpmqc"]
 [ext_resource type="Texture2D" uid="uid://dwquums5t7q8i" path="res://Combat/UI/candycane.png" id="2_tglna"]
 [ext_resource type="Script" path="res://SpiritBar.gd" id="3_3kabb"]
 [ext_resource type="LabelSettings" uid="uid://cgf32jqj0evf0" path="res://Combat/UI/gift_label.tres" id="4_0idbb"]
 [ext_resource type="AudioStream" uid="uid://b8kskpjc08y6e" path="res://Sounds/select_006.ogg" id="4_83hre"]
+[ext_resource type="Script" path="res://Player/item_card_spawn.gd" id="5_fbfhv"]
 [ext_resource type="Texture2D" uid="uid://dracnthy0ejax" path="res://Combat/UI/label2.png" id="5_jcu0e"]
 [ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="6_t0ubv"]
 [ext_resource type="Script" path="res://Combat/UI/kid_nab_label.gd" id="7_4b2oj"]
@@ -53,6 +54,22 @@ margin = 50.0
 stream = ExtResource("4_83hre")
 pitch_scale = 0.75
 bus = &"weirdge"
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1967.0
+offset_top = 795.0
+offset_right = 2007.0
+offset_bottom = 835.0
+script = ExtResource("5_fbfhv")
+
+[node name="Marker2D" type="Marker2D" parent="Control"]
+position = Vector2(0, -100)
+
+[node name="Marker2D2" type="Marker2D" parent="Control"]
+position = Vector2(-332, -100)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 106.0

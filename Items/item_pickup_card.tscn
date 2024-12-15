@@ -71,6 +71,6 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[i][color=#222222CC] [center] adfasdf"
+text = "[i][color=#222222CC] [center]"
 fit_content = true
 scroll_active = false

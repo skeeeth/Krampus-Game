@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://bo8a1f37d55a0"]
+[gd_resource type="AudioBusLayout" load_steps=7 format=3 uid="uid://bo8a1f37d55a0"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_qt1cx"]
 resource_name = "Reverb"
@@ -15,6 +15,11 @@ resource_name = "Phaser"
 [sub_resource type="AudioEffectDelay" id="AudioEffectDelay_d7pak"]
 resource_name = "Delay"
 feedback_active = true
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_blakd"]
+resource_name = "LowPassFilter"
+resonance = 0.2
+db = 3
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectReverb_qt1cx")
@@ -33,3 +38,11 @@ bus/1/effect/2/effect = SubResource("AudioEffectPhaser_icaje")
 bus/1/effect/2/enabled = false
 bus/1/effect/3/effect = SubResource("AudioEffectDelay_d7pak")
 bus/1/effect/3/enabled = true
+bus/2/name = &"Headphones"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_blakd")
+bus/2/effect/0/enabled = true
