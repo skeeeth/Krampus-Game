@@ -1,3 +1,4 @@
+class_name NPCSpawner
 extends Node
 
 #Spawn npcs in a rectanglular area defined by these two bounds
@@ -35,10 +36,12 @@ func _ready() -> void:
 	lower_right_bound = $LowerRightBoundPosition.global_position
 	
 	await _find_spawn_positions()
-	_spawn_npcs(nice_kid_scene, 200)
-	_spawn_npcs(naughty_kid_scene, 20)
-	_spawn_npcs(guard_scene, 10, Guard.krampus_detection_radius + 200)
+	spawn_all_npcs(200, 20, 10)
 
+func spawn_all_npcs(num_nice_kids=200, num_naughty_kids=20, num_guards=10):
+	_spawn_npcs(nice_kid_scene, num_nice_kids)
+	_spawn_npcs(naughty_kid_scene, num_naughty_kids)
+	_spawn_npcs(guard_scene, num_guards, Guard.krampus_detection_radius + 200)
 
 func _spawn_npcs(npc_scene, num_to_spawn, minimum_distance_from_krampus:float=-1):
 	var section_index = 0
@@ -72,6 +75,9 @@ func _spawn_npcs(npc_scene, num_to_spawn, minimum_distance_from_krampus:float=-1
 		section_index = (section_index + 1) % sections.size() #Keep rotating through the sections, regardless of whether or not we spawned in an npc
 															  #If we failed to find a good location in this section 5 times, it's probably a lost cause
 
+func delete_npcs():
+	for node in get_children():
+		node.queue_free()
 
 func _find_spawn_positions():
 	var current_position = upper_left_bound

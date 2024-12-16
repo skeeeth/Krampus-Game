@@ -210,10 +210,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgus1"]
 size = Vector2(78.5, 50.5)
 
-[node name="SackKrampus" type="CharacterBody2D" node_paths=PackedStringArray("sm") groups=["Player"]]
+[node name="SackKrampus" type="CharacterBody2D" node_paths=PackedStringArray("sm", "character_sprite") groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_1eygv")
 sm = NodePath("StateMachine")
+character_sprite = NodePath("Character")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6pwbh")
@@ -225,7 +226,6 @@ startingState = NodePath("Walk")
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("body", "vis")]
 script = ExtResource("1_i6jng")
 body = NodePath("../..")
-movespeed = 200.0
 vis = NodePath("../../Character")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]

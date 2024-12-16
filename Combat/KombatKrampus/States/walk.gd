@@ -1,7 +1,7 @@
 extends State
 
 @export var body : CharacterBody2D
-@export var movespeed:float = 220
+@export var movespeed:float = 500
 @export var vis:CharacterVisual
 var dash_buffered:bool
 

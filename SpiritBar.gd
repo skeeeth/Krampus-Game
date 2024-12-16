@@ -6,7 +6,9 @@ extends TextureProgressBar
 @export var outside_scene:Node2D
 @export var out_cam: Camera2D
 
-@export var store_only_elements:CanvasLayer 
+@export var store_only_elements:CanvasLayer
+
+@export var npc_spawner:NPCSpawner
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,8 +37,12 @@ func _process(delta: float) -> void:
 		shrink.tween_property(krampus,"scale",Vector2(0.2,0.2),0.3)
 		store_only_elements.visible = false
 		
+		npc_spawner.delete_npcs()
+		
 		
 		await PlayerVariables.combat_fading
+		
+		npc_spawner.spawn_all_npcs()
 		
 		out_cam.make_current()
 		store_only_elements.visible = true

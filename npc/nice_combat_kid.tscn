@@ -1,23 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://dt4svjk536vnw"]
+[gd_scene load_steps=12 format=3 uid="uid://c2lbos6e888hl"]
 
-[ext_resource type="Script" path="res://npc/combat_npc.gd" id="1_n51f3"]
-[ext_resource type="Texture2D" uid="uid://b8mywplv1pmad" path="res://npc/top_down_person.png" id="2_v4p8q"]
-[ext_resource type="Script" path="res://Combat/State/StateMachine.gd" id="3_64rjq"]
-[ext_resource type="Script" path="res://npc/npc_states/idle.gd" id="4_v63q6"]
-[ext_resource type="Script" path="res://npc/npc_states/stun.gd" id="5_y4b4c"]
-[ext_resource type="Script" path="res://npc/wander.gd" id="6_wgt6c"]
-[ext_resource type="Script" path="res://npc/npc_states/retreat.gd" id="7_wp8xx"]
-[ext_resource type="Script" path="res://npc/npc_states/Snowball_Throw.gd" id="8_l17lj"]
-[ext_resource type="Texture2D" uid="uid://b0phgcp5qtc61" path="res://npc/PngItem_6012967.png" id="9_ahunx"]
-[ext_resource type="AudioStream" uid="uid://dnpvbr4yu4k1a" path="res://Sounds/Swishes/swish-12.wav" id="10_eolwu"]
+[ext_resource type="Script" path="res://npc/combat_npc.gd" id="1_y2sog"]
+[ext_resource type="Texture2D" uid="uid://b8mywplv1pmad" path="res://npc/top_down_person.png" id="2_a7al0"]
+[ext_resource type="Script" path="res://Combat/State/StateMachine.gd" id="3_bp0qi"]
+[ext_resource type="Script" path="res://npc/npc_states/idle.gd" id="4_iydeb"]
+[ext_resource type="Script" path="res://npc/npc_states/stun.gd" id="5_mv6tp"]
+[ext_resource type="Script" path="res://npc/wander.gd" id="6_6l0g7"]
+[ext_resource type="Script" path="res://npc/npc_states/retreat.gd" id="7_eri7w"]
+[ext_resource type="Script" path="res://npc/npc_states/Snowball_Throw.gd" id="8_2pjnt"]
+[ext_resource type="Texture2D" uid="uid://b0phgcp5qtc61" path="res://npc/PngItem_6012967.png" id="9_8rkvb"]
+[ext_resource type="AudioStream" uid="uid://dnpvbr4yu4k1a" path="res://Sounds/Swishes/swish-12.wav" id="10_qnf85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1qpj"]
 size = Vector2(87, 104)
 
-[node name="NaughtyCombatKid" type="Area2D" node_paths=PackedStringArray("state_machine")]
+[node name="NiceCombatKid" type="Area2D" node_paths=PackedStringArray("state_machine")]
 collision_layer = 8
 collision_mask = 11
-script = ExtResource("1_n51f3")
+script = ExtResource("1_y2sog")
 state_machine = NodePath("StateMachine")
 base_speed = 3.0
 max_distance = 1500.0
@@ -27,36 +27,36 @@ position = Vector2(-2.5, 0)
 shape = SubResource("RectangleShape2D_b1qpj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(0, 1, 0, 1)
 scale = Vector2(0.09, 0.09)
-texture = ExtResource("2_v4p8q")
+texture = ExtResource("2_a7al0")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("startingState")]
-script = ExtResource("3_64rjq")
+script = ExtResource("3_bp0qi")
 startingState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "beeline_state")]
-script = ExtResource("4_v63q6")
+script = ExtResource("4_iydeb")
 parent = NodePath("../..")
 beeline_state = NodePath("../Beeline")
 retreat_range = 200.0
 
 [node name="Stun" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("5_y4b4c")
+script = ExtResource("5_mv6tp")
 parent = NodePath("../..")
 
 [node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("6_wgt6c")
+script = ExtResource("6_6l0g7")
 parent = NodePath("../..")
 duration = 0.15
 
 [node name="Beeline" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "idle_state")]
-script = ExtResource("7_wp8xx")
+script = ExtResource("7_eri7w")
 parent = NodePath("../..")
 idle_state = NodePath("../Idle")
 
 [node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent")]
-script = ExtResource("8_l17lj")
+script = ExtResource("8_2pjnt")
 parent = NodePath("../..")
 throw_strength = 12.0
 damage = 10.0
@@ -68,10 +68,10 @@ snowball_size = 50.0
 visible = false
 position = Vector2(9.53674e-07, 0)
 scale = Vector2(0.026624, 0.05)
-texture = ExtResource("9_ahunx")
+texture = ExtResource("9_8rkvb")
 
 [node name="throw" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_eolwu")
+stream = ExtResource("10_qnf85")
 volume_db = -20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

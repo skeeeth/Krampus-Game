@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="2_regcu"]
 [ext_resource type="Texture2D" uid="uid://st7m3f6mvyde" path="res://white_square.png" id="4_nblo3"]
 [ext_resource type="PackedScene" uid="uid://qgltf060t87h" path="res://Environment/shelf.tscn" id="5_pccs1"]
-[ext_resource type="PackedScene" uid="uid://ca2ycaik4p5du" path="res://shoes.tscn" id="6_0lfbs"]
+[ext_resource type="PackedScene" path="res://shoes.tscn" id="6_0lfbs"]
 [ext_resource type="PackedScene" uid="uid://bvpjyx7rpaqck" path="res://Items/Instances/pills.tscn" id="7_blem0"]
 [ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="7_ms70j"]
 [ext_resource type="PackedScene" uid="uid://biu0vrh6mioda" path="res://Player/store_ui.tscn" id="7_srwat"]
@@ -564,10 +564,11 @@ kickoff_speed = 1.5
 
 [node name="StoreUI" parent="." instance=ExtResource("7_srwat")]
 
-[node name="CheerBar" parent="StoreUI/StoreOnlyElements" index="1" node_paths=PackedStringArray("krampus", "outside_scene", "out_cam")]
+[node name="CheerBar" parent="StoreUI/StoreOnlyElements" index="1" node_paths=PackedStringArray("krampus", "outside_scene", "out_cam", "npc_spawner")]
 krampus = NodePath("../../../Krampus")
 outside_scene = NodePath("../../..")
 out_cam = NodePath("../../../Krampus/Camera2D")
+npc_spawner = NodePath("../../../NPCSpawner")
 
 [node name="Label" parent="StoreUI/StoreOnlyElements" index="2"]
 label_settings = SubResource("LabelSettings_wljog")

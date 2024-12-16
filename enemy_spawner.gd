@@ -1,12 +1,13 @@
 extends Node2D
 
 var combat_guard_scene = preload("res://npc/combat_guard.tscn")
-var combat_kid_scene = preload("res://npc/combat_kid.tscn")
+var naughty_combat_kid_scene = preload("res://npc/combat_kid.tscn")
+var nice_combat_kid_scene = preload("res://npc/nice_combat_kid.tscn")
 
 
 var npc_type_to_enemy_scene = { NPC.NPCType.Guard : combat_guard_scene,
-								NPC.NPCType.NaughtyKid : combat_kid_scene,
-								NPC.NPCType.NiceKid : combat_kid_scene}
+								NPC.NPCType.NaughtyKid : naughty_combat_kid_scene,
+								NPC.NPCType.NiceKid : nice_combat_kid_scene}
 
 func _ready() -> void:
 	for npc_type in npc_type_to_enemy_scene:

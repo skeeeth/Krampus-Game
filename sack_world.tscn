@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://vchflsopy7ik"]
+[gd_scene load_steps=17 format=3 uid="uid://vchflsopy7ik"]
 
 [ext_resource type="Script" path="res://sack_world.gd" id="1_4dw0a"]
 [ext_resource type="Shader" path="res://Combat/UI/Shaders/anti_cane.gdshader" id="1_ku4ty"]
@@ -23,14 +23,6 @@ noise = SubResource("FastNoiseLite_kurwc")
 shader = ExtResource("5_nxpc3")
 shader_parameter/intensity = 15.0
 shader_parameter/noise = SubResource("NoiseTexture2D_bs68w")
-
-[sub_resource type="FontVariation" id="FontVariation_t4jk5"]
-base_font = ExtResource("6_jx6mk")
-
-[sub_resource type="LabelSettings" id="LabelSettings_tkaga"]
-resource_local_to_scene = true
-font = SubResource("FontVariation_t4jk5")
-font_size = 32
 
 [sub_resource type="FontVariation" id="FontVariation_sfrf8"]
 base_font = ExtResource("6_jx6mk")
@@ -69,17 +61,13 @@ offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("2_yx42x")
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("lens", "world") instance=ExtResource("4_3hr63")]
 layer = 2
 lens = NodePath("../SackKrampus/Lens")
 world = NodePath("..")
-
-[node name="label" parent="Camera2D/ProgressBar" index="0"]
-visible = false
-label_settings = SubResource("LabelSettings_tkaga")
 
 [node name="Timer" parent="Camera2D/Timer_Container" index="0"]
 label_settings = SubResource("LabelSettings_enko8")
@@ -97,4 +85,3 @@ autoplay = true
 
 [editable path="SackKrampus"]
 [editable path="Camera2D"]
-[editable path="Camera2D/ProgressBar"]
