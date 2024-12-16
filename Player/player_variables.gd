@@ -22,7 +22,7 @@ var max_hp:float = 100:
 		health_changed.emit(current_health)
 var sack_heal:float = 20
 var cheer_rate:float = 25#5
-var survival_time:float = 25
+var survival_time:float = 5#25
 var walkspeed:float = 500#200
 var dash_multiplier:float = 1.8#4
 
@@ -48,6 +48,10 @@ func modify_sack_npc_type_counts(npc_type:NPC.NPCType, delta:int):
 		print("Nabbed a guard")
 	var current_count = sack_npc_type_counts[npc_type]
 	sack_npc_type_counts[npc_type] = max(0, current_count + delta)
+	
+	if (sack_npc_type_counts[NPC.NPCType.NaughtyKid] == 20):
+		get_tree().change_scene_to_file("res://victory_screen.tscn")
+	
 	sack_contents_changed.emit()
 	
 

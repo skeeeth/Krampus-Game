@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://kf2ejeuhw4gq"]
+
+[ext_resource type="Texture2D" uid="uid://d1gtw6hhps41y" path="res://Dialogue/krampus_happy.png" id="1_a3y64"]
+[ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="2_ly2o2"]
+
+[sub_resource type="FontVariation" id="FontVariation_35tkj"]
+base_font = ExtResource("2_ly2o2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5nnrb"]
+font = SubResource("FontVariation_35tkj")
+font_size = 128
+
+[sub_resource type="FontVariation" id="FontVariation_knxw0"]
+base_font = ExtResource("2_ly2o2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wc2ml"]
+font = SubResource("FontVariation_knxw0")
+font_size = 64
+
+[node name="VictoryScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.699653, 0.699653, 0.699653, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.527
+anchor_top = 0.282
+anchor_right = 0.95
+anchor_bottom = 0.66
+offset_left = -0.104004
+offset_top = 0.263992
+offset_right = -0.400024
+offset_bottom = 0.319977
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_5nnrb")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.542
+anchor_top = 0.65
+anchor_right = 0.924
+anchor_bottom = 0.83
+offset_left = -0.384033
+offset_top = -0.200012
+offset_right = -0.447998
+offset_bottom = 0.159973
+text = "Thanks for playing!"
+label_settings = SubResource("LabelSettings_wc2ml")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046
+anchor_top = 0.067
+anchor_right = 0.526
+anchor_bottom = 0.891
+offset_left = -6.992
+offset_top = -6.416
+offset_right = 4.04797
+offset_bottom = 6.63196
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_a3y64")
+expand_mode = 1
+stretch_mode = 5

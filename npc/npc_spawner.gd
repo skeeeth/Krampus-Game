@@ -28,6 +28,11 @@ var nice_kid_scene = preload("res://npc/nice_kid.tscn")
 var naughty_kid_scene = preload("res://npc/naughty_kid.tscn")
 var guard_scene = preload("res://npc/guard.tscn")
 
+
+var num_nice_kids_initial = 200
+var num_naughty_kids_initial = 20
+var num_guards_initial = 10
+
 func _ready() -> void:
 	sections.resize(num_vertical_sections*num_horizontal_sections)
 	sections.fill([])
@@ -36,12 +41,12 @@ func _ready() -> void:
 	lower_right_bound = $LowerRightBoundPosition.global_position
 	
 	await _find_spawn_positions()
-	spawn_all_npcs(200, 20, 10)
+	spawn_all_npcs()
 
-func spawn_all_npcs(num_nice_kids=200, num_naughty_kids=20, num_guards=10):
-	_spawn_npcs(nice_kid_scene, num_nice_kids)
-	_spawn_npcs(naughty_kid_scene, num_naughty_kids)
-	_spawn_npcs(guard_scene, num_guards, Guard.krampus_detection_radius + 200)
+func spawn_all_npcs():
+	_spawn_npcs(nice_kid_scene, num_nice_kids_initial - PlayerVariables.sack_npc_type_counts[NPC.NPCType.NiceKid])
+	_spawn_npcs(naughty_kid_scene, num_naughty_kids_initial - PlayerVariables.sack_npc_type_counts[NPC.NPCType.NaughtyKid])
+	_spawn_npcs(guard_scene, num_guards_initial - PlayerVariables.sack_npc_type_counts[NPC.NPCType.Guard], Guard.krampus_detection_radius + 200)
 
 func _spawn_npcs(npc_scene, num_to_spawn, minimum_distance_from_krampus:float=-1):
 	var section_index = 0

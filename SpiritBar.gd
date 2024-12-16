@@ -39,7 +39,6 @@ func _process(delta: float) -> void:
 		
 		npc_spawner.delete_npcs()
 		
-		
 		await PlayerVariables.combat_fading
 		
 		npc_spawner.spawn_all_npcs()
