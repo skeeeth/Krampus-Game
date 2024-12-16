@@ -14,13 +14,13 @@ var sack_npc_type_counts = {NPC.NPCType.NiceKid : 0,
 							NPC.NPCType.NaughtyKid : 0,
 							NPC.NPCType.Guard : 0}
 
-var current_health:float = 20:
+var current_health:float = 100:
 	set(v):
 		current_health = v
 		health_changed.emit(v)
 		if (v <= 0):
 			player_died.emit()
-var max_hp:float = 20:
+var max_hp:float = 100:
 	set(v):
 		max_hp = v
 		health_changed.emit(current_health)
