@@ -1,4 +1,7 @@
+class_name CheerBar
 extends TextureProgressBar
+
+signal cheer_bar_filled
 
 @export var margin:float
 @export var krampus:Krampus
@@ -10,6 +13,8 @@ extends TextureProgressBar
 
 @export var npc_spawner:NPCSpawner
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#position.x = get_viewport_rect().size.x/2.0/get_parent().zoom.x
@@ -18,10 +23,17 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	value += delta * PlayerVariables.cheer_rate * 60.0
+	if (value < max_value):
+		value += delta * PlayerVariables.cheer_rate * 60.0
 	
+	if (value >= max_value):
+		cheer_bar_filled.emit()
+	
+	'''
 	if process_mode == Node.PROCESS_MODE_ALWAYS:
 		return
 	if value >= max_value:
@@ -55,5 +67,5 @@ func _process(delta: float) -> void:
 		krampus.process_mode = Node.PROCESS_MODE_INHERIT
 		process_mode = Node.PROCESS_MODE_INHERIT
 		outside_scene.process_mode = Node.PROCESS_MODE_INHERIT
-
+	'''
 	pass

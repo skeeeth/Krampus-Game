@@ -1,6 +1,8 @@
 class_name NPCSpawner
 extends Node
 
+signal finished_spawning
+
 #Spawn npcs in a rectanglular area defined by these two bounds
 #We'll use the global positions of the child nodes $UpperLeftBoundPosition and $LowerRightBoundPosition
 var upper_left_bound:Vector2
@@ -42,11 +44,13 @@ func _ready() -> void:
 	
 	await _find_spawn_positions()
 	spawn_all_npcs()
+	finished_spawning.emit()
 
 func spawn_all_npcs():
 	_spawn_npcs(nice_kid_scene, num_nice_kids_initial - PlayerVariables.sack_npc_type_counts[NPC.NPCType.NiceKid])
 	_spawn_npcs(naughty_kid_scene, num_naughty_kids_initial - PlayerVariables.sack_npc_type_counts[NPC.NPCType.NaughtyKid])
 	_spawn_npcs(guard_scene, num_guards_initial - PlayerVariables.sack_npc_type_counts[NPC.NPCType.Guard], Guard.krampus_detection_radius + 200)
+	
 
 func _spawn_npcs(npc_scene, num_to_spawn, minimum_distance_from_krampus:float=-1):
 	var section_index = 0

@@ -1,0 +1,670 @@
+[gd_scene load_steps=24 format=3 uid="uid://dx346ep8nkmsg"]
+
+[ext_resource type="PackedScene" uid="uid://prm2p3mxsryu" path="res://Player/krampus.tscn" id="1_4sfk4"]
+[ext_resource type="Script" path="res://game_manager.gd" id="1_ioxfg"]
+[ext_resource type="PackedScene" uid="uid://cmgdalcoc6r2h" path="res://Items/Instances/headphones.tscn" id="2_hjroy"]
+[ext_resource type="PackedScene" uid="uid://qgltf060t87h" path="res://Environment/shelf.tscn" id="3_agvvd"]
+[ext_resource type="Texture2D" uid="uid://st7m3f6mvyde" path="res://white_square.png" id="4_w4ln1"]
+[ext_resource type="Texture2D" uid="uid://cofnknj7tvoa3" path="res://Environment/white_checkered_tile.png" id="5_spprc"]
+[ext_resource type="PackedScene" path="res://shoes.tscn" id="6_ihw0c"]
+[ext_resource type="PackedScene" uid="uid://bvpjyx7rpaqck" path="res://Items/Instances/pills.tscn" id="7_k71iy"]
+[ext_resource type="PackedScene" uid="uid://00mvkk4ijukq" path="res://space_heater.tscn" id="8_f2cu2"]
+[ext_resource type="PackedScene" uid="uid://cdv7yypqfldh4" path="res://Carts/shopping_cart.tscn" id="9_b87ai"]
+[ext_resource type="PackedScene" uid="uid://biu0vrh6mioda" path="res://Player/store_ui.tscn" id="10_u7g3g"]
+[ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="11_tll2y"]
+[ext_resource type="Script" path="res://npc/npc_spawner.gd" id="12_7yj14"]
+[ext_resource type="AudioStream" uid="uid://ccec2ayjk24pa" path="res://Music/jingle-bells-music-jazz-christmas-holiday-background-intro-theme-271538.mp3" id="13_idufq"]
+[ext_resource type="AudioStream" uid="uid://dfi6pnu5ipl5a" path="res://Music/crowd_-_mall_ambience.mp3" id="14_vflm8"]
+[ext_resource type="PackedScene" uid="uid://cai6sh16qsfth" path="res://Player/dialogue_system.tscn" id="15_y7mkq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fikin"]
+resource_local_to_scene = true
+size = Vector2(998, 198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl3mv"]
+resource_local_to_scene = true
+size = Vector2(998, 198)
+
+[sub_resource type="FontVariation" id="FontVariation_t4jk5"]
+base_font = ExtResource("11_tll2y")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wljog"]
+resource_local_to_scene = true
+font = SubResource("FontVariation_t4jk5")
+font_size = 32
+
+[sub_resource type="FontVariation" id="FontVariation_st045"]
+base_font = ExtResource("11_tll2y")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ofifj"]
+resource_local_to_scene = true
+line_spacing = -40.0
+font = SubResource("FontVariation_st045")
+font_size = 32
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jqpns"]
+radius = 30.0
+
+[node name="Master" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("store_contents", "screen_cover", "npc_spawner", "dialogue_system", "cheer_bar", "store_only_ui", "out_cam", "krampus", "bgm_player")]
+script = ExtResource("1_ioxfg")
+store_contents = NodePath("../StoreContents")
+screen_cover = NodePath("../ScreenCover")
+npc_spawner = NodePath("../StoreContents/NPCSpawner")
+dialogue_system = NodePath("../DialogueSystem")
+cheer_bar = NodePath("../StoreContents/StoreUI/StoreOnlyElements/CheerBar")
+store_only_ui = NodePath("../StoreContents/StoreUI/StoreOnlyElements")
+out_cam = NodePath("../StoreContents/Krampus/Camera2D")
+krampus = NodePath("../StoreContents/Krampus")
+bgm_player = NodePath("../StoreContents/BGM")
+
+[node name="ScreenCover" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ColorRect" type="ColorRect" parent="ScreenCover"]
+z_index = 99
+offset_left = -10858.0
+offset_top = -7071.0
+offset_right = 14114.0
+offset_bottom = 8596.0
+color = Color(0.404511, 0.404511, 0.404511, 1)
+
+[node name="DialogueSystem" parent="." instance=ExtResource("15_y7mkq")]
+
+[node name="StoreContents" type="Node2D" parent="."]
+
+[node name="Krampus" parent="StoreContents" instance=ExtResource("1_4sfk4")]
+
+[node name="Camera2D" type="Camera2D" parent="StoreContents/Krampus"]
+zoom = Vector2(0.8, 0.8)
+
+[node name="Environment" type="Node2D" parent="StoreContents"]
+
+[node name="Headphones" parent="StoreContents/Environment" instance=ExtResource("2_hjroy")]
+position = Vector2(-948, -613)
+scale = Vector2(2, 2)
+
+[node name="LevelBoundaries" type="Node2D" parent="StoreContents/Environment"]
+
+[node name="WestWall" parent="StoreContents/Environment/LevelBoundaries" instance=ExtResource("3_agvvd")]
+position = Vector2(-3391, 5005)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/LevelBoundaries/WestWall" index="0"]
+points = PackedVector2Array(0, 0, 7656, 23.0276)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/LevelBoundaries/WestWall" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="EastWall" parent="StoreContents/Environment/LevelBoundaries" instance=ExtResource("3_agvvd")]
+position = Vector2(5514, 4983)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/LevelBoundaries/EastWall" index="0"]
+points = PackedVector2Array(0, 0, 7903, 8.02881)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/LevelBoundaries/EastWall" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="NorthWall" parent="StoreContents/Environment/LevelBoundaries" instance=ExtResource("3_agvvd")]
+position = Vector2(-7945, -879)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/LevelBoundaries/NorthWall" index="0"]
+points = PackedVector2Array(0, 0, 17544, -11)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/LevelBoundaries/NorthWall" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall" parent="StoreContents/Environment/LevelBoundaries" instance=ExtResource("3_agvvd")]
+position = Vector2(-4029, 2522)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/LevelBoundaries/SouthWall" index="0"]
+points = PackedVector2Array(0, 0, 12308, -9)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/LevelBoundaries/SouthWall" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="NorthGreyBlob" type="Sprite2D" parent="StoreContents/Environment/LevelBoundaries"]
+modulate = Color(0.223529, 0.223529, 0.223529, 1)
+z_index = 10
+position = Vector2(1883, -2992.5)
+scale = Vector2(43.4, 10.5525)
+texture = ExtResource("4_w4ln1")
+
+[node name="WestGreyBlob" type="Sprite2D" parent="StoreContents/Environment/LevelBoundaries"]
+modulate = Color(0.223529, 0.223529, 0.223529, 1)
+z_index = 10
+position = Vector2(-12057, 831)
+scale = Vector2(43.4, 10.5525)
+texture = ExtResource("4_w4ln1")
+
+[node name="SouthGreyBlob" type="Sprite2D" parent="StoreContents/Environment/LevelBoundaries"]
+modulate = Color(0.223529, 0.223529, 0.223529, 1)
+z_index = 10
+position = Vector2(757, 4631)
+scale = Vector2(43.4, 10.5525)
+texture = ExtResource("4_w4ln1")
+
+[node name="EastGreyBlob" type="Sprite2D" parent="StoreContents/Environment/LevelBoundaries"]
+modulate = Color(0.223529, 0.223529, 0.223529, 1)
+z_index = 10
+position = Vector2(14206, 1047)
+scale = Vector2(43.4, 10.5525)
+texture = ExtResource("4_w4ln1")
+
+[node name="West wall cluster" type="Node2D" parent="StoreContents/Environment"]
+
+[node name="WestWall2" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-2904, 2170)
+rotation = -1.5708
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/WestWall2" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall6" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-2904, 599)
+rotation = -1.5708
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/WestWall6" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall3" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-1993, 1732)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/West wall cluster/WestWall3" index="0"]
+points = PackedVector2Array(0, 0, 1295, 4.00464)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/WestWall3" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall4" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-2481, 1740)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/West wall cluster/WestWall4" index="0"]
+points = PackedVector2Array(0, 0, 1291, 6.00464)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/WestWall4" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="SouthWall2" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-2585, 2075)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/SouthWall2" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall3" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-2585, 63)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/West wall cluster/SouthWall3" index="0"]
+points = PackedVector2Array(0, 0, 1411, -5)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/SouthWall3" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall5" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-2147, -416)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/SouthWall5" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall4" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-1569, 505)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/SouthWall4" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="WestWall5" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-1489, 2179)
+rotation = -1.5708
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/WestWall5" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall8" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-947, 1646)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/West wall cluster/WestWall8" index="0"]
+points = PackedVector2Array(0, 0, 473, -0.998291)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/WestWall8" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall7" parent="StoreContents/Environment/West wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-617, 600)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/West wall cluster/WestWall7" index="0"]
+points = PackedVector2Array(0, 0, 1407, 3.00513)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/West wall cluster/WestWall7" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="Middle wall cluster" type="Node2D" parent="StoreContents/Environment"]
+
+[node name="SouthWall3" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-494, 958)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/Middle wall cluster/SouthWall3" index="0"]
+points = PackedVector2Array(0, 0, 3462, -2)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/SouthWall3" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall4" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(1625, 2068)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/Middle wall cluster/SouthWall4" index="0"]
+points = PackedVector2Array(0, 0, 1389, 1)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/SouthWall4" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall6" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(2255, 1575)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/SouthWall6" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall5" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(3312, 2064)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/Middle wall cluster/SouthWall5" index="0"]
+points = PackedVector2Array(0, 0, 1296, 0)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/SouthWall5" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="WestWall4" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(103, 2484)
+rotation = -1.5708
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/WestWall4" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall6" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(-492, 2766)
+rotation = -1.5708
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/WestWall6" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall8" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(1720, 1446)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/Middle wall cluster/WestWall8" index="0"]
+points = PackedVector2Array(0, 0, 520, -2.99805)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/WestWall8" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall5" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(662, 2044)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/Middle wall cluster/WestWall5" index="0"]
+points = PackedVector2Array(0, 0, 747, -0.997314)
+
+[node name="Line2DMiddle" parent="StoreContents/Environment/Middle wall cluster/WestWall5" index="1"]
+points = PackedVector2Array(0, 0, 736, -0.997375)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/WestWall5" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall7" parent="StoreContents/Environment/Middle wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(1191, 1822)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/Middle wall cluster/WestWall7" index="0"]
+points = PackedVector2Array(0, 0, 905, 2.0033)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/Middle wall cluster/WestWall7" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="East wall cluster" type="Node2D" parent="StoreContents/Environment"]
+
+[node name="WestWall9" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(2901, 545)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/WestWall9" index="0"]
+points = PackedVector2Array(0, 0, 1346, -1.99512)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/WestWall9" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall10" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(3457, 1231)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/WestWall10" index="0"]
+points = PackedVector2Array(0, 0, 1676, -8.9939)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/WestWall10" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall13" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(4529, 2143)
+rotation = -1.5708
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/WestWall13" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall12" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(4019, 2138)
+rotation = -1.5708
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/WestWall12" index="0"]
+points = PackedVector2Array(0, 0, 608, 1.0022)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/WestWall12" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="WestWall11" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(5034, 797)
+rotation = -1.5708
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/WestWall11" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_fikin")
+
+[node name="SouthWall7" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(3738, -540)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/SouthWall7" index="0"]
+points = PackedVector2Array(0, 0, 842, 1)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/SouthWall7" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall8" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(3758, -162)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/SouthWall8" index="0"]
+points = PackedVector2Array(0, 0, 830, 1)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/SouthWall8" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall9" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(3753, 261)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/SouthWall9" index="0"]
+points = PackedVector2Array(0, 0, 823, -3)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/SouthWall9" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall11" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(3354, 1135)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/SouthWall11" index="0"]
+points = PackedVector2Array(0, 0, 814, 0)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/SouthWall11" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall12" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(4852, 1829)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/SouthWall12" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall13" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(4433, 1137)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/SouthWall13" index="0"]
+points = PackedVector2Array(0, 0, 721, 0)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/SouthWall13" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="SouthWall10" parent="StoreContents/Environment/East wall cluster" instance=ExtResource("3_agvvd")]
+position = Vector2(3765, 687)
+
+[node name="Line2DEdges" parent="StoreContents/Environment/East wall cluster/SouthWall10" index="0"]
+points = PackedVector2Array(0, 0, 1296, -1)
+
+[node name="CollisionShape2D" parent="StoreContents/Environment/East wall cluster/SouthWall10" index="2"]
+visible = false
+position = Vector2(1065, 0)
+shape = SubResource("RectangleShape2D_bl3mv")
+
+[node name="Floor" type="TextureRect" parent="StoreContents/Environment"]
+z_index = -10
+offset_left = -7461.0
+offset_top = -5830.0
+offset_right = 8336.0
+offset_bottom = 5890.0
+scale = Vector2(3, 3)
+texture = ExtResource("5_spprc")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Shoes" parent="StoreContents/Environment" instance=ExtResource("6_ihw0c")]
+position = Vector2(1489, 1126)
+
+[node name="Pills" parent="StoreContents/Environment" instance=ExtResource("7_k71iy")]
+position = Vector2(-720, 1739)
+
+[node name="SpaceHeater" parent="StoreContents/Environment" instance=ExtResource("8_f2cu2")]
+position = Vector2(5320, 928)
+scale = Vector2(2, 2)
+
+[node name="Carts" type="Node2D" parent="StoreContents"]
+
+[node name="ShoppingCart" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(2540, -574)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart15" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(2007, -29)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart16" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(557, -514)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart5" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(3609, 1599)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart6" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(5059, -319)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart7" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(4763, 1370)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart4" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(-1682, 1801)
+rotation = 0.47822
+kickoff_speed = 1.5
+
+[node name="ShoppingCart3" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(-208, 375)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart8" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(-940, 1870)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart9" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(-2511, -590)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart10" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(295, 2198)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart11" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(1251, 2171)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart12" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(3595, 2243)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart13" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(-3099, 769)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart14" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(3134, -645)
+kickoff_speed = 1.5
+
+[node name="ShoppingCart2" parent="StoreContents/Carts" instance=ExtResource("9_b87ai")]
+position = Vector2(1940, 1196)
+kickoff_speed = 1.5
+
+[node name="StoreUI" parent="StoreContents" instance=ExtResource("10_u7g3g")]
+
+[node name="CheerBar" parent="StoreContents/StoreUI/StoreOnlyElements" index="1" node_paths=PackedStringArray("krampus", "outside_scene", "out_cam", "npc_spawner")]
+krampus = NodePath("../../../Krampus")
+outside_scene = NodePath("../../..")
+out_cam = NodePath("../../../Krampus/Camera2D")
+npc_spawner = NodePath("../../../NPCSpawner")
+
+[node name="Label" parent="StoreContents/StoreUI/StoreOnlyElements" index="2"]
+label_settings = SubResource("LabelSettings_wljog")
+
+[node name="Label" parent="StoreContents/StoreUI/StoreOnlyElements/Label" index="1"]
+label_settings = SubResource("LabelSettings_ofifj")
+
+[node name="NPCSpawner" type="Node" parent="StoreContents"]
+script = ExtResource("12_7yj14")
+average_horizontal_spacing = 50.0
+average_vertical_spacing = 50.0
+spacing_variance = 0.2
+spawn_position_collision_shape = SubResource("CircleShape2D_jqpns")
+
+[node name="UpperLeftBoundPosition" type="Node2D" parent="StoreContents/NPCSpawner"]
+position = Vector2(-3196, -718)
+
+[node name="LowerRightBoundPosition" type="Node2D" parent="StoreContents/NPCSpawner"]
+position = Vector2(5282, 2317)
+
+[node name="BGM" type="AudioStreamPlayer" parent="StoreContents"]
+stream = ExtResource("13_idufq")
+volume_db = -5.0
+autoplay = true
+playback_type = 1
+parameters/looping = true
+
+[node name="Crowd" type="AudioStreamPlayer" parent="StoreContents"]
+stream = ExtResource("14_vflm8")
+volume_db = -9.0
+autoplay = true
+playback_type = 1
+
+[editable path="StoreContents/Environment/LevelBoundaries/WestWall"]
+[editable path="StoreContents/Environment/LevelBoundaries/EastWall"]
+[editable path="StoreContents/Environment/LevelBoundaries/NorthWall"]
+[editable path="StoreContents/Environment/LevelBoundaries/SouthWall"]
+[editable path="StoreContents/Environment/West wall cluster/WestWall2"]
+[editable path="StoreContents/Environment/West wall cluster/WestWall6"]
+[editable path="StoreContents/Environment/West wall cluster/WestWall3"]
+[editable path="StoreContents/Environment/West wall cluster/WestWall4"]
+[editable path="StoreContents/Environment/West wall cluster/SouthWall2"]
+[editable path="StoreContents/Environment/West wall cluster/SouthWall3"]
+[editable path="StoreContents/Environment/West wall cluster/SouthWall5"]
+[editable path="StoreContents/Environment/West wall cluster/SouthWall4"]
+[editable path="StoreContents/Environment/West wall cluster/WestWall5"]
+[editable path="StoreContents/Environment/West wall cluster/WestWall8"]
+[editable path="StoreContents/Environment/West wall cluster/WestWall7"]
+[editable path="StoreContents/Environment/Middle wall cluster/SouthWall3"]
+[editable path="StoreContents/Environment/Middle wall cluster/SouthWall4"]
+[editable path="StoreContents/Environment/Middle wall cluster/SouthWall6"]
+[editable path="StoreContents/Environment/Middle wall cluster/SouthWall5"]
+[editable path="StoreContents/Environment/Middle wall cluster/WestWall4"]
+[editable path="StoreContents/Environment/Middle wall cluster/WestWall6"]
+[editable path="StoreContents/Environment/Middle wall cluster/WestWall8"]
+[editable path="StoreContents/Environment/Middle wall cluster/WestWall5"]
+[editable path="StoreContents/Environment/Middle wall cluster/WestWall7"]
+[editable path="StoreContents/Environment/East wall cluster/WestWall9"]
+[editable path="StoreContents/Environment/East wall cluster/WestWall10"]
+[editable path="StoreContents/Environment/East wall cluster/WestWall13"]
+[editable path="StoreContents/Environment/East wall cluster/WestWall12"]
+[editable path="StoreContents/Environment/East wall cluster/WestWall11"]
+[editable path="StoreContents/Environment/East wall cluster/SouthWall7"]
+[editable path="StoreContents/Environment/East wall cluster/SouthWall8"]
+[editable path="StoreContents/Environment/East wall cluster/SouthWall9"]
+[editable path="StoreContents/Environment/East wall cluster/SouthWall11"]
+[editable path="StoreContents/Environment/East wall cluster/SouthWall12"]
+[editable path="StoreContents/Environment/East wall cluster/SouthWall13"]
+[editable path="StoreContents/Environment/East wall cluster/SouthWall10"]
+[editable path="StoreContents/StoreUI"]

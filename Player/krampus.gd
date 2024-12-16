@@ -18,6 +18,9 @@ func _ready() -> void:
 	#PlayerVariables.previous_position = global_position
 
 func on_attempt_interaction(interaction_target:InteractableArea):
+	if (GameStateManager.state != GameStateManager.GameState.Gameplay):
+		return
+		
 	if (cart != null and !gliding):
 		cart.stop_riding()
 		cart = null
@@ -39,6 +42,9 @@ func on_attempt_interaction(interaction_target:InteractableArea):
 
 
 func _input(event: InputEvent) -> void:
+	if (GameStateManager.state != GameStateManager.GameState.Gameplay):
+		return
+		
 	if (event.is_action_pressed("attack") and cart == null): #Can't attack while in the cart... for now. Could be fun though
 		$Attack.attempt_attack(facing_direction)
 
@@ -48,6 +54,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if (GameStateManager.state != GameStateManager.GameState.Gameplay):
+		return
+		
 	move_speed = PlayerVariables.outside_movespeed
 	if (cart != null):
 		if gliding:

@@ -6,6 +6,8 @@ enum GameState {
 	Gameplay
 }
 
+var state:GameState = GameState.Gameplay
+
 signal dialogue_started
 signal dialogue_stopped
 

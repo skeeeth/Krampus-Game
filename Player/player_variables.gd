@@ -4,6 +4,8 @@ signal health_changed(new)
 signal new_item(title,desc,flavor,image)
 signal sack_contents_changed()
 
+signal player_died()
+
 #shouldn't really be in this script but this is the only autoload for now
 signal combat_fading
 signal combat_ended
@@ -12,17 +14,19 @@ var sack_npc_type_counts = {NPC.NPCType.NiceKid : 0,
 							NPC.NPCType.NaughtyKid : 0,
 							NPC.NPCType.Guard : 0}
 
-var current_health:float = 100:
+var current_health:float = 20:
 	set(v):
 		current_health = v
 		health_changed.emit(v)
-var max_hp:float = 100:
+		if (v <= 0):
+			player_died.emit()
+var max_hp:float = 20:
 	set(v):
 		max_hp = v
 		health_changed.emit(current_health)
 var sack_heal:float = 20
-var cheer_rate:float = 25#5
-var survival_time:float = 5#25
+var cheer_rate:float = 5
+var survival_time:float = 25
 var walkspeed:float = 500#200
 var dash_multiplier:float = 1.8#4
 

@@ -124,7 +124,7 @@ func _set_rotation(new_rotation:float):
 	nav_ray.rotation = -new_rotation
 	
 
-func _physics_process(delta: float):
+func _physics_process(delta: float):		
 	if (state == NPCState.Wandering):
 		_set_rotation(nav_ray.target_position.angle())
 		nav_ray.force_raycast_update()

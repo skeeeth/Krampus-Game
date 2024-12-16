@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://cai6sh16qsfth"]
+
+[ext_resource type="Texture2D" uid="uid://bxh838hgr1tyb" path="res://Dialogue/krampus_grumpy.png" id="1_ei5a6"]
+[ext_resource type="Script" path="res://Player/dialogue_system.gd" id="1_iybsy"]
+[ext_resource type="FontFile" uid="uid://j038vvgxthx1" path="res://Combat/UI/MountainsofChristmas-Regular.ttf" id="2_cailx"]
+[ext_resource type="Texture2D" uid="uid://d1gtw6hhps41y" path="res://Dialogue/krampus_happy.png" id="2_vg5ij"]
+[ext_resource type="Texture2D" uid="uid://dxpbfb0tsfwk" path="res://Dialogue/krampus_surprised.png" id="3_um2md"]
+[ext_resource type="Texture2D" uid="uid://46m6rvltqaru" path="res://Dialogue/krampus_disgusted.png" id="4_xsehm"]
+
+[sub_resource type="FontVariation" id="FontVariation_tab3k"]
+base_font = ExtResource("2_cailx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_53l68"]
+font = SubResource("FontVariation_tab3k")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_rbw6d"]
+base_font = ExtResource("2_cailx")
+
+[node name="DialogueSystem" type="Control" node_paths=PackedStringArray("face_texture_rect", "text_label")]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iybsy")
+happy_face_texture = ExtResource("2_vg5ij")
+surprised_face_texture = ExtResource("3_um2md")
+disgusted_face_texture = ExtResource("4_xsehm")
+grumpy_face_texture = ExtResource("1_ei5a6")
+face_texture_rect = NodePath("Visuals/TextureRect")
+text_label = NodePath("Visuals/RichTextLabel")
+
+[node name="Visuals" type="CanvasLayer" parent="."]
+layer = 5
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Visuals"]
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.579
+anchor_right = 0.309
+anchor_bottom = 0.951
+offset_left = 0.472
+offset_top = -0.192047
+offset_right = 0.0319824
+offset_bottom = -0.248047
+texture = ExtResource("1_ei5a6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="Visuals"]
+anchors_preset = -1
+anchor_left = 0.27
+anchor_top = 0.701
+anchor_right = 0.94
+anchor_bottom = 0.889
+offset_left = -0.0400085
+offset_top = -0.248016
+offset_right = 0.119873
+offset_bottom = -0.0720215
+color = Color(0.388744, 0.284019, 0.0494392, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Visuals"]
+anchors_preset = -1
+anchor_left = 0.273
+anchor_top = 0.711
+anchor_right = 0.932
+anchor_bottom = 0.878
+offset_left = 0.503998
+offset_top = 0.271973
+offset_right = 0.335938
+offset_bottom = 0.0559692
+
+[node name="Label" type="Label" parent="Visuals"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.281
+anchor_top = 0.722
+anchor_right = 0.925
+anchor_bottom = 0.867
+offset_left = 0.287964
+offset_top = 0.143951
+offset_right = 0.399902
+offset_bottom = 0.18396
+text = "Test test test"
+label_settings = SubResource("LabelSettings_53l68")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Visuals"]
+z_index = 4
+anchors_preset = -1
+anchor_left = 0.273
+anchor_top = 0.711
+anchor_right = 0.926
+anchor_bottom = 0.87
+offset_left = 6.504
+offset_top = 0.271973
+offset_right = 6.24792
+offset_bottom = 3.23993
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_rbw6d")
+theme_override_font_sizes/normal_font_size = 40
+text = "Test test testy test"

@@ -32,7 +32,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	$Attention_Icons.rotation = -rotation
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	var is_krampus_in_sight = false
 	if (krampus != null):
 		krampus_ray.target_position = krampus_detection_radius * (krampus.global_position - global_position).normalized()
